@@ -1,0 +1,99 @@
+// MARK: Global strings
+"GeneralString.Hebrew"  = "עִברִית";
+"GeneralString.English" = "English";
+"GeneralString.Ok"      = "בסדר";
+"GeneralString.hours"   = "שעות";
+
+// MARK: AlertStrings
+"AlertStrings.cancel"                  = "לְבַטֵל";
+"AlertStrings.Error"                   = "empty while";
+"AlertStrings.tryAgain"                = "empty while";
+"AlertStrings.somethingWentWrong"      = "empty while";
+"AlertStrings.newPasswordsShoudBeSame" = "אישור הסיסמה והסיסמה צריכים להיות זהים.";
+"AlertStrings.foundUserAlert"          = "הי {name} אנא הקלד את הקוד: {code}";
+"AlertStrings.errorCode"               = "קוד אימות שגוי. בבקשה נסה שוב.";
+"AlertStrings.userNotFound"            = "המשתמש לא נמצא. נא להזין את פרטי הכניסה והסיסמה הנכונים.";
+"AlertStrings.fillField"               = "אנא מלא את השדה {field} שלך.";
+
+// MARK: AlertStrings.FieldsEmptyAlerts
+"AlertStrings.FieldsEmptyAlerts.firstName"            = "שם פרטי";
+"AlertStrings.FieldsEmptyAlerts.surname"              = "שם משפחה";
+"AlertStrings.FieldsEmptyAlerts.idNo"                 = "מספר תעודת זהות";
+"AlertStrings.FieldsEmptyAlerts.pnoneNo"              = "מספר טלפון נייד";
+"AlertStrings.FieldsEmptyAlerts.otpCode"              = "קוד OTP";
+"AlertStrings.FieldsEmptyAlerts.login"                = "התחברות";
+"AlertStrings.FieldsEmptyAlerts.email"                = "אימייל";
+"AlertStrings.FieldsEmptyAlerts.password"             = "סיסמה";
+"AlertStrings.FieldsEmptyAlerts.passwordConfirmation" = "אימות סיסמה";
+
+
+// MARK: LoginVCStrings
+"LoginVCStrings.title"                  = "התחברות";
+"LoginVCStrings.username"               = "שם משתמש";
+"LoginVCStrings.password"               = "סיסמה";
+"LoginVCStrings.biometrical"            = "ביומטרי";
+"LoginVCStrings.pincode"                = "קוד סודי";
+"LoginVCStrings.loginButton"            = "התחברות";
+"LoginVCStrings.goToRegistrationButton" = "עבור לרישום";
+
+// MARK: RegistrationVCStrings
+"RegistrationVCStrings.title"                = "הַרשָׁמָה";
+"RegistrationVCStrings.username"             = "שם משתמש";
+"RegistrationVCStrings.email"                = "אימייל";
+"RegistrationVCStrings.password"             = "סיסמה";
+"RegistrationVCStrings.passwordConfirmation" = "אימות סיסמה";
+"RegistrationVCStrings.goToLoginButton"      = "עבור אל התחברות";
+"RegistrationVCStrings.registerButton"       = "הירשם";
+
+// MARK: InitialDataVCStrings
+"InitialDataVCStrings.firstName"  = "שם פרטי";
+"InitialDataVCStrings.lastName"   = "שם משפחה";
+"InitialDataVCStrings.id"         = "תְעוּדַת זֶהוּת";
+"InitialDataVCStrings.phone"      = "מכשיר טלפון";
+"InitialDataVCStrings.nextButton" = "הַבָּא";
+
+
+// MARK: OTPVCStrings
+"OTPVCStrings.title"         = "אישור טלפוני";
+"OTPVCStrings.confirmButton" = "לְאַשֵׁר";
+
+// MARK: HomeVCStrings
+"HomeVCStrings.title"        = "FintecAI";
+"HomeVCStrings.greetings"    = "בוקר טוב {name}";
+"HomeVCStrings.currency"     = "₪";
+"HomeVCStrings.accountValue" = "ערך חשבון";
+"HomeVCStrings.dailyChange"  = "שינוי יומי";
+"HomeVCStrings.totalChange"  = "שינוי מוחלט";
+"HomeVCStrings.cash"         = "מזומן";
+"HomeVCStrings.openOrders"   = "הזמנות פתוחות";
+"HomeVCStrings.receivables"  = "משרטט מחדש";
+"HomeVCStrings.showButton"   = "הופעה";
+"HomeVCStrings.hideButton"   = "להתחבא";
+"HomeVCStrings.long"         = "ארוך {value}";
+"HomeVCStrings.short"        = "קצר {value}";
+"HomeVCStrings.value"        = "ערך";
+"HomeVCStrings.profit"       = "רווח";
+"HomeVCStrings.averageTime"  = "זמן ממוצע";
+
+"HomeVCStrings.alert.ShowValue.EnterPassword" = "אנא הזן את סיסמת החשבון שלך";
+"HomeVCStrings.alert.ShowValue.Title"         = "על מנת להציג יתרות עליך להזין סיסמה או ביטול נעילה ביומטרית";
+"HomeVCStrings.alert.ShowValue.Password"      = "סיסמה";
+"HomeVCStrings.alert.ShowValue.Biometrical"   = "ביומטרי";
+
+// MARK: TextFieldsStrings
+"TextFieldsStrings.username"             = "שם משתמש";
+"TextFieldsStrings.password"             = "סיסמה";
+"TextFieldsStrings.passwordConfirmation" = "אשר סיסמה";
+"TextFieldsStrings.email"                = "אימייל";
+"TextFieldsStrings.id"                   = "מספר תעודת זהות";
+"TextFieldsStrings.phone"                = "מספר טלפון נייד";
+"TextFieldsStrings.login"                = "התחברות";
+"TextFieldsStrings.firstName"            = "שם פרטי";
+"TextFieldsStrings.lastName"             = "שם משפחה";
+
+// MARK: MenuVCStrings
+"MenuVCStrings.title"    = "תַפרִיט";
+"MenuVCStrings.history"  = "הִיסטוֹרִיָה";
+"MenuVCStrings.language" = "שפה {value}";
+"MenuVCStrings.about"    = "על אודות";
+"MenuVCStrings.logOut"   = "להתנתק";

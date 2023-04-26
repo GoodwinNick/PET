@@ -1,0 +1,3 @@
+${PODS_ROOT}/Target Support Files/Pods-NewProjectTempleteEnvirinment/Pods-NewProjectTempleteEnvirinment-frameworks.sh
+${BUILT_PRODUCTS_DIR}/AzureCore/AzureCore.framework
+${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Photo Viewer View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="PhotoViewerViewController" id="Y6W-OH-hqX" customClass="PhotoViewerViewController" customModule="NewProjectTempleteEnvirinment" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e81-d1-eqQ">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1*P2RfGGIMYV7BnL422302WA" translatesAutoresizingMaskIntoConstraints="NO" id="SdS-oT-EjG">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="759"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="SdS-oT-EjG" firstAttribute="bottom" secondItem="e81-d1-eqQ" secondAttribute="bottom" id="ASQ-tI-ila"/>
+                                    <constraint firstItem="SdS-oT-EjG" firstAttribute="width" secondItem="e81-d1-eqQ" secondAttribute="width" id="FW3-dh-gpK"/>
+                                    <constraint firstItem="SdS-oT-EjG" firstAttribute="centerY" secondItem="e81-d1-eqQ" secondAttribute="centerY" id="XKF-A7-fLH"/>
+                                    <constraint firstItem="SdS-oT-EjG" firstAttribute="leading" secondItem="e81-d1-eqQ" secondAttribute="leading" id="Xk5-Zu-QaQ"/>
+                                    <constraint firstItem="SdS-oT-EjG" firstAttribute="height" secondItem="e81-d1-eqQ" secondAttribute="height" id="lus-HF-m9E"/>
+                                    <constraint firstItem="SdS-oT-EjG" firstAttribute="top" secondItem="e81-d1-eqQ" secondAttribute="top" id="oHB-Jl-3vs"/>
+                                    <constraint firstItem="SdS-oT-EjG" firstAttribute="trailing" secondItem="e81-d1-eqQ" secondAttribute="trailing" id="pu4-wd-OUs"/>
+                                    <constraint firstItem="SdS-oT-EjG" firstAttribute="centerX" secondItem="e81-d1-eqQ" secondAttribute="centerX" id="thK-kh-iLu"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="HUt-rh-DSK"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="e81-d1-eqQ" firstAttribute="centerY" secondItem="HUt-rh-DSK" secondAttribute="centerY" id="DRG-H2-hbG"/>
+                            <constraint firstItem="HUt-rh-DSK" firstAttribute="bottom" secondItem="e81-d1-eqQ" secondAttribute="bottom" id="JvH-Tv-KeH"/>
+                            <constraint firstItem="e81-d1-eqQ" firstAttribute="top" secondItem="HUt-rh-DSK" secondAttribute="top" id="SLN-HT-IsL"/>
+                            <constraint firstItem="e81-d1-eqQ" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="djA-vl-gYY"/>
+                            <constraint firstItem="e81-d1-eqQ" firstAttribute="width" secondItem="HUt-rh-DSK" secondAttribute="width" id="iPT-tP-v7m"/>
+                            <constraint firstAttribute="trailing" secondItem="e81-d1-eqQ" secondAttribute="trailing" id="isd-x7-izb"/>
+                            <constraint firstItem="e81-d1-eqQ" firstAttribute="height" secondItem="HUt-rh-DSK" secondAttribute="height" id="jJ3-ff-kyV"/>
+                            <constraint firstItem="e81-d1-eqQ" firstAttribute="centerX" secondItem="HUt-rh-DSK" secondAttribute="centerX" id="xFr-WE-cIE"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageScrollView" destination="e81-d1-eqQ" id="hmW-5b-TkJ"/>
+                        <outlet property="imageView" destination="SdS-oT-EjG" id="O7g-Bp-hsh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="86" y="4"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="1*P2RfGGIMYV7BnL422302WA" width="1400" height="700"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

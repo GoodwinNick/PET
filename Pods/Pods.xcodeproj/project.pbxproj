@@ -1,0 +1,1337 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		0C1885900810601510E0C632060FAF26 /* GooglePlaces */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 3490A4869E5596F395557AF5A226555B /* Build configuration list for PBXAggregateTarget "GooglePlaces" */;
+			buildPhases = (
+				8CD95BCB8E6BD0E25A59C4281A19269A /* [CP] Copy XCFrameworks */,
+			);
+			dependencies = (
+			);
+			name = GooglePlaces;
+		};
+		E5B4BBC6DD552AC8943C7E22772FC1D3 /* GoogleMaps */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 432269212CA7661476954A7A4DAA814D /* Build configuration list for PBXAggregateTarget "GoogleMaps" */;
+			buildPhases = (
+				942DFFF130A9500FD868DB7E68CB3859 /* [CP] Copy XCFrameworks */,
+			);
+			dependencies = (
+			);
+			name = GoogleMaps;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		01A80E1D39716F3CCF781EB296ABB00C /* TelemetryOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC831DA84CB81F68325A6BFB2183910 /* TelemetryOptions.swift */; };
+		08FC02C3140D67D1A855DB85F0B57810 /* AddDatePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37D4E55A694336156078860951DCC1A /* AddDatePolicy.swift */; };
+		0B6B3059BF05034D1BA90D795CC9892D /* PipelineStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447CAC063D5C72DF57C6260C3575077E /* PipelineStage.swift */; };
+		0E4AFDB71C6C8580D3AD9214CC331E3D /* StringUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CE7342A627114868A965DDECF98845 /* StringUtil.swift */; };
+		0F4F88EE6F703B8086E9BEC46E712495 /* ContentDecodePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1570AD740F4D3600F7222E7178EC7A6A /* ContentDecodePolicy.swift */; };
+		11155765984A0441821DC3DC78E4AC96 /* ClientLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EECD99E974AF11DA5B95A13FC020F88 /* ClientLogger.swift */; };
+		17F40AE15CD0D1C2A99F12B1D22B751A /* DeviceProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C85C6721C35660D1A247D1E99400095 /* DeviceProviders.swift */; };
+		1D325CFE11FE13A075C835E922BE1017 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4441D54202677A7001F7053AED04C5F2 /* SVRadialGradientLayer.m */; };
+		1F4A13FD6675FCFCD9C19DF350348899 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3B8FA2D917F542065F4F1D9FA7C9AB /* SVProgressAnimatedView.m */; };
+		228964AAA51AF6A8B7786969D93E2BE0 /* RegexUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC234B051EF12FD6E6F375BF8C255D62 /* RegexUtil.swift */; };
+		29F30E64DD0CA82A6CF6349538B9EBB1 /* NormalizeETagPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE94B7EC744F169ED8B4998636212B73 /* NormalizeETagPolicy.swift */; };
+		2C44A24A419A9A142F9AF7FD10E289F5 /* Pods-NewProjectTempleteEnvirinment-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 935BB064F0D871667CDB377CFBE9CEA2 /* Pods-NewProjectTempleteEnvirinment-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		383FC6F1C4A36B3EB1B4BCE52DE38E98 /* XMLMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1984A5CDEC6AFAC60C6B344BF2B56B1E /* XMLMap.swift */; };
+		4379665A682886DAFCDBC554B26AE424 /* AzureCore-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C3D68AC79A3BB90F6CBC153AC63683F /* AzureCore-dummy.m */; };
+		4565F69A394854C660CF447A9548A398 /* HTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7CFA3D84BF912E3DE01A5747BCE52F /* HTTPRequest.swift */; };
+		4DC032894868226AE220360BADB2C237 /* SVProgressHUD-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 779D87EF3A27A01016D0FFD710473E68 /* SVProgressHUD-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4FA355DB73D2BAF4DC2B01D2126BB065 /* AzureCore-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 75CC1FE4A1CA890731D0D56461BC9D3D /* AzureCore-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		52B3C97E6CA33A865BFEEF011117A7BE /* ConvertingInitializers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36193CD41B0DA27024FAA957A6CBA7E9 /* ConvertingInitializers.swift */; };
+		52BCC3B2F8AE7F59556925DEC603C634 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0D0C5A2498BBC3785AC3F04A4A1675 /* SVIndefiniteAnimatedView.m */; };
+		53BECA6AA55F80D63F104475EE6524CA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FEFE490E4A06D19E868B2B9014BB8BF /* QuartzCore.framework */; };
+		56BD19405E05E1FFD7CD3CBB8AAF86CA /* AzureTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E46F2BFC148DC612F9904E7DE794B0C /* AzureTask.swift */; };
+		5A44B1649032D3EE06E472C69F68FB9C /* LocaleInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9244E077F5CA2068F204B1760E8ADC37 /* LocaleInfoProvider.swift */; };
+		5C05534A71B7509B31B506C5725C1270 /* URLSessionTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D2CEAF814BC400A2243CB4F0FC854F /* URLSessionTransport.swift */; };
+		62CB6480862B2B9FF32595DFD0E7D3DA /* Pipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0AF5B9FC4BF69C2EA06A1AFED5EB23 /* Pipeline.swift */; };
+		63FDF73A7163D411D380D87B4AD784E1 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03D36552E8E99C5A65CC78F588874E1 /* HTTPMethod.swift */; };
+		6A34FD21B3C556C0C81FB4377EB420F6 /* RetryPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0ACFDE31333846D41A9F059894CE031 /* RetryPolicy.swift */; };
+		6D1E33469FB8FBE812956B0076A7B28F /* SVRadialGradientLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 22BE31726AA4EDC594C71274D0E881C3 /* SVRadialGradientLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		717F290627DCE8FE0951C2A624D496BC /* RequestString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A75C004BCE9EEF6723A8FCA6B9662A2 /* RequestString.swift */; };
+		73FD457E630418A3D4323F0368EC4912 /* DataStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A0961134E1A0577B676D0A46593D9 /* DataStringConvertible.swift */; };
+		798FA71F8CAE44D05016FFF767100375 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31FE7C6ECA71C614A5A667C679B23874 /* Foundation.framework */; };
+		810AEF31BED2EFD1071819A57BEBB2DA /* UserAgentPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FDA2C5582ABC9E8CF5D6716B29E9A9 /* UserAgentPolicy.swift */; };
+		89DF2D9C5EFB02A72EC0CE2138B77F35 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F8D50BD8DCFDB75F841DF0C7A09E867 /* SVProgressHUD.m */; };
+		8C34B731C9E40BAB07C55899F8B66CD9 /* PipelineClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361888935646AD51783A55F1A78988C7 /* PipelineClient.swift */; };
+		8C88F6749850957BE6D8BBCACBABE2B8 /* HTTPHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBE9E9C0E298ADB5360E624F70784D0 /* HTTPHeader.swift */; };
+		8EF174F8134754294281D6CAD0DD5025 /* AzureCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C1B5165E87F7442F95A853E58240BE /* AzureCodable.swift */; };
+		93718D5B08F88C2926A22AA634A32760 /* URLHTTPResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8948E8B2A19CFEDDDA964BD125C79A /* URLHTTPResponse.swift */; };
+		943B0A1B436BAF4D419574466EF70FB3 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0C7991569298F0A04E1F235672438192 /* SVProgressHUD.bundle */; };
+		9E9B99D0F86886E0CB3ACC018014507F /* Copyable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8BB931BFF4BC840679C79763361E2A /* Copyable.swift */; };
+		A3743C8F993E2B00E0131DE228BF1D6B /* Collections.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED596A13E0993AABBE5E4FC9F2829B20 /* Collections.swift */; };
+		A5217E0673E3C9F87ADF2BAF967FB61F /* Pods-NewProjectTempleteEnvirinment-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 97C0828EB15DF7A6CB2A2E9724673A23 /* Pods-NewProjectTempleteEnvirinment-dummy.m */; };
+		A7752DF3CC7183A79D3A9FDC89E782EB /* PlatformInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DE37ACFBC527D7002C288C368BF950 /* PlatformInfoProvider.swift */; };
+		A869C9E205B8838DA816B48E7F5E8DDB /* KeychainUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8DD2D02CAA354C7B0741706D4A1F75 /* KeychainUtil.swift */; };
+		A86AED9CB5DB9BA99A755D1E2E022273 /* TransportStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16301F5428FC7B4B92E1456F4803DAEA /* TransportStage.swift */; };
+		A91C5E2481478EA56D1BE5B19A1EF3F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31FE7C6ECA71C614A5A667C679B23874 /* Foundation.framework */; };
+		B0FCAB04CFDDF606BCE92776C17CE41C /* CancellationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89DE7CAF42A66F5F32805EDBCF9B17FB /* CancellationToken.swift */; };
+		BA610EF725795C165535DD4E4FB7B835 /* ApplicationUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E91CC3D65062ACE4BAF84D30E16AC1 /* ApplicationUtil.swift */; };
+		BEDD38C5349DEB07F2FCFF83D1FD96B3 /* HeadersPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D368820D13455F9C93816C3E716D12 /* HeadersPolicy.swift */; };
+		BF870490FD8787C9978D9F658DF7FAA8 /* HTTPResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA24C12F00CED76E99080D487A9153A /* HTTPResponse.swift */; };
+		C15B3F89E6F83DC9CCB14903FC5D80C5 /* SVProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = B520495FF9D4FC54FA2A0A0C1ABFF4CF /* SVProgressHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C3353BCD1F9FC808052AA61A52940E4B /* AuthenticationPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CA25A52470796AFF7BFC1C715DFD9E /* AuthenticationPolicy.swift */; };
+		C7415876F727CDA39F82B46ED2048EB0 /* XMLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394C444BCD8CC162DA8A835CD5B38928 /* XMLModel.swift */; };
+		C8BBFC592C6689761438F36ED0220004 /* AzureDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDA48B47E676471654D19779D6B24AC /* AzureDate.swift */; };
+		C9FD7B918C1CAC823992BD8CA606BF42 /* TransportOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E9F4B16F3B8EDB2EB4889C414366D /* TransportOptions.swift */; };
+		D316E9100B38CD18E4D891783166DC60 /* HeadersValidationPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72329E2E94A308EEB802DBC318DDB0A /* HeadersValidationPolicy.swift */; };
+		D7CCFBE174B8F5C7F489FEF041F48667 /* RequestIdPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC3FA27E1282BAA03E6C7E3107A399A /* RequestIdPolicy.swift */; };
+		DB1D3B5C5F93127D731CAF959719276B /* PipelineContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6647236DDD1E3F018967430F11ADFEE0 /* PipelineContext.swift */; };
+		E0360AA1B025EA6CD4F1F3725E1D2702 /* BundleInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28FFE6F7EE5922AB64F9A938C44B7CC /* BundleInfoProvider.swift */; };
+		E0FC98ED62EDF8B80253C8E23DC3D9AD /* URLUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E940B32A92B38F8C46C767161E40D2 /* URLUtil.swift */; };
+		E2875DB839FB662FE8AA8F67F046D739 /* XMLTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBF4F381BFC4AE08BFA806A53F986F7 /* XMLTree.swift */; };
+		E70EBA16751054574A227A6432CCE4B0 /* SVIndefiniteAnimatedView.h in Headers */ = {isa = PBXBuildFile; fileRef = 466F505EA0FFADE121402BA88DD53C84 /* SVIndefiniteAnimatedView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E931BB632ED0B34B5CB0FB1B804420AF /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1D7450B0FB5A16AE8F4C1FCA7EE2D2 /* Errors.swift */; };
+		EA2F8EEFFDA4F6AD9ADDC281BF291DD9 /* RequestParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48463E73AC2486B432A0B3F706AA2D8A /* RequestParameters.swift */; };
+		EB9D339A86665CA56617B7FF0F2DF4EB /* ReachabilityManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9694843A4AAC4B5E174872DBD70EE15B /* ReachabilityManagerType.swift */; };
+		F058EE5C014DB750CA0999CEBF9123E8 /* CryptoUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146965C4774ED89289B9FAC12852D78A /* CryptoUtil.swift */; };
+		F219A3F6D371560652B8D165EC0E607D /* LoggingPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8079CCC4312FE4706D680983D5F96C20 /* LoggingPolicy.swift */; };
+		F31EF86D86CE5670035292B5AC18F77B /* PipelineRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A262AADC079741D22D2ACF562504A2 /* PipelineRequest.swift */; };
+		F42692F560600580BE45E88A690744D5 /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F5D1B07A15ADAE1D6AF86B277441BE /* ReachabilityManager.swift */; };
+		F77280E74EB91678AA294E66DD6070E2 /* SVProgressAnimatedView.h in Headers */ = {isa = PBXBuildFile; fileRef = F4E70D04038991111E3D920000AF268C /* SVProgressAnimatedView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F9A2331AE83CAD7C34FEFA6557553660 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31FE7C6ECA71C614A5A667C679B23874 /* Foundation.framework */; };
+		FC56F51BE22B3E8D8112148813FC66EE /* PipelineResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2D3DB8EE806F2A86CBB57890910EDD /* PipelineResponse.swift */; };
+		FFD43D91BF1FA4ADF714D56E7A10B2A8 /* SVProgressHUD-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 762A37B1E09418AB80FB52EC05394C41 /* SVProgressHUD-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		370736B854223F16D15720434BBB847D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E5B4BBC6DD552AC8943C7E22772FC1D3;
+			remoteInfo = GoogleMaps;
+		};
+		9C40B04B52C631D1D7E37DBB1151623F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0C1885900810601510E0C632060FAF26;
+			remoteInfo = GooglePlaces;
+		};
+		C8AA8A8B10BB3C3A2263D44DF05BFE37 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1C8D67D8B72D6BA42CCEDB648537A340;
+			remoteInfo = SVProgressHUD;
+		};
+		ECEF650CF68E75622E2D63F010796D7D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EF3D57598B2F6B611B951D5BC18E691F;
+			remoteInfo = AzureCore;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		032C79426751AAE413EEB28403E6E255 /* Pods-NewProjectTempleteEnvirinment.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-NewProjectTempleteEnvirinment.modulemap"; sourceTree = "<group>"; };
+		0A75C004BCE9EEF6723A8FCA6B9662A2 /* RequestString.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RequestString.swift; path = sdk/core/AzureCore/Source/Util/RequestString.swift; sourceTree = "<group>"; };
+		0C7991569298F0A04E1F235672438192 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = SVProgressHUD.bundle; path = SVProgressHUD/SVProgressHUD.bundle; sourceTree = "<group>"; };
+		0D0AF5B9FC4BF69C2EA06A1AFED5EB23 /* Pipeline.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Pipeline.swift; path = sdk/core/AzureCore/Source/Pipeline/Pipeline.swift; sourceTree = "<group>"; };
+		0DEDA054C45966580AA2236DB50B270F /* Pods-NewProjectTempleteEnvirinment-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NewProjectTempleteEnvirinment-resources.sh"; sourceTree = "<group>"; };
+		0E46F2BFC148DC612F9904E7DE794B0C /* AzureTask.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AzureTask.swift; path = sdk/core/AzureCore/Source/AzureTask.swift; sourceTree = "<group>"; };
+		116E05AAB93DC33168278B154A2D1004 /* Pods-NewProjectTempleteEnvirinment-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-NewProjectTempleteEnvirinment-acknowledgements.markdown"; sourceTree = "<group>"; };
+		146965C4774ED89289B9FAC12852D78A /* CryptoUtil.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CryptoUtil.swift; path = sdk/core/AzureCore/Source/Util/CryptoUtil.swift; sourceTree = "<group>"; };
+		1570AD740F4D3600F7222E7178EC7A6A /* ContentDecodePolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ContentDecodePolicy.swift; path = sdk/core/AzureCore/Source/Pipeline/Policies/ContentDecodePolicy.swift; sourceTree = "<group>"; };
+		16301F5428FC7B4B92E1456F4803DAEA /* TransportStage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TransportStage.swift; path = sdk/core/AzureCore/Source/Pipeline/Transport/TransportStage.swift; sourceTree = "<group>"; };
+		1759E55700BFB04D8B5ED3268EFC758E /* SVProgressHUD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SVProgressHUD.release.xcconfig; sourceTree = "<group>"; };
+		1984A5CDEC6AFAC60C6B344BF2B56B1E /* XMLMap.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XMLMap.swift; path = sdk/core/AzureCore/Source/DataStructures/XMLMap.swift; sourceTree = "<group>"; };
+		1A95841DF19BF0DCD80E82750C25D0DF /* GoogleMaps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleMaps.release.xcconfig; sourceTree = "<group>"; };
+		22BE31726AA4EDC594C71274D0E881C3 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVRadialGradientLayer.h; path = SVProgressHUD/SVRadialGradientLayer.h; sourceTree = "<group>"; };
+		241A0961134E1A0577B676D0A46593D9 /* DataStringConvertible.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DataStringConvertible.swift; path = sdk/core/AzureCore/Source/Pipeline/Transport/DataStringConvertible.swift; sourceTree = "<group>"; };
+		284898E8488AEEF6D60EADCCE2243BFB /* GoogleMapsCore.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; name = GoogleMapsCore.xcframework; path = Maps/Frameworks/GoogleMapsCore.xcframework; sourceTree = "<group>"; };
+		2A0569FC6542319D29A5F4C7D66F6F5C /* AzureCore */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AzureCore; path = AzureCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C83D8FB17203B3293BE3E071BAD044A /* Pods-NewProjectTempleteEnvirinment-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-NewProjectTempleteEnvirinment-acknowledgements.plist"; sourceTree = "<group>"; };
+		2D3B8FA2D917F542065F4F1D9FA7C9AB /* SVProgressAnimatedView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVProgressAnimatedView.m; path = SVProgressHUD/SVProgressAnimatedView.m; sourceTree = "<group>"; };
+		2F0D0C5A2498BBC3785AC3F04A4A1675 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVIndefiniteAnimatedView.m; path = SVProgressHUD/SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		2FEFE490E4A06D19E868B2B9014BB8BF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		31FE7C6ECA71C614A5A667C679B23874 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		361888935646AD51783A55F1A78988C7 /* PipelineClient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PipelineClient.swift; path = sdk/core/AzureCore/Source/Pipeline/PipelineClient.swift; sourceTree = "<group>"; };
+		36193CD41B0DA27024FAA957A6CBA7E9 /* ConvertingInitializers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConvertingInitializers.swift; path = sdk/core/AzureCore/Source/Util/ConvertingInitializers.swift; sourceTree = "<group>"; };
+		394C444BCD8CC162DA8A835CD5B38928 /* XMLModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XMLModel.swift; path = sdk/core/AzureCore/Source/DataStructures/XMLModel.swift; sourceTree = "<group>"; };
+		3E14326C1F69A8E1169B5E2C2E536257 /* AzureCore-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "AzureCore-Info.plist"; sourceTree = "<group>"; };
+		3EECD99E974AF11DA5B95A13FC020F88 /* ClientLogger.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ClientLogger.swift; path = sdk/core/AzureCore/Source/ClientLogger.swift; sourceTree = "<group>"; };
+		3FA24C12F00CED76E99080D487A9153A /* HTTPResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HTTPResponse.swift; path = sdk/core/AzureCore/Source/Pipeline/Transport/HTTPResponse.swift; sourceTree = "<group>"; };
+		4441D54202677A7001F7053AED04C5F2 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVRadialGradientLayer.m; path = SVProgressHUD/SVRadialGradientLayer.m; sourceTree = "<group>"; };
+		447CAC063D5C72DF57C6260C3575077E /* PipelineStage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PipelineStage.swift; path = sdk/core/AzureCore/Source/Pipeline/PipelineStage.swift; sourceTree = "<group>"; };
+		45353312F633D833982D2B9BF156191C /* GoogleMaps.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = "Maps/Frameworks/GoogleMaps.xcframework/ios-arm64_x86_64-simulator/GoogleMaps.framework/Resources/GoogleMaps.bundle"; sourceTree = "<group>"; };
+		466F505EA0FFADE121402BA88DD53C84 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVIndefiniteAnimatedView.h; path = SVProgressHUD/SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		479175215B4ED5CF22899B0C8B90906D /* Pods-NewProjectTempleteEnvirinment-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NewProjectTempleteEnvirinment-frameworks.sh"; sourceTree = "<group>"; };
+		48463E73AC2486B432A0B3F706AA2D8A /* RequestParameters.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RequestParameters.swift; path = sdk/core/AzureCore/Source/Pipeline/Transport/RequestParameters.swift; sourceTree = "<group>"; };
+		4C59E356EB2E61AE20BEE2DA704EE86F /* Pods-NewProjectTempleteEnvirinment-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-NewProjectTempleteEnvirinment-Info.plist"; sourceTree = "<group>"; };
+		4D2D3DB8EE806F2A86CBB57890910EDD /* PipelineResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PipelineResponse.swift; path = sdk/core/AzureCore/Source/Pipeline/PipelineResponse.swift; sourceTree = "<group>"; };
+		4DBF4F381BFC4AE08BFA806A53F986F7 /* XMLTree.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XMLTree.swift; path = sdk/core/AzureCore/Source/DataStructures/XMLTree.swift; sourceTree = "<group>"; };
+		4F7CFA3D84BF912E3DE01A5747BCE52F /* HTTPRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HTTPRequest.swift; path = sdk/core/AzureCore/Source/Pipeline/Transport/HTTPRequest.swift; sourceTree = "<group>"; };
+		5BC3FA27E1282BAA03E6C7E3107A399A /* RequestIdPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RequestIdPolicy.swift; path = sdk/core/AzureCore/Source/Pipeline/Policies/RequestIdPolicy.swift; sourceTree = "<group>"; };
+		5DDA48B47E676471654D19779D6B24AC /* AzureDate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AzureDate.swift; path = sdk/core/AzureCore/Source/DataStructures/AzureDate.swift; sourceTree = "<group>"; };
+		6647236DDD1E3F018967430F11ADFEE0 /* PipelineContext.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PipelineContext.swift; path = sdk/core/AzureCore/Source/Pipeline/PipelineContext.swift; sourceTree = "<group>"; };
+		66DE37ACFBC527D7002C288C368BF950 /* PlatformInfoProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PlatformInfoProvider.swift; path = sdk/core/AzureCore/Source/Providers/PlatformInfoProvider.swift; sourceTree = "<group>"; };
+		68C1B5165E87F7442F95A853E58240BE /* AzureCodable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AzureCodable.swift; path = sdk/core/AzureCore/Source/Util/AzureCodable.swift; sourceTree = "<group>"; };
+		6C3D68AC79A3BB90F6CBC153AC63683F /* AzureCore-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AzureCore-dummy.m"; sourceTree = "<group>"; };
+		6C85C6721C35660D1A247D1E99400095 /* DeviceProviders.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DeviceProviders.swift; path = sdk/core/AzureCore/Source/Providers/DeviceProviders.swift; sourceTree = "<group>"; };
+		6D8BB931BFF4BC840679C79763361E2A /* Copyable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Copyable.swift; path = sdk/core/AzureCore/Source/Util/Copyable.swift; sourceTree = "<group>"; };
+		6F787A581CA9623762FA944C855512F7 /* GooglePlaces-xcframeworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "GooglePlaces-xcframeworks.sh"; sourceTree = "<group>"; };
+		6FD02507C9954D2073097277E0C18CF0 /* GoogleMaps.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = "Maps/Frameworks/GoogleMaps.xcframework/ios-arm64/GoogleMaps.framework/Resources/GoogleMaps.bundle"; sourceTree = "<group>"; };
+		757B6DD0AC7F670F5EA87671D5FDA486 /* AzureCore.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = AzureCore.modulemap; sourceTree = "<group>"; };
+		75CC1FE4A1CA890731D0D56461BC9D3D /* AzureCore-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AzureCore-umbrella.h"; sourceTree = "<group>"; };
+		762A37B1E09418AB80FB52EC05394C41 /* SVProgressHUD-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SVProgressHUD-dummy.m"; sourceTree = "<group>"; };
+		779D87EF3A27A01016D0FFD710473E68 /* SVProgressHUD-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-umbrella.h"; sourceTree = "<group>"; };
+		78F5D1B07A15ADAE1D6AF86B277441BE /* ReachabilityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReachabilityManager.swift; path = sdk/core/AzureCore/Source/Util/ReachabilityManager.swift; sourceTree = "<group>"; };
+		7D1D7450B0FB5A16AE8F4C1FCA7EE2D2 /* Errors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Errors.swift; path = sdk/core/AzureCore/Source/Errors.swift; sourceTree = "<group>"; };
+		7F0D698DDA23FC68FEC16DF778EEA636 /* AzureCore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AzureCore.debug.xcconfig; sourceTree = "<group>"; };
+		8079CCC4312FE4706D680983D5F96C20 /* LoggingPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LoggingPolicy.swift; path = sdk/core/AzureCore/Source/Pipeline/Policies/LoggingPolicy.swift; sourceTree = "<group>"; };
+		81CA8ACBE4205260A19FD781576583D7 /* GoogleMapsBase.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; name = GoogleMapsBase.xcframework; path = Base/Frameworks/GoogleMapsBase.xcframework; sourceTree = "<group>"; };
+		877ACB2FA28A4D32C43B66A426233C64 /* GoogleMaps.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; name = GoogleMaps.xcframework; path = Maps/Frameworks/GoogleMaps.xcframework; sourceTree = "<group>"; };
+		897027474E945A22EE7B9878C5ACB3F7 /* AzureCore-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AzureCore-prefix.pch"; sourceTree = "<group>"; };
+		89DE7CAF42A66F5F32805EDBCF9B17FB /* CancellationToken.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CancellationToken.swift; path = sdk/core/AzureCore/Source/DataStructures/CancellationToken.swift; sourceTree = "<group>"; };
+		8F8D50BD8DCFDB75F841DF0C7A09E867 /* SVProgressHUD.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVProgressHUD.m; path = SVProgressHUD/SVProgressHUD.m; sourceTree = "<group>"; };
+		91730A8D9846EC027DD5F723C1A3BDB2 /* GoogleMaps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleMaps.debug.xcconfig; sourceTree = "<group>"; };
+		9244E077F5CA2068F204B1760E8ADC37 /* LocaleInfoProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LocaleInfoProvider.swift; path = sdk/core/AzureCore/Source/Providers/LocaleInfoProvider.swift; sourceTree = "<group>"; };
+		925767DCB5BFF755DE50952A5CDD287F /* GooglePlaces.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GooglePlaces.bundle; path = "Frameworks/GooglePlaces.xcframework/ios-arm64_x86_64-simulator/GooglePlaces.framework/Resources/GooglePlaces.bundle"; sourceTree = "<group>"; };
+		935BB064F0D871667CDB377CFBE9CEA2 /* Pods-NewProjectTempleteEnvirinment-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-NewProjectTempleteEnvirinment-umbrella.h"; sourceTree = "<group>"; };
+		94000EE058746A0A0F7BD942DA769732 /* GoogleMaps-xcframeworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "GoogleMaps-xcframeworks.sh"; sourceTree = "<group>"; };
+		9694843A4AAC4B5E174872DBD70EE15B /* ReachabilityManagerType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReachabilityManagerType.swift; path = sdk/core/AzureCore/Source/Util/ReachabilityManagerType.swift; sourceTree = "<group>"; };
+		97C0828EB15DF7A6CB2A2E9724673A23 /* Pods-NewProjectTempleteEnvirinment-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-NewProjectTempleteEnvirinment-dummy.m"; sourceTree = "<group>"; };
+		9CBE9E9C0E298ADB5360E624F70784D0 /* HTTPHeader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HTTPHeader.swift; path = sdk/core/AzureCore/Source/Pipeline/Transport/HTTPHeader.swift; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A6DFE77891A18A8B90C755DB7436F6CE /* Pods-NewProjectTempleteEnvirinment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NewProjectTempleteEnvirinment.release.xcconfig"; sourceTree = "<group>"; };
+		A8A6E42FD187FBD8C6BA649245EF16C4 /* SVProgressHUD.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SVProgressHUD.modulemap; sourceTree = "<group>"; };
+		A985D60715D0849F8555C5919F499403 /* SVProgressHUD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SVProgressHUD.debug.xcconfig; sourceTree = "<group>"; };
+		A9E940B32A92B38F8C46C767161E40D2 /* URLUtil.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = URLUtil.swift; path = sdk/core/AzureCore/Source/Util/URLUtil.swift; sourceTree = "<group>"; };
+		AD89CE49C1078F469282ADF588E59A9D /* GooglePlaces.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; name = GooglePlaces.xcframework; path = Frameworks/GooglePlaces.xcframework; sourceTree = "<group>"; };
+		AFC038A1545D3AE5B8CD885CB03350D2 /* AzureCore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AzureCore.release.xcconfig; sourceTree = "<group>"; };
+		B03D36552E8E99C5A65CC78F588874E1 /* HTTPMethod.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HTTPMethod.swift; path = sdk/core/AzureCore/Source/Pipeline/Transport/HTTPMethod.swift; sourceTree = "<group>"; };
+		B2053A980E12BB4E470ED36CFAE27D4F /* SVProgressHUD-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-prefix.pch"; sourceTree = "<group>"; };
+		B520495FF9D4FC54FA2A0A0C1ABFF4CF /* SVProgressHUD.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVProgressHUD.h; path = SVProgressHUD/SVProgressHUD.h; sourceTree = "<group>"; };
+		C19A022BE4433C79C5F61CAF17E439CC /* GooglePlaces.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GooglePlaces.bundle; path = "Frameworks/GooglePlaces.xcframework/ios-arm64/GooglePlaces.framework/Resources/GooglePlaces.bundle"; sourceTree = "<group>"; };
+		C72329E2E94A308EEB802DBC318DDB0A /* HeadersValidationPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HeadersValidationPolicy.swift; path = sdk/core/AzureCore/Source/Pipeline/Policies/HeadersValidationPolicy.swift; sourceTree = "<group>"; };
+		CB8948E8B2A19CFEDDDA964BD125C79A /* URLHTTPResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = URLHTTPResponse.swift; path = sdk/core/AzureCore/Source/Pipeline/Transport/URLHTTPResponse.swift; sourceTree = "<group>"; };
+		CC234B051EF12FD6E6F375BF8C255D62 /* RegexUtil.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RegexUtil.swift; path = sdk/core/AzureCore/Source/Util/RegexUtil.swift; sourceTree = "<group>"; };
+		CE6E9F4B16F3B8EDB2EB4889C414366D /* TransportOptions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TransportOptions.swift; path = sdk/core/AzureCore/Source/Pipeline/Transport/TransportOptions.swift; sourceTree = "<group>"; };
+		D0ACFDE31333846D41A9F059894CE031 /* RetryPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RetryPolicy.swift; path = sdk/core/AzureCore/Source/Pipeline/Policies/RetryPolicy.swift; sourceTree = "<group>"; };
+		D3CE7342A627114868A965DDECF98845 /* StringUtil.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StringUtil.swift; path = sdk/core/AzureCore/Source/Util/StringUtil.swift; sourceTree = "<group>"; };
+		DAC831DA84CB81F68325A6BFB2183910 /* TelemetryOptions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TelemetryOptions.swift; path = sdk/core/AzureCore/Source/Pipeline/Transport/TelemetryOptions.swift; sourceTree = "<group>"; };
+		DD8E4F446D1877DDEFC81ADB215EA753 /* Pods-NewProjectTempleteEnvirinment */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-NewProjectTempleteEnvirinment"; path = Pods_NewProjectTempleteEnvirinment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1D368820D13455F9C93816C3E716D12 /* HeadersPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HeadersPolicy.swift; path = sdk/core/AzureCore/Source/Pipeline/Policies/HeadersPolicy.swift; sourceTree = "<group>"; };
+		E1E91CC3D65062ACE4BAF84D30E16AC1 /* ApplicationUtil.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ApplicationUtil.swift; path = sdk/core/AzureCore/Source/Util/ApplicationUtil.swift; sourceTree = "<group>"; };
+		E2D6B2F7E49B1B7FB8C70876B49E903E /* SVProgressHUD-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SVProgressHUD-Info.plist"; sourceTree = "<group>"; };
+		E37D4E55A694336156078860951DCC1A /* AddDatePolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AddDatePolicy.swift; path = sdk/core/AzureCore/Source/Pipeline/Policies/AddDatePolicy.swift; sourceTree = "<group>"; };
+		E5A262AADC079741D22D2ACF562504A2 /* PipelineRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PipelineRequest.swift; path = sdk/core/AzureCore/Source/Pipeline/PipelineRequest.swift; sourceTree = "<group>"; };
+		E5FDA2C5582ABC9E8CF5D6716B29E9A9 /* UserAgentPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UserAgentPolicy.swift; path = sdk/core/AzureCore/Source/Pipeline/Policies/UserAgentPolicy.swift; sourceTree = "<group>"; };
+		E7CA25A52470796AFF7BFC1C715DFD9E /* AuthenticationPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AuthenticationPolicy.swift; path = sdk/core/AzureCore/Source/Pipeline/Policies/AuthenticationPolicy.swift; sourceTree = "<group>"; };
+		E97D43C46A45EE515A4DA3AF94398441 /* SVProgressHUD */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SVProgressHUD; path = SVProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9CB4D1AD351D6047C969FCF9D4B7CF0 /* Pods-NewProjectTempleteEnvirinment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NewProjectTempleteEnvirinment.debug.xcconfig"; sourceTree = "<group>"; };
+		ED596A13E0993AABBE5E4FC9F2829B20 /* Collections.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Collections.swift; path = sdk/core/AzureCore/Source/DataStructures/Collections.swift; sourceTree = "<group>"; };
+		F1D2CEAF814BC400A2243CB4F0FC854F /* URLSessionTransport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = URLSessionTransport.swift; path = sdk/core/AzureCore/Source/Pipeline/Transport/URLSessionTransport.swift; sourceTree = "<group>"; };
+		F28FFE6F7EE5922AB64F9A938C44B7CC /* BundleInfoProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BundleInfoProvider.swift; path = sdk/core/AzureCore/Source/Providers/BundleInfoProvider.swift; sourceTree = "<group>"; };
+		F4E70D04038991111E3D920000AF268C /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVProgressAnimatedView.h; path = SVProgressHUD/SVProgressAnimatedView.h; sourceTree = "<group>"; };
+		FB23323E06B6FDCFEB39DD1192FB0737 /* GooglePlaces.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GooglePlaces.debug.xcconfig; sourceTree = "<group>"; };
+		FBD577DDB04F344A47C6138918642F29 /* GooglePlaces.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GooglePlaces.release.xcconfig; sourceTree = "<group>"; };
+		FE94B7EC744F169ED8B4998636212B73 /* NormalizeETagPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NormalizeETagPolicy.swift; path = sdk/core/AzureCore/Source/Pipeline/Policies/NormalizeETagPolicy.swift; sourceTree = "<group>"; };
+		FF8DD2D02CAA354C7B0741706D4A1F75 /* KeychainUtil.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeychainUtil.swift; path = sdk/core/AzureCore/Source/Util/KeychainUtil.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4D3E79F522B668B8D83A1CFF2ADD0C9D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A91C5E2481478EA56D1BE5B19A1EF3F5 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB3BAB044F0A9C62EBD9B9B2AC0DC456 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9A2331AE83CAD7C34FEFA6557553660 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E389FF082B036E756B0679583C1BE62E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				798FA71F8CAE44D05016FFF767100375 /* Foundation.framework in Frameworks */,
+				53BECA6AA55F80D63F104475EE6524CA /* QuartzCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D325A42620E7427FB70FB046C7B7B240 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		271B9A69AFC010438F5AFC4E4F012B24 /* GoogleMaps */ = {
+			isa = PBXGroup;
+			children = (
+				7E0721F30FFD6CF155D1C86D3A97825E /* Base */,
+				BA1703E9BFA48F7558BA9CB88AE23175 /* Maps */,
+				6C3020F48241F2147E96EF095F33FD8F /* Support Files */,
+			);
+			name = GoogleMaps;
+			path = GoogleMaps;
+			sourceTree = "<group>";
+		};
+		27F7A41238AC656529765EF29D52EEFA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				81CA8ACBE4205260A19FD781576583D7 /* GoogleMapsBase.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		406400904214310CD86276E90A047356 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C19A022BE4433C79C5F61CAF17E439CC /* GooglePlaces.bundle */,
+				925767DCB5BFF755DE50952A5CDD287F /* GooglePlaces.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		4CDBDA931A31878BBE1F82F9068C464C /* AzureCore */ = {
+			isa = PBXGroup;
+			children = (
+				E37D4E55A694336156078860951DCC1A /* AddDatePolicy.swift */,
+				E1E91CC3D65062ACE4BAF84D30E16AC1 /* ApplicationUtil.swift */,
+				E7CA25A52470796AFF7BFC1C715DFD9E /* AuthenticationPolicy.swift */,
+				68C1B5165E87F7442F95A853E58240BE /* AzureCodable.swift */,
+				5DDA48B47E676471654D19779D6B24AC /* AzureDate.swift */,
+				0E46F2BFC148DC612F9904E7DE794B0C /* AzureTask.swift */,
+				F28FFE6F7EE5922AB64F9A938C44B7CC /* BundleInfoProvider.swift */,
+				89DE7CAF42A66F5F32805EDBCF9B17FB /* CancellationToken.swift */,
+				3EECD99E974AF11DA5B95A13FC020F88 /* ClientLogger.swift */,
+				ED596A13E0993AABBE5E4FC9F2829B20 /* Collections.swift */,
+				1570AD740F4D3600F7222E7178EC7A6A /* ContentDecodePolicy.swift */,
+				36193CD41B0DA27024FAA957A6CBA7E9 /* ConvertingInitializers.swift */,
+				6D8BB931BFF4BC840679C79763361E2A /* Copyable.swift */,
+				146965C4774ED89289B9FAC12852D78A /* CryptoUtil.swift */,
+				241A0961134E1A0577B676D0A46593D9 /* DataStringConvertible.swift */,
+				6C85C6721C35660D1A247D1E99400095 /* DeviceProviders.swift */,
+				7D1D7450B0FB5A16AE8F4C1FCA7EE2D2 /* Errors.swift */,
+				E1D368820D13455F9C93816C3E716D12 /* HeadersPolicy.swift */,
+				C72329E2E94A308EEB802DBC318DDB0A /* HeadersValidationPolicy.swift */,
+				9CBE9E9C0E298ADB5360E624F70784D0 /* HTTPHeader.swift */,
+				B03D36552E8E99C5A65CC78F588874E1 /* HTTPMethod.swift */,
+				4F7CFA3D84BF912E3DE01A5747BCE52F /* HTTPRequest.swift */,
+				3FA24C12F00CED76E99080D487A9153A /* HTTPResponse.swift */,
+				FF8DD2D02CAA354C7B0741706D4A1F75 /* KeychainUtil.swift */,
+				9244E077F5CA2068F204B1760E8ADC37 /* LocaleInfoProvider.swift */,
+				8079CCC4312FE4706D680983D5F96C20 /* LoggingPolicy.swift */,
+				FE94B7EC744F169ED8B4998636212B73 /* NormalizeETagPolicy.swift */,
+				0D0AF5B9FC4BF69C2EA06A1AFED5EB23 /* Pipeline.swift */,
+				361888935646AD51783A55F1A78988C7 /* PipelineClient.swift */,
+				6647236DDD1E3F018967430F11ADFEE0 /* PipelineContext.swift */,
+				E5A262AADC079741D22D2ACF562504A2 /* PipelineRequest.swift */,
+				4D2D3DB8EE806F2A86CBB57890910EDD /* PipelineResponse.swift */,
+				447CAC063D5C72DF57C6260C3575077E /* PipelineStage.swift */,
+				66DE37ACFBC527D7002C288C368BF950 /* PlatformInfoProvider.swift */,
+				78F5D1B07A15ADAE1D6AF86B277441BE /* ReachabilityManager.swift */,
+				9694843A4AAC4B5E174872DBD70EE15B /* ReachabilityManagerType.swift */,
+				CC234B051EF12FD6E6F375BF8C255D62 /* RegexUtil.swift */,
+				5BC3FA27E1282BAA03E6C7E3107A399A /* RequestIdPolicy.swift */,
+				48463E73AC2486B432A0B3F706AA2D8A /* RequestParameters.swift */,
+				0A75C004BCE9EEF6723A8FCA6B9662A2 /* RequestString.swift */,
+				D0ACFDE31333846D41A9F059894CE031 /* RetryPolicy.swift */,
+				D3CE7342A627114868A965DDECF98845 /* StringUtil.swift */,
+				DAC831DA84CB81F68325A6BFB2183910 /* TelemetryOptions.swift */,
+				CE6E9F4B16F3B8EDB2EB4889C414366D /* TransportOptions.swift */,
+				16301F5428FC7B4B92E1456F4803DAEA /* TransportStage.swift */,
+				CB8948E8B2A19CFEDDDA964BD125C79A /* URLHTTPResponse.swift */,
+				F1D2CEAF814BC400A2243CB4F0FC854F /* URLSessionTransport.swift */,
+				A9E940B32A92B38F8C46C767161E40D2 /* URLUtil.swift */,
+				E5FDA2C5582ABC9E8CF5D6716B29E9A9 /* UserAgentPolicy.swift */,
+				1984A5CDEC6AFAC60C6B344BF2B56B1E /* XMLMap.swift */,
+				394C444BCD8CC162DA8A835CD5B38928 /* XMLModel.swift */,
+				4DBF4F381BFC4AE08BFA806A53F986F7 /* XMLTree.swift */,
+				63A778F62194F07459ED24CA10F60125 /* Support Files */,
+			);
+			name = AzureCore;
+			path = AzureCore;
+			sourceTree = "<group>";
+		};
+		5DD7269AA074CF85C551E2BF8957AF69 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0C7991569298F0A04E1F235672438192 /* SVProgressHUD.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		63A778F62194F07459ED24CA10F60125 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				757B6DD0AC7F670F5EA87671D5FDA486 /* AzureCore.modulemap */,
+				6C3D68AC79A3BB90F6CBC153AC63683F /* AzureCore-dummy.m */,
+				3E14326C1F69A8E1169B5E2C2E536257 /* AzureCore-Info.plist */,
+				897027474E945A22EE7B9878C5ACB3F7 /* AzureCore-prefix.pch */,
+				75CC1FE4A1CA890731D0D56461BC9D3D /* AzureCore-umbrella.h */,
+				7F0D698DDA23FC68FEC16DF778EEA636 /* AzureCore.debug.xcconfig */,
+				AFC038A1545D3AE5B8CD885CB03350D2 /* AzureCore.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/AzureCore";
+			sourceTree = "<group>";
+		};
+		6C3020F48241F2147E96EF095F33FD8F /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				94000EE058746A0A0F7BD942DA769732 /* GoogleMaps-xcframeworks.sh */,
+				91730A8D9846EC027DD5F723C1A3BDB2 /* GoogleMaps.debug.xcconfig */,
+				1A95841DF19BF0DCD80E82750C25D0DF /* GoogleMaps.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/GoogleMaps";
+			sourceTree = "<group>";
+		};
+		6FA18E37E3D388110777833EAAC30643 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				877ACB2FA28A4D32C43B66A426233C64 /* GoogleMaps.xcframework */,
+				284898E8488AEEF6D60EADCCE2243BFB /* GoogleMapsCore.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		718D8085587BDCD2F56B7BCA326244C9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AD89CE49C1078F469282ADF588E59A9D /* GooglePlaces.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7E0721F30FFD6CF155D1C86D3A97825E /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				27F7A41238AC656529765EF29D52EEFA /* Frameworks */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		902C4170CAE4C6424D0D802CAA37C016 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4CDBDA931A31878BBE1F82F9068C464C /* AzureCore */,
+				271B9A69AFC010438F5AFC4E4F012B24 /* GoogleMaps */,
+				F0D98DE4A2475EC3782D4FCEF66DBEF5 /* GooglePlaces */,
+				FE584840316778F9FF728F41381CD8DF /* SVProgressHUD */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A27F480C9A0910A2CD13069E3E4A2F22 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2A0569FC6542319D29A5F4C7D66F6F5C /* AzureCore */,
+				DD8E4F446D1877DDEFC81ADB215EA753 /* Pods-NewProjectTempleteEnvirinment */,
+				E97D43C46A45EE515A4DA3AF94398441 /* SVProgressHUD */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B4C94B92EDEA3A909040175C2F498A53 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				6F787A581CA9623762FA944C855512F7 /* GooglePlaces-xcframeworks.sh */,
+				FB23323E06B6FDCFEB39DD1192FB0737 /* GooglePlaces.debug.xcconfig */,
+				FBD577DDB04F344A47C6138918642F29 /* GooglePlaces.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/GooglePlaces";
+			sourceTree = "<group>";
+		};
+		B64D87A17AEDAF8F04253990668A823C /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				FF86D1BA1DC8602613ECD49F14AE2EA3 /* Pods-NewProjectTempleteEnvirinment */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		B7B2FA3CA037340AEDDC7BF59E7EDBB4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6FD02507C9954D2073097277E0C18CF0 /* GoogleMaps.bundle */,
+				45353312F633D833982D2B9BF156191C /* GoogleMaps.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		BA1703E9BFA48F7558BA9CB88AE23175 /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				6FA18E37E3D388110777833EAAC30643 /* Frameworks */,
+				B7B2FA3CA037340AEDDC7BF59E7EDBB4 /* Resources */,
+			);
+			name = Maps;
+			sourceTree = "<group>";
+		};
+		CCF2385A69ED21710D758E753C0C59F1 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A8A6E42FD187FBD8C6BA649245EF16C4 /* SVProgressHUD.modulemap */,
+				762A37B1E09418AB80FB52EC05394C41 /* SVProgressHUD-dummy.m */,
+				E2D6B2F7E49B1B7FB8C70876B49E903E /* SVProgressHUD-Info.plist */,
+				B2053A980E12BB4E470ED36CFAE27D4F /* SVProgressHUD-prefix.pch */,
+				779D87EF3A27A01016D0FFD710473E68 /* SVProgressHUD-umbrella.h */,
+				A985D60715D0849F8555C5919F499403 /* SVProgressHUD.debug.xcconfig */,
+				1759E55700BFB04D8B5ED3268EFC758E /* SVProgressHUD.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SVProgressHUD";
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */,
+				902C4170CAE4C6424D0D802CAA37C016 /* Pods */,
+				A27F480C9A0910A2CD13069E3E4A2F22 /* Products */,
+				B64D87A17AEDAF8F04253990668A823C /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D325A42620E7427FB70FB046C7B7B240 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				31FE7C6ECA71C614A5A667C679B23874 /* Foundation.framework */,
+				2FEFE490E4A06D19E868B2B9014BB8BF /* QuartzCore.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		F0D98DE4A2475EC3782D4FCEF66DBEF5 /* GooglePlaces */ = {
+			isa = PBXGroup;
+			children = (
+				718D8085587BDCD2F56B7BCA326244C9 /* Frameworks */,
+				406400904214310CD86276E90A047356 /* Resources */,
+				B4C94B92EDEA3A909040175C2F498A53 /* Support Files */,
+			);
+			name = GooglePlaces;
+			path = GooglePlaces;
+			sourceTree = "<group>";
+		};
+		FE584840316778F9FF728F41381CD8DF /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				466F505EA0FFADE121402BA88DD53C84 /* SVIndefiniteAnimatedView.h */,
+				2F0D0C5A2498BBC3785AC3F04A4A1675 /* SVIndefiniteAnimatedView.m */,
+				F4E70D04038991111E3D920000AF268C /* SVProgressAnimatedView.h */,
+				2D3B8FA2D917F542065F4F1D9FA7C9AB /* SVProgressAnimatedView.m */,
+				B520495FF9D4FC54FA2A0A0C1ABFF4CF /* SVProgressHUD.h */,
+				8F8D50BD8DCFDB75F841DF0C7A09E867 /* SVProgressHUD.m */,
+				22BE31726AA4EDC594C71274D0E881C3 /* SVRadialGradientLayer.h */,
+				4441D54202677A7001F7053AED04C5F2 /* SVRadialGradientLayer.m */,
+				5DD7269AA074CF85C551E2BF8957AF69 /* Resources */,
+				CCF2385A69ED21710D758E753C0C59F1 /* Support Files */,
+			);
+			name = SVProgressHUD;
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		FF86D1BA1DC8602613ECD49F14AE2EA3 /* Pods-NewProjectTempleteEnvirinment */ = {
+			isa = PBXGroup;
+			children = (
+				032C79426751AAE413EEB28403E6E255 /* Pods-NewProjectTempleteEnvirinment.modulemap */,
+				116E05AAB93DC33168278B154A2D1004 /* Pods-NewProjectTempleteEnvirinment-acknowledgements.markdown */,
+				2C83D8FB17203B3293BE3E071BAD044A /* Pods-NewProjectTempleteEnvirinment-acknowledgements.plist */,
+				97C0828EB15DF7A6CB2A2E9724673A23 /* Pods-NewProjectTempleteEnvirinment-dummy.m */,
+				479175215B4ED5CF22899B0C8B90906D /* Pods-NewProjectTempleteEnvirinment-frameworks.sh */,
+				4C59E356EB2E61AE20BEE2DA704EE86F /* Pods-NewProjectTempleteEnvirinment-Info.plist */,
+				0DEDA054C45966580AA2236DB50B270F /* Pods-NewProjectTempleteEnvirinment-resources.sh */,
+				935BB064F0D871667CDB377CFBE9CEA2 /* Pods-NewProjectTempleteEnvirinment-umbrella.h */,
+				E9CB4D1AD351D6047C969FCF9D4B7CF0 /* Pods-NewProjectTempleteEnvirinment.debug.xcconfig */,
+				A6DFE77891A18A8B90C755DB7436F6CE /* Pods-NewProjectTempleteEnvirinment.release.xcconfig */,
+			);
+			name = "Pods-NewProjectTempleteEnvirinment";
+			path = "Target Support Files/Pods-NewProjectTempleteEnvirinment";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		1687D051A6DEF2726241078A4343C820 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C44A24A419A9A142F9AF7FD10E289F5 /* Pods-NewProjectTempleteEnvirinment-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6DE9E7B34EB24769860A549107B4F04C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E70EBA16751054574A227A6432CCE4B0 /* SVIndefiniteAnimatedView.h in Headers */,
+				F77280E74EB91678AA294E66DD6070E2 /* SVProgressAnimatedView.h in Headers */,
+				C15B3F89E6F83DC9CCB14903FC5D80C5 /* SVProgressHUD.h in Headers */,
+				4DC032894868226AE220360BADB2C237 /* SVProgressHUD-umbrella.h in Headers */,
+				6D1E33469FB8FBE812956B0076A7B28F /* SVRadialGradientLayer.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		72B538C6E054B674CC3C36FEEFBD164B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FA355DB73D2BAF4DC2B01D2126BB065 /* AzureCore-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		1C8D67D8B72D6BA42CCEDB648537A340 /* SVProgressHUD */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 807FEF9D9629A72728B6B83F5CA12C85 /* Build configuration list for PBXNativeTarget "SVProgressHUD" */;
+			buildPhases = (
+				6DE9E7B34EB24769860A549107B4F04C /* Headers */,
+				108B36464ADE4902E2E2C83461767402 /* Sources */,
+				E389FF082B036E756B0679583C1BE62E /* Frameworks */,
+				A4CCC3CC21F770E272C54B18DDDE6DA3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SVProgressHUD;
+			productName = SVProgressHUD;
+			productReference = E97D43C46A45EE515A4DA3AF94398441 /* SVProgressHUD */;
+			productType = "com.apple.product-type.framework";
+		};
+		B02D58676F0BEBD9755453962681D91B /* Pods-NewProjectTempleteEnvirinment */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C19E4DB05A186B5DE6CD4DA84B5EBC98 /* Build configuration list for PBXNativeTarget "Pods-NewProjectTempleteEnvirinment" */;
+			buildPhases = (
+				1687D051A6DEF2726241078A4343C820 /* Headers */,
+				01C2372CB267F389FB82327E2513591B /* Sources */,
+				AB3BAB044F0A9C62EBD9B9B2AC0DC456 /* Frameworks */,
+				72206DE10EA085D8E76C962E09DA0E6A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				425C88EAD9C39675C23EF30AE3C1ABF8 /* PBXTargetDependency */,
+				D1AAB14069572D1FBFA4722A2C2E8D20 /* PBXTargetDependency */,
+				4B146F355B1180C97BF3C58DBFBB91E1 /* PBXTargetDependency */,
+				B92A367F7020A184DFCDBCA52054A805 /* PBXTargetDependency */,
+			);
+			name = "Pods-NewProjectTempleteEnvirinment";
+			productName = Pods_NewProjectTempleteEnvirinment;
+			productReference = DD8E4F446D1877DDEFC81ADB215EA753 /* Pods-NewProjectTempleteEnvirinment */;
+			productType = "com.apple.product-type.framework";
+		};
+		EF3D57598B2F6B611B951D5BC18E691F /* AzureCore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ACA85E505FDE19E9E3AED020CF5EE20E /* Build configuration list for PBXNativeTarget "AzureCore" */;
+			buildPhases = (
+				72B538C6E054B674CC3C36FEEFBD164B /* Headers */,
+				133EC58129A66ED9F4B28E0DBB4A4D1F /* Sources */,
+				4D3E79F522B668B8D83A1CFF2ADD0C9D /* Frameworks */,
+				959297AAD32DAEA4A12BE49398A22919 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AzureCore;
+			productName = AzureCore;
+			productReference = 2A0569FC6542319D29A5F4C7D66F6F5C /* AzureCore */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = A27F480C9A0910A2CD13069E3E4A2F22 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EF3D57598B2F6B611B951D5BC18E691F /* AzureCore */,
+				E5B4BBC6DD552AC8943C7E22772FC1D3 /* GoogleMaps */,
+				0C1885900810601510E0C632060FAF26 /* GooglePlaces */,
+				B02D58676F0BEBD9755453962681D91B /* Pods-NewProjectTempleteEnvirinment */,
+				1C8D67D8B72D6BA42CCEDB648537A340 /* SVProgressHUD */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		72206DE10EA085D8E76C962E09DA0E6A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		959297AAD32DAEA4A12BE49398A22919 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A4CCC3CC21F770E272C54B18DDDE6DA3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				943B0A1B436BAF4D419574466EF70FB3 /* SVProgressHUD.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8CD95BCB8E6BD0E25A59C4281A19269A /* [CP] Copy XCFrameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/GooglePlaces/GooglePlaces-xcframeworks-input-files.xcfilelist",
+			);
+			name = "[CP] Copy XCFrameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/GooglePlaces/GooglePlaces-xcframeworks-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/GooglePlaces/GooglePlaces-xcframeworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		942DFFF130A9500FD868DB7E68CB3859 /* [CP] Copy XCFrameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/GoogleMaps/GoogleMaps-xcframeworks-input-files.xcfilelist",
+			);
+			name = "[CP] Copy XCFrameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/GoogleMaps/GoogleMaps-xcframeworks-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/GoogleMaps/GoogleMaps-xcframeworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		01C2372CB267F389FB82327E2513591B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5217E0673E3C9F87ADF2BAF967FB61F /* Pods-NewProjectTempleteEnvirinment-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		108B36464ADE4902E2E2C83461767402 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52BCC3B2F8AE7F59556925DEC603C634 /* SVIndefiniteAnimatedView.m in Sources */,
+				1F4A13FD6675FCFCD9C19DF350348899 /* SVProgressAnimatedView.m in Sources */,
+				89DF2D9C5EFB02A72EC0CE2138B77F35 /* SVProgressHUD.m in Sources */,
+				FFD43D91BF1FA4ADF714D56E7A10B2A8 /* SVProgressHUD-dummy.m in Sources */,
+				1D325CFE11FE13A075C835E922BE1017 /* SVRadialGradientLayer.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		133EC58129A66ED9F4B28E0DBB4A4D1F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				08FC02C3140D67D1A855DB85F0B57810 /* AddDatePolicy.swift in Sources */,
+				BA610EF725795C165535DD4E4FB7B835 /* ApplicationUtil.swift in Sources */,
+				C3353BCD1F9FC808052AA61A52940E4B /* AuthenticationPolicy.swift in Sources */,
+				8EF174F8134754294281D6CAD0DD5025 /* AzureCodable.swift in Sources */,
+				4379665A682886DAFCDBC554B26AE424 /* AzureCore-dummy.m in Sources */,
+				C8BBFC592C6689761438F36ED0220004 /* AzureDate.swift in Sources */,
+				56BD19405E05E1FFD7CD3CBB8AAF86CA /* AzureTask.swift in Sources */,
+				E0360AA1B025EA6CD4F1F3725E1D2702 /* BundleInfoProvider.swift in Sources */,
+				B0FCAB04CFDDF606BCE92776C17CE41C /* CancellationToken.swift in Sources */,
+				11155765984A0441821DC3DC78E4AC96 /* ClientLogger.swift in Sources */,
+				A3743C8F993E2B00E0131DE228BF1D6B /* Collections.swift in Sources */,
+				0F4F88EE6F703B8086E9BEC46E712495 /* ContentDecodePolicy.swift in Sources */,
+				52B3C97E6CA33A865BFEEF011117A7BE /* ConvertingInitializers.swift in Sources */,
+				9E9B99D0F86886E0CB3ACC018014507F /* Copyable.swift in Sources */,
+				F058EE5C014DB750CA0999CEBF9123E8 /* CryptoUtil.swift in Sources */,
+				73FD457E630418A3D4323F0368EC4912 /* DataStringConvertible.swift in Sources */,
+				17F40AE15CD0D1C2A99F12B1D22B751A /* DeviceProviders.swift in Sources */,
+				E931BB632ED0B34B5CB0FB1B804420AF /* Errors.swift in Sources */,
+				BEDD38C5349DEB07F2FCFF83D1FD96B3 /* HeadersPolicy.swift in Sources */,
+				D316E9100B38CD18E4D891783166DC60 /* HeadersValidationPolicy.swift in Sources */,
+				8C88F6749850957BE6D8BBCACBABE2B8 /* HTTPHeader.swift in Sources */,
+				63FDF73A7163D411D380D87B4AD784E1 /* HTTPMethod.swift in Sources */,
+				4565F69A394854C660CF447A9548A398 /* HTTPRequest.swift in Sources */,
+				BF870490FD8787C9978D9F658DF7FAA8 /* HTTPResponse.swift in Sources */,
+				A869C9E205B8838DA816B48E7F5E8DDB /* KeychainUtil.swift in Sources */,
+				5A44B1649032D3EE06E472C69F68FB9C /* LocaleInfoProvider.swift in Sources */,
+				F219A3F6D371560652B8D165EC0E607D /* LoggingPolicy.swift in Sources */,
+				29F30E64DD0CA82A6CF6349538B9EBB1 /* NormalizeETagPolicy.swift in Sources */,
+				62CB6480862B2B9FF32595DFD0E7D3DA /* Pipeline.swift in Sources */,
+				8C34B731C9E40BAB07C55899F8B66CD9 /* PipelineClient.swift in Sources */,
+				DB1D3B5C5F93127D731CAF959719276B /* PipelineContext.swift in Sources */,
+				F31EF86D86CE5670035292B5AC18F77B /* PipelineRequest.swift in Sources */,
+				FC56F51BE22B3E8D8112148813FC66EE /* PipelineResponse.swift in Sources */,
+				0B6B3059BF05034D1BA90D795CC9892D /* PipelineStage.swift in Sources */,
+				A7752DF3CC7183A79D3A9FDC89E782EB /* PlatformInfoProvider.swift in Sources */,
+				F42692F560600580BE45E88A690744D5 /* ReachabilityManager.swift in Sources */,
+				EB9D339A86665CA56617B7FF0F2DF4EB /* ReachabilityManagerType.swift in Sources */,
+				228964AAA51AF6A8B7786969D93E2BE0 /* RegexUtil.swift in Sources */,
+				D7CCFBE174B8F5C7F489FEF041F48667 /* RequestIdPolicy.swift in Sources */,
+				EA2F8EEFFDA4F6AD9ADDC281BF291DD9 /* RequestParameters.swift in Sources */,
+				717F290627DCE8FE0951C2A624D496BC /* RequestString.swift in Sources */,
+				6A34FD21B3C556C0C81FB4377EB420F6 /* RetryPolicy.swift in Sources */,
+				0E4AFDB71C6C8580D3AD9214CC331E3D /* StringUtil.swift in Sources */,
+				01A80E1D39716F3CCF781EB296ABB00C /* TelemetryOptions.swift in Sources */,
+				C9FD7B918C1CAC823992BD8CA606BF42 /* TransportOptions.swift in Sources */,
+				A86AED9CB5DB9BA99A755D1E2E022273 /* TransportStage.swift in Sources */,
+				93718D5B08F88C2926A22AA634A32760 /* URLHTTPResponse.swift in Sources */,
+				5C05534A71B7509B31B506C5725C1270 /* URLSessionTransport.swift in Sources */,
+				E0FC98ED62EDF8B80253C8E23DC3D9AD /* URLUtil.swift in Sources */,
+				810AEF31BED2EFD1071819A57BEBB2DA /* UserAgentPolicy.swift in Sources */,
+				383FC6F1C4A36B3EB1B4BCE52DE38E98 /* XMLMap.swift in Sources */,
+				C7415876F727CDA39F82B46ED2048EB0 /* XMLModel.swift in Sources */,
+				E2875DB839FB662FE8AA8F67F046D739 /* XMLTree.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		425C88EAD9C39675C23EF30AE3C1ABF8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = AzureCore;
+			target = EF3D57598B2F6B611B951D5BC18E691F /* AzureCore */;
+			targetProxy = ECEF650CF68E75622E2D63F010796D7D /* PBXContainerItemProxy */;
+		};
+		4B146F355B1180C97BF3C58DBFBB91E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GooglePlaces;
+			target = 0C1885900810601510E0C632060FAF26 /* GooglePlaces */;
+			targetProxy = 9C40B04B52C631D1D7E37DBB1151623F /* PBXContainerItemProxy */;
+		};
+		B92A367F7020A184DFCDBCA52054A805 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SVProgressHUD;
+			target = 1C8D67D8B72D6BA42CCEDB648537A340 /* SVProgressHUD */;
+			targetProxy = C8AA8A8B10BB3C3A2263D44DF05BFE37 /* PBXContainerItemProxy */;
+		};
+		D1AAB14069572D1FBFA4722A2C2E8D20 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GoogleMaps;
+			target = E5B4BBC6DD552AC8943C7E22772FC1D3 /* GoogleMaps */;
+			targetProxy = 370736B854223F16D15720434BBB847D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1E4FBEF25DBF25F51C2B183360A11B3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB23323E06B6FDCFEB39DD1192FB0737 /* GooglePlaces.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		216A65D2080F16B130AA66217C6F2E9A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FBD577DDB04F344A47C6138918642F29 /* GooglePlaces.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3A9EA29ED6921878E3F25F2AEACA9FB3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A985D60715D0849F8555C5919F499403 /* SVProgressHUD.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SVProgressHUD/SVProgressHUD-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SVProgressHUD/SVProgressHUD-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SVProgressHUD/SVProgressHUD.modulemap";
+				PRODUCT_MODULE_NAME = SVProgressHUD;
+				PRODUCT_NAME = SVProgressHUD;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		711EC6236A93ED1CEB3DA37234A71262 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AFC038A1545D3AE5B8CD885CB03350D2 /* AzureCore.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/AzureCore/AzureCore-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/AzureCore/AzureCore-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/AzureCore/AzureCore.modulemap";
+				PRODUCT_MODULE_NAME = AzureCore;
+				PRODUCT_NAME = AzureCore;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		79F03B16DBCAB4DD1334907A49E8937F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9CB4D1AD351D6047C969FCF9D4B7CF0 /* Pods-NewProjectTempleteEnvirinment.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-NewProjectTempleteEnvirinment/Pods-NewProjectTempleteEnvirinment-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-NewProjectTempleteEnvirinment/Pods-NewProjectTempleteEnvirinment.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		90D4D09BCB6A4660E43ACBE9ECB6FE9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		9553C89E183877A5CB2F3C6801BEC129 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		A0D32A92267F8EB045540F58A3FB9721 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A95841DF19BF0DCD80E82750C25D0DF /* GoogleMaps.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A6F9A3420493DDFF37FE086ABBB8AEA5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 91730A8D9846EC027DD5F723C1A3BDB2 /* GoogleMaps.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BFA1FE284D730AF32524D339B07FF92B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A6DFE77891A18A8B90C755DB7436F6CE /* Pods-NewProjectTempleteEnvirinment.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-NewProjectTempleteEnvirinment/Pods-NewProjectTempleteEnvirinment-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-NewProjectTempleteEnvirinment/Pods-NewProjectTempleteEnvirinment.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E5702B8CC6A2B14E679F512F1A59542E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F0D698DDA23FC68FEC16DF778EEA636 /* AzureCore.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/AzureCore/AzureCore-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/AzureCore/AzureCore-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/AzureCore/AzureCore.modulemap";
+				PRODUCT_MODULE_NAME = AzureCore;
+				PRODUCT_NAME = AzureCore;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E7C4E72588BA38523B53DEC049091E02 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1759E55700BFB04D8B5ED3268EFC758E /* SVProgressHUD.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SVProgressHUD/SVProgressHUD-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SVProgressHUD/SVProgressHUD-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SVProgressHUD/SVProgressHUD.modulemap";
+				PRODUCT_MODULE_NAME = SVProgressHUD;
+				PRODUCT_NAME = SVProgressHUD;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3490A4869E5596F395557AF5A226555B /* Build configuration list for PBXAggregateTarget "GooglePlaces" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1E4FBEF25DBF25F51C2B183360A11B3C /* Debug */,
+				216A65D2080F16B130AA66217C6F2E9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		432269212CA7661476954A7A4DAA814D /* Build configuration list for PBXAggregateTarget "GoogleMaps" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A6F9A3420493DDFF37FE086ABBB8AEA5 /* Debug */,
+				A0D32A92267F8EB045540F58A3FB9721 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				90D4D09BCB6A4660E43ACBE9ECB6FE9A /* Debug */,
+				9553C89E183877A5CB2F3C6801BEC129 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		807FEF9D9629A72728B6B83F5CA12C85 /* Build configuration list for PBXNativeTarget "SVProgressHUD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A9EA29ED6921878E3F25F2AEACA9FB3 /* Debug */,
+				E7C4E72588BA38523B53DEC049091E02 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ACA85E505FDE19E9E3AED020CF5EE20E /* Build configuration list for PBXNativeTarget "AzureCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E5702B8CC6A2B14E679F512F1A59542E /* Debug */,
+				711EC6236A93ED1CEB3DA37234A71262 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C19E4DB05A186B5DE6CD4DA84B5EBC98 /* Build configuration list for PBXNativeTarget "Pods-NewProjectTempleteEnvirinment" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				79F03B16DBCAB4DD1334907A49E8937F /* Debug */,
+				BFA1FE284D730AF32524D339B07FF92B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

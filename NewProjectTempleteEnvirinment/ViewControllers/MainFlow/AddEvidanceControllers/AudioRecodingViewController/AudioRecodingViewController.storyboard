@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Audio Recoding View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="AudioRecodingViewController" id="Y6W-OH-hqX" customClass="AudioRecodingViewController" customModule="NewProjectTempleteEnvirinment" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n5Z-Ir-BBW" customClass="WaveformLiveView" customModule="DSWaveformImageViews">
+                                <rect key="frame" x="16" y="177" width="361" height="361"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="n5Z-Ir-BBW" secondAttribute="height" id="d4C-q9-aaL"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qEc-Yu-di3">
+                                <rect key="frame" x="16" y="554" width="361" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vwU-Tm-kqs">
+                                <rect key="frame" x="136.66666666666666" y="667" width="119.99999999999997" height="118.66666666666663"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="jTa-m6-jgh"/>
+                                    <constraint firstAttribute="width" secondItem="vwU-Tm-kqs" secondAttribute="height" id="kQn-Zi-1S6"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemRedColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" backgroundImage="record.circle" catalog="system"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vwU-Tm-kqs" firstAttribute="top" secondItem="n5Z-Ir-BBW" secondAttribute="bottom" constant="128" id="0Z8-Uw-ylT"/>
+                            <constraint firstItem="qEc-Yu-di3" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="5xc-hQ-83j"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="qEc-Yu-di3" secondAttribute="trailing" constant="16" id="6Jq-MP-eF9"/>
+                            <constraint firstItem="vwU-Tm-kqs" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="EwF-zP-E4x"/>
+                            <constraint firstItem="n5Z-Ir-BBW" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="QSP-iW-py9"/>
+                            <constraint firstItem="qEc-Yu-di3" firstAttribute="top" secondItem="n5Z-Ir-BBW" secondAttribute="bottom" constant="16" id="Z9K-bp-YaX"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="vwU-Tm-kqs" secondAttribute="bottom" constant="32" id="a7c-GL-bp5"/>
+                            <constraint firstItem="vwU-Tm-kqs" firstAttribute="top" secondItem="qEc-Yu-di3" secondAttribute="bottom" constant="64" id="kdb-8w-99g"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="n5Z-Ir-BBW" secondAttribute="trailing" constant="16" id="r4E-tX-Bck"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="recordButton" destination="vwU-Tm-kqs" id="WvT-fr-5x5"/>
+                        <outlet property="timeLabel" destination="qEc-Yu-di3" id="sL7-lr-cRf"/>
+                        <outlet property="waveView" destination="n5Z-Ir-BBW" id="1dX-aI-9I1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="10" y="4"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="record.circle" catalog="system" width="128" height="123"/>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

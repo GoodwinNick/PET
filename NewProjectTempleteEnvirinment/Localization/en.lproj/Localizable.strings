@@ -1,0 +1,168 @@
+
+
+
+// MARK: - Start AuthFlowStrings
+
+
+
+// MARK: LoginVC
+"AuthFlowStrings.LoginVC.title"                  = "Login";
+"AuthFlowStrings.LoginVC.loginButton"            = "Login";
+"AuthFlowStrings.LoginVC.goToRegistrationButton" = "Go to registration";
+"AuthFlowStrings.LoginVC.forgotPasswordButton"   = "Forgot password";
+
+"AuthFlowStrings.LoginVC.username.label"         = "Username";
+"AuthFlowStrings.LoginVC.password.label"         = "Password";
+
+"AuthFlowStrings.LoginVC.username.placeholder"   = "Please enter your username";
+"AuthFlowStrings.LoginVC.password.placeholder"   = "Please enter your password";
+
+
+// MARK: RegistrationVC
+"AuthFlowStrings.RegistrationVC.title"                        = "Registration";
+"AuthFlowStrings.RegistrationVC.goToLoginButton"              = "Go to login";
+"AuthFlowStrings.RegistrationVC.registerButton"               = "Register";
+
+"AuthFlowStrings.RegistrationVC.username.label"               = "Username";
+"AuthFlowStrings.RegistrationVC.username.placeholder"         = "Please enter username";
+
+"AuthFlowStrings.RegistrationVC.name.label"                   = "Name";
+"AuthFlowStrings.RegistrationVC.name.placeholder"             = "Please enter name";
+
+"AuthFlowStrings.RegistrationVC.surname.label"                = "Surname";
+"AuthFlowStrings.RegistrationVC.surname.placeholder"          = "Please enter surname";
+
+"AuthFlowStrings.RegistrationVC.gender.label"                 = "Gender";
+"AuthFlowStrings.RegistrationVC.gender.placeholder"           = "Please select gender";
+
+"AuthFlowStrings.RegistrationVC.birthDate.label"              = "Birth date";
+"AuthFlowStrings.RegistrationVC.birthDate.placeholder"        = "Please select birth date";
+
+"AuthFlowStrings.RegistrationVC.email.label"                  = "Email";
+"AuthFlowStrings.RegistrationVC.email.placeholder"            = "Please enter email";
+
+"AuthFlowStrings.RegistrationVC.phoneNo.label"                = "Phone Number";
+"AuthFlowStrings.RegistrationVC.phoneNo.placeholder"          = "Please enter phone Number";
+
+"AuthFlowStrings.RegistrationVC.pass.label"                   = "Password";
+"AuthFlowStrings.RegistrationVC.pass.placeholder"             = "Please enter password";
+
+"AuthFlowStrings.RegistrationVC.passConformation.label"       = "Password Conformation";
+"AuthFlowStrings.RegistrationVC.passConformation.placeholder" = "Please enter password Conformation";
+
+"AuthFlowStrings.RegistrationVC.confirmButton.confirmed"    = "✅";
+"AuthFlowStrings.RegistrationVC.confirmButton.notConfirmed" = "Tap to confirm";
+
+
+// MARK: ForgotPasswordVC
+"AuthFlowStrings.ForgotPasswordVC.title"                       = "Forgot password";
+"AuthFlowStrings.ForgotPasswordVC.emailOrNickName.label"       = "Email or Username";
+"AuthFlowStrings.ForgotPasswordVC.emailOrNickName.placeholder" = "Please enter your email or username";
+"AuthFlowStrings.ForgotPasswordVC.recoverPasswordButton"       = "Recover password";
+
+
+
+
+// MARK: End AuthFlowStrings -
+
+
+
+
+
+
+// MARK: --------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+// MARK: - Start GeneralFlowStrings
+
+
+// MARK: - General Strings
+"GeneralFlowStrings.GeneralString.english" = "English";
+"GeneralFlowStrings.GeneralString.ok"      = "Ok";
+"GeneralFlowStrings.GeneralString.hours"   = "Hours";
+"GeneralFlowStrings.GeneralString.done"    = "Done";
+
+
+// MARK: Alert
+"GeneralFlowStrings.AlertStrings.cancel"                  = "Cancel";
+"GeneralFlowStrings.AlertStrings.Error"                   = "empty while";
+"GeneralFlowStrings.AlertStrings.tryAgain"                = "empty while";
+"GeneralFlowStrings.AlertStrings.somethingWentWrong"      = "empty while";
+"GeneralFlowStrings.AlertStrings.newPasswordsShoudBeSame" = "Password and password confirmation should be the same.";
+"GeneralFlowStrings.AlertStrings.foundUserAlert"          = "Hi {name} please enter the verification code: {code}";
+"GeneralFlowStrings.AlertStrings.errorCode"               = "Wrong verification code. Please try again.";
+"GeneralFlowStrings.AlertStrings.userNotFound"            = "User not found. Please enter correct login and password.";
+"GeneralFlowStrings.AlertStrings.fillField"               = "Please fill your {field} field.";
+
+// MARK: Alert FieldsEmpty
+"GeneralFlowStrings.AlertStrings.FieldsEmptyAlerts.firstName"            = "first name";
+"GeneralFlowStrings.AlertStrings.FieldsEmptyAlerts.surname"              = "last name";
+"GeneralFlowStrings.AlertStrings.FieldsEmptyAlerts.idNo"                 = "ID number";
+"GeneralFlowStrings.AlertStrings.FieldsEmptyAlerts.pnoneNo"              = "mobile phone number";
+"GeneralFlowStrings.AlertStrings.FieldsEmptyAlerts.otpCode"              = "OTP code";
+"GeneralFlowStrings.AlertStrings.FieldsEmptyAlerts.login"                = "login";
+"GeneralFlowStrings.AlertStrings.FieldsEmptyAlerts.email"                = "email";
+"GeneralFlowStrings.AlertStrings.FieldsEmptyAlerts.password"             = "password";
+"GeneralFlowStrings.AlertStrings.FieldsEmptyAlerts.passwordConfirmation" = "password confirmation";
+
+// MARK: OTPVC
+"GeneralFlowStrings.OTPVC.titlePhoneConfirmation" = "Phone confirmation";
+"GeneralFlowStrings.OTPVC.titleEmailConfirmation" = "Email confirmation";
+"GeneralFlowStrings.OTPVC.confirmButton"          = "Confirm code";
+"GeneralFlowStrings.OTPVC.wrongCode"              = "Wrong code. Please enter correct confirmation code.";
+
+
+
+// MARK: End GeneralFlowStrings -
+
+
+
+
+
+
+
+
+// MARK: --------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+// MARK: - Start MainFlowStrings
+
+
+
+
+// MARK: MenuVC
+"MainFlowStrings.EvidenceSectionVCStrings.evidence" = "Evidence";
+"MainFlowStrings.EvidenceSectionVCStrings.map"      = "Map";
+"MainFlowStrings.EvidenceSectionVCStrings.logout"   = "Logout";
+
+
+// MARK: EvidenceSectionVCStrings
+"MainFlowStrings.EvidenceSectionVCStrings.title"             = "Evidence";
+"MainFlowStrings.EvidenceSectionVCStrings.clearCacheButton"  = "Clear Cache";
+"MainFlowStrings.EvidenceSectionVCStrings.addEvidenceLabel"  = "Add Evidence";
+"MainFlowStrings.EvidenceSectionVCStrings.audioButton"       = "Audio";
+"MainFlowStrings.EvidenceSectionVCStrings.videoButton"       = "Video";
+"MainFlowStrings.EvidenceSectionVCStrings.photoButton"       = "Photo";
+"MainFlowStrings.EvidenceSectionVCStrings.liveStreamButton"  = "Live";
+"MainFlowStrings.EvidenceSectionVCStrings.evidenceListLabel" = "Evidence List";
+"MainFlowStrings.EvidenceSectionVCStrings.audioSection"      = "Audio";
+"MainFlowStrings.EvidenceSectionVCStrings.videoSection"      = "Video";
+"MainFlowStrings.EvidenceSectionVCStrings.photoSection"      = "Photo";
+
+
+
+
+// MARK: End MainFlowStrings -
