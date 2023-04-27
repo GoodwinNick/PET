@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2122988829AE3DAE00E8F376"
-               BuildableName = "NewProjectTempleteEnvirinment.app"
-               BlueprintName = "NewProjectTempleteEnvirinment"
-               ReferencedContainer = "container:NewProjectTempleteEnvirinment.xcodeproj">
+               BuildableName = "TemplateProject.app"
+               BlueprintName = "TemplateProject"
+               ReferencedContainer = "container:TemplateProject.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,39 +29,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       codeCoverageEnabled = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2124AAEE29B5F93A00DF6E12"
-               BuildableName = "SecurityServiceTests.xctest"
-               BlueprintName = "SecurityServiceTests"
-               ReferencedContainer = "container:NewProjectTempleteEnvirinment.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2124AB0929B600C200DF6E12"
-               BuildableName = "NewProjectTempleteEnvirinmentTests.xctest"
-               BlueprintName = "NewProjectTempleteEnvirinmentTests"
-               ReferencedContainer = "container:NewProjectTempleteEnvirinment.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "218C5CA029B8852000E587DF"
-               BuildableName = "LocationServiceTests.xctest"
-               BlueprintName = "LocationServiceTests"
-               ReferencedContainer = "container:NewProjectTempleteEnvirinment.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -79,9 +46,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2122988829AE3DAE00E8F376"
-            BuildableName = "NewProjectTempleteEnvirinment.app"
-            BlueprintName = "NewProjectTempleteEnvirinment"
-            ReferencedContainer = "container:NewProjectTempleteEnvirinment.xcodeproj">
+            BuildableName = "TemplateProject.app"
+            BlueprintName = "TemplateProject"
+            ReferencedContainer = "container:TemplateProject.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -96,9 +63,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2122988829AE3DAE00E8F376"
-            BuildableName = "NewProjectTempleteEnvirinment.app"
-            BlueprintName = "NewProjectTempleteEnvirinment"
-            ReferencedContainer = "container:NewProjectTempleteEnvirinment.xcodeproj">
+            BuildableName = "TemplateProject.app"
+            BlueprintName = "TemplateProject"
+            ReferencedContainer = "container:TemplateProject.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -51,7 +51,7 @@ enum Notifications {
 
 extension NotificationCenter {
     func addOserver(
-        notifName: NewProjectTempleteEnvirinment.Notifications,
+        notifName: TemplateProject.Notifications,
         object obj: Any? = nil,
         queue: OperationQueue? = .main,
         using block: @escaping @Sendable (Notification) -> Void
@@ -67,7 +67,7 @@ extension NotificationCenter {
     func addObserver(
         _ observer: Any,
         selector aSelector: Selector,
-        notifName: NewProjectTempleteEnvirinment.Notifications,
+        notifName: TemplateProject.Notifications,
         object anObject: Any? = nil
     ) {
         NotificationCenter.default.addObserver(

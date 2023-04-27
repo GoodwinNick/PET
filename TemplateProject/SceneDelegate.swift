@@ -1,10 +1,3 @@
-//
-//  SceneDelegate.swift
-//  NewProjectTempleteEnvirinment
-//
-//  Created by Евгений Петренко on 28.02.2023.
-//
-
 import UIKit
 import SVProgressHUD
 

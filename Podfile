@@ -1,10 +1,10 @@
 # Uncomment the next line to define a global platform for your project
 platform :ios, '15.0'
 
-target 'NewProjectTempleteEnvirinment' do
+target 'TemplateProject' do
   use_frameworks!
 
-  # Pods for NewProjectTempleteEnvirinment
+  # Pods for TemplateProject
   pod 'SVProgressHUD'
   pod 'GoogleMaps'
   pod 'GooglePlaces'

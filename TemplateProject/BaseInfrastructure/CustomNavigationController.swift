@@ -44,20 +44,16 @@ class CustomNavigationController: UINavigationController {
         navigationBarAppearance.backgroundColor = ColorManager.ColorCase.navigationBackgroung.color
         navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor : ColorManager.ColorCase.navigationTitle.color]
         
-//        UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
         self.navigationBar.scrollEdgeAppearance = navigationBarAppearance
         self.navigationBar.standardAppearance = navigationBarAppearance
         self.navigationBar.compactAppearance = navigationBarAppearance
+        
         
         UINavigationBar.appearance().barTintColor = ColorManager.ColorCase.navigationTitle.color
         UINavigationBar.appearance().tintColor = ColorManager.ColorCase.navigationTitle.color
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : ColorManager.ColorCase.navigationTitle.color]
         UINavigationBar.appearance().backgroundColor = ColorManager.ColorCase.navigationBackgroung.color
-//
-//        UINavigationBar.appearance().standardAppearance = navigationBarAppearance
-//        UINavigationBar.appearance().compactAppearance = navigationBarAppearance
-//        UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
-//        
+        
         self.navigationBar.shadow(offset: .init(width: 0, height: 8), radius: 4, color: ColorManager.ColorCase.shadow.color)
         self.navigationBar.backgroundColor = ColorManager.ColorCase.navigationBackgroung.color
         self.navigationBar.tintColor = ColorManager.ColorCase.navigationTitle.color
