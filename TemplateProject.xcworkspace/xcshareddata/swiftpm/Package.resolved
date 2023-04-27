@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/AsyncSwift/AsyncLocationKit.git",
       "state" : {
-        "revision" : "1430d4ff7a9afc1d49d12c0c5fbcf2eed3aa256a",
-        "version" : "1.6.1"
+        "revision" : "4fb1ba1865dacc4dff1d5529af26abbbebc934bc",
+        "version" : "1.6.2"
       }
     },
     {
@@ -41,8 +41,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/dmrschmidt/DSWaveformImage",
       "state" : {
-        "revision" : "fbf7fd42548d33117c6eb46a4f654304e3c153ae",
-        "version" : "12.0.0"
+        "revision" : "f46cf0626b5abcb6ed2eb47b554dd5e31ee18d35",
+        "version" : "12.0.1"
       }
     },
     {
@@ -68,8 +68,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/GoogleDataTransport.git",
       "state" : {
-        "revision" : "f6b558e3f801f2cac336b04f615ce111fa9ddaa0",
-        "version" : "9.2.1"
+        "revision" : "cc7265b8e3906304e6e81f32c1662a94bbae2357",
+        "version" : "9.2.2"
       }
     },
     {
@@ -77,8 +77,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/GoogleUtilities.git",
       "state" : {
-        "revision" : "0543562f85620b5b7c510c6bcbef75b562a5127b",
-        "version" : "7.11.0"
+        "revision" : "871d43135925cde39ef7421d8723ce47edfdcc39",
+        "version" : "7.11.1"
       }
     },
     {
@@ -104,8 +104,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/shogo4405/HaishinKit.swift",
       "state" : {
-        "revision" : "a89613b8408af75811c9982767baaa87b8c5b003",
-        "version" : "1.4.4"
+        "revision" : "a4ee619245cf22be077dda1ffeebfe6bfa9b2c57",
+        "version" : "1.4.5"
       }
     },
     {
@@ -122,8 +122,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/shogo4405/Logboard.git",
       "state" : {
-        "revision" : "0213f0b41c37d2e958b261657b72ce3801f472f9",
-        "version" : "2.3.0"
+        "revision" : "e597fa65bb2ce9fc56935b4161b1af74495ddb52",
+        "version" : "2.3.1"
       }
     },
     {
@@ -142,6 +142,24 @@
       "state" : {
         "revision" : "ec957ccddbcc710ccc64c9dcbd4c7006fcf8b73a",
         "version" : "2.2.0"
+      }
+    },
+    {
+      "identity" : "swift-docc-plugin",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-docc-plugin",
+      "state" : {
+        "revision" : "9b1258905c21fc1b97bf03d1b4ca12c4ec4e5fda",
+        "version" : "1.2.0"
+      }
+    },
+    {
+      "identity" : "swift-docc-symbolkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-docc-symbolkit",
+      "state" : {
+        "revision" : "b45d1f2ed151d057b54504d653e0da5552844e34",
+        "version" : "1.0.0"
       }
     },
     {
