@@ -634,15 +634,7 @@
 		2122988029AE3DAE00E8F376 = {
 			isa = PBXGroup;
 			children = (
-				2129124729CB49A4001E333B /* BiometricalIDAuthenticationService */,
-				2129122E29CB4511001E333B /* PowerModeManager */,
-				215EE94429C4814A0039BDA0 /* ImagePickerService */,
-				215EE91E29C06D0E0039BDA0 /* AlarmService */,
-				21A5722229BFBB6500E792CB /* NotificationService */,
-				218C5CD829B8D43100E587DF /* CacheService */,
-				218C5CB529B8852D00E587DF /* LocationServiceModule */,
-				2124AB1329B6042E00DF6E12 /* SecurityServicesModule */,
-				2124AB2529B61EDA00DF6E12 /* APIServiceModule */,
+				21E268A729FAC168008B896D /* Modules */,
 				2122988B29AE3DAE00E8F376 /* TemplateProject */,
 				2122988A29AE3DAE00E8F376 /* Products */,
 				1B2E0455F1AC3671DA09B55E /* Pods */,
@@ -1281,6 +1273,22 @@
 			path = NotificationService;
 			sourceTree = "<group>";
 		};
+		21E268A729FAC168008B896D /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				2129124729CB49A4001E333B /* BiometricalIDAuthenticationService */,
+				2129122E29CB4511001E333B /* PowerModeManager */,
+				215EE94429C4814A0039BDA0 /* ImagePickerService */,
+				215EE91E29C06D0E0039BDA0 /* AlarmService */,
+				21A5722229BFBB6500E792CB /* NotificationService */,
+				218C5CD829B8D43100E587DF /* CacheService */,
+				218C5CB529B8852D00E587DF /* LocationServiceModule */,
+				2124AB1329B6042E00DF6E12 /* SecurityServicesModule */,
+				2124AB2529B61EDA00DF6E12 /* APIServiceModule */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
 		21F89B4A29B39091005600D9 /* APIService */ = {
 			isa = PBXGroup;
 			children = (
@@ -1632,10 +1640,10 @@
 			mainGroup = 2122988029AE3DAE00E8F376;
 			packageReferences = (
 				2192907B29B2056500489A4A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				2162AFC429B73D5500E7A40C /* XCRemoteSwiftPackageReference "AsyncLocationKit.git" */,
+				2162AFC429B73D5500E7A40C /* XCRemoteSwiftPackageReference "AsyncLocationKit" */,
 				2162AFC729B7435E00E7A40C /* XCRemoteSwiftPackageReference "d3-async-location" */,
 				218C5D1F29BB25DB00E587DF /* XCRemoteSwiftPackageReference "DSWaveformImage" */,
-				213C4DCE29D4819100AF6305 /* XCRemoteSwiftPackageReference "HaishinKit.swift" */,
+				213C4DCE29D4819100AF6305 /* XCRemoteSwiftPackageReference "HaishinKit" */,
 			);
 			productRefGroup = 2122988A29AE3DAE00E8F376 /* Products */;
 			projectDirPath = "";
@@ -2972,7 +2980,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		213C4DCE29D4819100AF6305 /* XCRemoteSwiftPackageReference "HaishinKit.swift" */ = {
+		213C4DCE29D4819100AF6305 /* XCRemoteSwiftPackageReference "HaishinKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/shogo4405/HaishinKit.swift";
 			requirement = {
@@ -2980,7 +2988,7 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		2162AFC429B73D5500E7A40C /* XCRemoteSwiftPackageReference "AsyncLocationKit.git" */ = {
+		2162AFC429B73D5500E7A40C /* XCRemoteSwiftPackageReference "AsyncLocationKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AsyncSwift/AsyncLocationKit.git";
 			requirement = {
@@ -3017,7 +3025,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		213C4DCF29D4819100AF6305 /* HaishinKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 213C4DCE29D4819100AF6305 /* XCRemoteSwiftPackageReference "HaishinKit.swift" */;
+			package = 213C4DCE29D4819100AF6305 /* XCRemoteSwiftPackageReference "HaishinKit" */;
 			productName = HaishinKit;
 		};
 		2162AFC829B7435E00E7A40C /* d3-async-location */ = {
