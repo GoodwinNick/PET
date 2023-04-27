@@ -27,6 +27,7 @@ class EvidenceSectionViewModel: BaseViewModel {
     
     init(view: EvidenceSectionView) {
         self.view = view
+        super.init()
     }
     
   

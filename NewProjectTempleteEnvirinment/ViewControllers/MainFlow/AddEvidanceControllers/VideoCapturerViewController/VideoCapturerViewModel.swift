@@ -16,6 +16,7 @@ class VideoCapturerViewModel: BaseViewModel {
 
     init(view: VideoCapturerView) {
         self.view = view
+        super.init()
     }
     
     func initViewRecorder() {

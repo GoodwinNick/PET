@@ -11,6 +11,7 @@ class OTPViewModel: BaseViewModel {
         self.view = view
         self.otpCase = otpCase
         self.completion = completion
+        super.init()
     }
     
 }

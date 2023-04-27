@@ -8,6 +8,7 @@ class ForgotPasswordViewModel: BaseViewModel {
     
     init(view: ForgotPasswordView) {
         self.view = view
+        super.init()
     }
 }
 

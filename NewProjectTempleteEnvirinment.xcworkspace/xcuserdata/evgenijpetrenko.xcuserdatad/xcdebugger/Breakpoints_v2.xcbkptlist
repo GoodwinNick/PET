@@ -5,51 +5,77 @@
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         BreakpointExtensionID = "Xcode.Breakpoint.RuntimeIssueBreakpoint">
          <BreakpointContent
-            uuid = "BFA2EAA4-25D9-413D-9C0D-10C4544EF708"
-            shouldBeEnabled = "No"
+            uuid = "4FAE162F-AA5B-4F5B-889C-02E8F34CEEBD"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LocationServiceModule/LocationService/WeakLocationUpdatedDelegate.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "9"
-            endingLineNumber = "9"
-            landmarkName = "value"
-            landmarkType = "24">
+            breakpointStackSelectionBehavior = "1"
+            type = "4">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "293F4FE5-8AF1-4361-A12C-A86CB9C49B0D"
+            uuid = "F870276A-4C03-40C1-A3FC-29E3DD6A24F2"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LocationServiceModule/LocationService/WeakLocationUpdatedDelegate.swift"
+            filePath = "NewProjectTempleteEnvirinment/ViewControllers/MainFlow/AddEvidanceControllers/LiveStreamViewController/LiveStreamViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "15"
-            endingLineNumber = "15"
-            landmarkName = "init(value:)"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "7F4FC032-E940-452A-AEE3-539B58345C95"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NewProjectTempleteEnvirinment/ViewControllers/AuthFlow/RegistrationViewController/RegistrationViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13"
-            endingLineNumber = "13"
-            landmarkName = "RegistrationViewModel"
-            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "F870276A-4C03-40C1-A3FC-29E3DD6A24F2 - b1d2e6f481a3230a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for closure #1 @Sendable () async -&gt; () in NewProjectTempleteEnvirinment.LiveStreamViewModel.viewDidLoad() -&gt; ()"
+                  moduleName = "NewProjectTempleteEnvirinment"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/evgenijpetrenko/Desktop/Projects/NewProjectTempleteEnvirinment/NewProjectTempleteEnvirinment/ViewControllers/MainFlow/AddEvidanceControllers/LiveStreamViewController/LiveStreamViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "68">
+               </Location>
+               <Location
+                  uuid = "F870276A-4C03-40C1-A3FC-29E3DD6A24F2 - 2a4b8c451e674326"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for closure #1 @Sendable () async -&gt; () in NewProjectTempleteEnvirinment.LiveStreamViewModel.viewDidLoad() -&gt; ()"
+                  moduleName = "NewProjectTempleteEnvirinment"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/evgenijpetrenko/Desktop/Projects/NewProjectTempleteEnvirinment/NewProjectTempleteEnvirinment/ViewControllers/MainFlow/AddEvidanceControllers/LiveStreamViewController/LiveStreamViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "F870276A-4C03-40C1-A3FC-29E3DD6A24F2 - a4550163ee6ae708"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async -&gt; () in NewProjectTempleteEnvirinment.LiveStreamViewModel.viewDidLoad() -&gt; ()"
+                  moduleName = "NewProjectTempleteEnvirinment"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/evgenijpetrenko/Desktop/Projects/NewProjectTempleteEnvirinment/NewProjectTempleteEnvirinment/ViewControllers/MainFlow/AddEvidanceControllers/LiveStreamViewController/LiveStreamViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "64">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

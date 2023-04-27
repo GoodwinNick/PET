@@ -60,9 +60,9 @@ extension MenuViewController {
     }
     
     private func configButton(_ value: EnumeratedSequence<[MenuItem]>.Iterator.Element) {
-        let buttonAction: (UIAction) -> Void = { _ in
-            self.viewModel.completion()
-            self.hidingAnimation()
+        let buttonAction: (UIAction) -> Void = { [weak self] _ in
+            self?.viewModel.completion?()
+            self?.hidingAnimation()
             value.element.action()
         }
         let button = UIButton(type: .custom)
@@ -79,10 +79,8 @@ extension MenuViewController {
 // MARK: - Actions
 extension MenuViewController {
     @objc func tapGesture() {
-        viewModel.completion()
-        UIView.transition(with: self.view, duration: 0.25) {
-            self.view.setBGColor(.transparentMenuView(alpha: 0.01))
-        }
+        viewModel.completion?()
+        hidingAnimation()
     }
 }
 
@@ -95,9 +93,26 @@ extension MenuViewController {
     }
     
     func hidingAnimation() {
-        UIView.transition(with: self.view, duration: 0.1) {
-            self.view.setBGColor(.transparentMenuView(alpha: 0))
+        UIView.animate(
+            withDuration: 0.25,
+            animations: { [weak self] in
+                self?.view.frame.origin.x = self?.getStartXPosition() ?? .zero
+                self?.view.setBGColor(.transparentMenuView(alpha: 0.01))
+            },
+            completion: { [weak self] _ in
+                self?.removeFromParent()
+                self?.view.removeFromSuperview()
+            }
+        )
+        
+    }
+    
+    func getStartXPosition() -> CGFloat {
+        switch LanguageManager.shared.language.getDirection {
+        case .rightToLeft:  return view.bounds.width *  0.75
+        case .leftToRight:  return view.bounds.width * -0.75
         }
+        
     }
 }
 

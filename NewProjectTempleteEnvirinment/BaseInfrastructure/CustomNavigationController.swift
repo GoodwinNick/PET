@@ -38,21 +38,26 @@ class CustomNavigationController: UINavigationController {
     }
     
     fileprivate func configNawAppearance() {
-        let navigationBarAppearance = UINavigationBarAppearance()
+        let navigationBarAppearance: UINavigationBarAppearance = UINavigationBarAppearance()
         navigationBarAppearance.configureWithOpaqueBackground()
         
-        let defAppearance = UINavigationBar.appearance()
+        navigationBarAppearance.backgroundColor = ColorManager.ColorCase.navigationBackgroung.color
+        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor : ColorManager.ColorCase.navigationTitle.color]
         
-        defAppearance.barTintColor = ColorManager.ColorCase.navigationTitle.color
-        defAppearance.tintColor = ColorManager.ColorCase.navigationTitle.color
-        defAppearance.titleTextAttributes = [
-            NSAttributedString.Key.foregroundColor : ColorManager.ColorCase.navigationTitle.color
-        ]
+//        UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
+        self.navigationBar.scrollEdgeAppearance = navigationBarAppearance
+        self.navigationBar.standardAppearance = navigationBarAppearance
+        self.navigationBar.compactAppearance = navigationBarAppearance
         
-        defAppearance.standardAppearance = navigationBarAppearance
-        defAppearance.compactAppearance = navigationBarAppearance
-        defAppearance.scrollEdgeAppearance = navigationBarAppearance
-        
+        UINavigationBar.appearance().barTintColor = ColorManager.ColorCase.navigationTitle.color
+        UINavigationBar.appearance().tintColor = ColorManager.ColorCase.navigationTitle.color
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : ColorManager.ColorCase.navigationTitle.color]
+        UINavigationBar.appearance().backgroundColor = ColorManager.ColorCase.navigationBackgroung.color
+//
+//        UINavigationBar.appearance().standardAppearance = navigationBarAppearance
+//        UINavigationBar.appearance().compactAppearance = navigationBarAppearance
+//        UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
+//        
         self.navigationBar.shadow(offset: .init(width: 0, height: 8), radius: 4, color: ColorManager.ColorCase.shadow.color)
         self.navigationBar.backgroundColor = ColorManager.ColorCase.navigationBackgroung.color
         self.navigationBar.tintColor = ColorManager.ColorCase.navigationTitle.color

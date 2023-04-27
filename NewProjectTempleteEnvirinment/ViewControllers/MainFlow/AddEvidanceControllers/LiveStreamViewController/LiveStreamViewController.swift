@@ -21,11 +21,13 @@ extension LiveStreamViewController {
 
 // MARK: - LiveStreamView
 extension LiveStreamViewController: LiveStreamView {
-    func configPreviewLayer(session: AVCaptureSession) {
-          previewLayer = AVCaptureVideoPreviewLayer(session: session)
-          previewLayer!.frame = self.view.layer.bounds
-          previewLayer!.videoGravity = .resizeAspectFill
-          self.view.layer.insertSublayer(previewLayer!, at: 0)
+    func configPreviewLayer(session: AVCaptureSession) async {
+        await MainActor.run {
+            previewLayer = AVCaptureVideoPreviewLayer(session: session)
+            previewLayer!.frame = self.view.layer.bounds
+            previewLayer!.videoGravity = .resizeAspectFill
+            self.view.layer.insertSublayer(previewLayer!, at: 0)
+        }
 
     }
 }

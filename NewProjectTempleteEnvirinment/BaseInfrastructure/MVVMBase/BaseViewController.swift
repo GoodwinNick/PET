@@ -8,22 +8,20 @@ class BaseViewController<T>: UIViewController where T: BaseViewModel {
     
     fileprivate var isViewConfigured: Bool = false
     var langManager: LanguageManager { return LanguageManager.shared }
-    var coordinator: Coordinator { return Coordinator.shared }
-    var udIntent: UDShared { return UDShared.instance }
+    var coordinator: Coordinator     { return Coordinator.shared }
+    var udIntent   : UDShared        { return UDShared.instance }
     
     weak var languageButton     : UIBarButtonItem?
     weak var apearenceModeButton: UIBarButtonItem?
     weak var backButton         : UIBarButtonItem?
     weak var leftMenuButton     : UIBarButtonItem?
     
-    deinit { print("deinited with \(type(of: T.self))") }
+    deinit { print("deinited with \(type(of: self))") }
 
     
     func set(viewModel: T) {
         self.viewModel = viewModel
     }
-    
-    
     
     
     
@@ -196,7 +194,7 @@ class BaseViewController<T>: UIViewController where T: BaseViewModel {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        print("loaded with type \(type(of: T.self))")
+        print("loaded with type \(type(of: self))")
 
         configObservers()
         

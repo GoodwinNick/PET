@@ -23,7 +23,6 @@ enum MenuItem: CaseIterable {
     }
     
     var action: () -> Void {
-        
         switch self {
         case .evidence : return { Coordinator.shared.move(as: .pushOrPopTill(screen: .evidenceSection)) }
         case .main     : return { Coordinator.shared.move(as: .pushOrPopTill(screen: .main           )) }

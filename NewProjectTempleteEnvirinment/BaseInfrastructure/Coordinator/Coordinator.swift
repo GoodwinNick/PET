@@ -39,17 +39,19 @@ class Coordinator {
 // MARK: Main action
 extension Coordinator {
     func move(as action: CoordinatorAction) {
-        switch action {
-        case .pushOrPopTill   (let vc  ): self.pushOrPopTo(vc.viewController, on: vc.flowDestination)
-        case .push            (let vc  ): self.push       (vc.viewController, on: vc.flowDestination)
-        case .present         (let vc  ): self.present    (vc.viewController                        )
-        case .popTill         (let vc  ): self.popTill    (vc.viewController, on: vc.flowDestination)
-        case .pop             (let flow): self.pop        (                   on: flow              )
-        case .showMenu(let fromMenuItem): self.showMenuAction(fromItem: fromMenuItem)
-            
-        case .showAlert    (let title, let message, let actionTitle, let action):
-            self.showAlert(title: title, message: message, actionTitle: actionTitle, action: action)
-            
+        Task(priority: .background) {
+            switch action {
+            case .pushOrPopTill   (let vc  ): await self.pushOrPopTo(vc.viewController, on: vc.flowDestination)
+            case .push            (let vc  ): await self.push       (vc.viewController, on: vc.flowDestination)
+            case .present         (let vc  ): await self.present    (vc.viewController                        )
+            case .popTill         (let vc  ): await self.popTill    (vc.viewController, on: vc.flowDestination)
+            case .pop             (let flow): await self.pop        (                   on: flow              )
+            case .showMenu(let fromMenuItem): await self.showMenuAction(fromItem: fromMenuItem)
+                
+            case .showAlert(let title, let message, let actionTitle, let action):
+                await self.showAlert(title: title, message: message, actionTitle: actionTitle, action: action)
+                
+            }
         }
     }
 }
@@ -63,45 +65,46 @@ fileprivate extension Coordinator {
     
     
     // MARK: push
-    func push(_ vc: UIViewController, on flow: Screens.FlowDestination, animated: Bool = true) {
-        func push(on nav: CustomNavigationController) { self.pushOnMain(vc: vc, navCon: nav, animated: animated) }
+    func push(_ vc: UIViewController, on flow: Screens.FlowDestination, animated: Bool = true) async {
+        func push(on nav: CustomNavigationController) async { await self.pushOnMain(vc: vc, navCon: nav, animated: animated) }
         
         switch flow {
-        case .anyTopLevel: return push(on: topExistNavigationLevel)
-        case .authFlow   : return push(on: authFlowNavController)
+        case .anyTopLevel: return await push(on: topExistNavigationLevel)
+        case .authFlow   : return await push(on: authFlowNavController)
         case .mainFlow   : break
         }
         guard let mainFlowNavController else {
-            configMainFlowNavigation(with: vc)
-            return self.presentOnMain(vc: mainFlowNavController!, navCon: authFlowNavController, animated: animated)
+            return await self.presentOnMain(
+                vc: await configMainFlowNavigation(with: vc),
+                navCon: authFlowNavController,
+                animated: animated
+            )
         }
-        mainFlowNavController.pushViewController(vc, animated: animated)
+        await pushOnMain(vc: vc, navCon: mainFlowNavController, animated: animated)
     }
     
     // MARK: present
-    func present(_ vc: UIViewController, animated: Bool = true) {
-        DispatchQueue.main.async {
-            self.topExistNavigationLevel.present(vc, animated: true)
-        }
+    func present(_ vc: UIViewController, animated: Bool = true) async {
+            await self.presentOnMain(vc: vc, navCon:topExistNavigationLevel, animated: animated)
+        
     }
     
     
     // MARK: popTill
-    func popTill(_ vc: UIViewController, on flow: Screens.FlowDestination, animated: Bool = true) {
-        let popTill: (UIViewController, CustomNavigationController?) -> Void = {
+    func popTill(_ vc: UIViewController, on flow: Screens.FlowDestination, animated: Bool = true) async {
+        let popTill: (UIViewController, CustomNavigationController?) async -> Void = {
             guard let navController = $1 else { return }
-            let (viewController, isExist) = self.isVCExist($0, on: navController)
-            if !isExist { return }
-            guard let viewController else { return }
-            navController.popToViewController(viewController, animated: true)
+            let (viewController, isExist) = await self.isVCExist($0, on: navController)
+            guard isExist, let viewController else { return }
+            await self.popTillOnMain(vc: viewController, navCon: navController, animated: animated)
         }
         
         switch flow {
-        case .anyTopLevel: popTill(vc, topExistNavigationLevel)
-        case .mainFlow   : popTill(vc, mainFlowNavController)
+        case .anyTopLevel: await popTill(vc, topExistNavigationLevel)
+        case .mainFlow   : await popTill(vc, mainFlowNavController)
         case .authFlow   :
-            checkForRemoveMainNavigationController()
-            popTill(vc, authFlowNavController)
+            await checkForRemoveMainNavigationController()
+            await popTill(vc, authFlowNavController)
         }
         
     }
@@ -109,25 +112,27 @@ fileprivate extension Coordinator {
     
     
     // MARK: pushOrPopTo
-    func pushOrPopTo(_ vc: UIViewController, on flow: Screens.FlowDestination, animated: Bool = true) {
-        let pushOrPopTo: (UIViewController, UINavigationController) -> Void = {
-            let (viewController, isExist) = self.isVCExist($0, on: $1)
-            if     !isExist       { return self.pushOnMain   (vc: $0            , navCon: $1, animated: animated) }
-            if let viewController { return self.popTillOnMain(vc: viewController, navCon: $1, animated: animated) }
+    func pushOrPopTo(_ vc: UIViewController, on flow: Screens.FlowDestination, animated: Bool = true) async {
+        let pushOrPopTo: (UIViewController, UINavigationController) async -> Void = {
+            let (viewController, isExist) = await self.isVCExist($0, on: $1)
+            if     !isExist       { return await self.pushOnMain   (vc: $0            , navCon: $1, animated: animated) }
+            if let viewController { return await self.popTillOnMain(vc: viewController, navCon: $1, animated: animated) }
         }
         
-        let changeMainViewController: (UIViewController, UINavigationController) -> Void = {
-            let (viewController, isExist) = self.isVCExist($0, on: $1)
-            guard     isExist        else { return self.changeViewControllerOnMain(nav: $1, vc: $0) }
+        let changeMainViewController: (UIViewController, UINavigationController) async -> Void = {
+            let (viewController, isExist) = await self.isVCExist($0, on: $1)
+            guard     isExist        else { return await self.changeViewControllerOnMain(nav: $1, vc: $0) }
             guard let viewController else { return }
-            return self.popTillOnMain(vc: viewController, navCon: $1, animated: animated)
+            return await self.popTillOnMain(vc: viewController, navCon: $1, animated: animated)
         }
         
         do {
-            let navigationController = try getNavigationController(vc, by: flow ,animated: animated)
-            pushOrPopTo(vc, navigationController)
+            let navigationController = try await getNavigationController(vc, by: flow ,animated: animated)
+            await pushOrPopTo(vc, navigationController)
         } catch {
-            if case NavigationErrors.needToChangeMenuItem(let navigationForChanges) = error { changeMainViewController(vc, navigationForChanges) }
+            if case NavigationErrors.needToChangeMenuItem(let navigationForChanges) = error {
+                    await changeMainViewController(vc, navigationForChanges)
+            }
             return
         }
         
@@ -135,60 +140,60 @@ fileprivate extension Coordinator {
     
     
     // MARK: pop
-    func pop(on flow: Screens.FlowDestination, animated: Bool = true) {
+    func pop(on flow: Screens.FlowDestination, animated: Bool = true) async {
         switch flow {
-        case .anyTopLevel: self.popOnMain(navCon: topExistNavigationLevel, animated: animated)
-        case .authFlow   : self.popOnMain(navCon: authFlowNavController  , animated: animated)
-        case .mainFlow   : self.popOnMain(navCon: mainFlowNavController  , animated: animated)
+        case .anyTopLevel: await self.popOnMain(navCon: topExistNavigationLevel, animated: animated)
+        case .authFlow   : await self.popOnMain(navCon: authFlowNavController  , animated: animated)
+        case .mainFlow   : await self.popOnMain(navCon: mainFlowNavController  , animated: animated)
         }
     }
     
     // MARK: showAlert
-    func showAlert(title: String, message: String, actionTitle: String, action: @escaping () -> Void) {
-        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertVC.overrideUserInterfaceStyle = UDShared.instance.isWhiteMode ? .light : .dark
-        alertVC.addAction(UIAlertAction(title: actionTitle, style: .default, action: action))
-        self.move(as: .present(screen: .alert(alertVC)))
+    func showAlert(title: String, message: String, actionTitle: String, action: @escaping () -> Void) async {
+        await MainActor.run {
+            let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alertVC.overrideUserInterfaceStyle = UDShared.instance.isWhiteMode ? .light : .dark
+            alertVC.addAction(UIAlertAction(title: actionTitle, style: .default, action: action))
+            self.move(as: .present(screen: .alert(alertVC)))
+        }
     }
     
     // MARK: showMenuAction
-    func showMenuAction(fromItem: MenuItem) {
+    func showMenuAction(fromItem: MenuItem) async {
         if isMenuOpened { return }
         
         let topNavController: CustomNavigationController = topExistNavigationLevel
-        let vc = CompositionRoot.sharedInstance.resolveMenuViewController(viewRect  : getMenuRect(),
-                                                                          from      : fromItem     ,
-                                                                          completion: { vc in hideMenu(vc: vc) })
+        var vc: MenuViewController?
+        vc = await CompositionRoot.sharedInstance.resolveMenuViewController(
+            viewRect  : getMenuRect(),
+            from      : fromItem     ,
+            completion: { [weak self] in
+                self?.isMenuOpened = false
+            }
+        )
         
         
-        self.addChildOnMain(childVC: vc, to: topNavController.topViewController)
-    
-        showMenu(vc: vc)
-        
-        func showMenu(vc: UIViewController) {
-            let mainAnimation: () -> Void = { topNavController.topViewController?.view.addSubview(vc.view) }
-            let animationCompletion: (Bool) -> Void = { _ in
-                UIView.animate(withDuration: 0.25) {
-                    vc.view.frame.origin.x = 0
-                    (vc as? MenuViewController)?.startShowViewAnimation()
+        await self.addChildOnMain(childVC: vc!, to: topNavController.topViewController)
+            
+        DispatchQueue.main.async { [weak vc] in
+            UIView.animate(
+                withDuration: 0.25,
+                animations: { [weak vc] in
+                    if let vc {
+                        topNavController.topViewController?.view.addSubview(vc.view)
+                    }
+                },
+                completion: { [weak vc] _ in
+                    UIView.animate(withDuration: 0.25) { [weak vc] in
+                        vc?.view.frame.origin.x = 0
+                        (vc as? MenuViewController)?.startShowViewAnimation()
+                    }
                 }
-            }
-            
-            UIView.animate(withDuration: 0.25, animations: mainAnimation, completion: animationCompletion)
-            isMenuOpened = true
+            )
+            self.isMenuOpened = true
         }
         
-        func hideMenu(vc: UIViewController) {
-            let mainAnimation: () -> Void = { vc.view.frame.origin.x = self.getStartXPosition() }
-            let animationCompletion: (Bool) -> Void = { _ in
-                UIView.animate(withDuration: 0.25,
-                               animations: vc.view.removeFromSuperview) { _ in vc.removeFromParent() }
-            }
-            
-            UIView.animate(withDuration: 0.25, animations: mainAnimation, completion: animationCompletion)
-            isMenuOpened = false
-            
-        }
+        
     }
     
 }
@@ -199,38 +204,43 @@ fileprivate extension Coordinator {
 // MARK: - Heplers
 fileprivate extension Coordinator {
     
-    func getNavigationController(_ vc: UIViewController, by flow: Screens.FlowDestination, animated: Bool = true) throws -> CustomNavigationController {
+    func getNavigationController(_ vc: UIViewController, by flow: Screens.FlowDestination, animated: Bool = true) async throws -> CustomNavigationController {
         // Select navigation controller for pop
         switch flow {
         case .anyTopLevel: return topExistNavigationLevel
         case .mainFlow   : break
         case .authFlow   :
-            checkForRemoveMainNavigationController()
+            await checkForRemoveMainNavigationController()
             return authFlowNavController
         }
         
         guard let mainFlowNavController else {
-            configMainFlowNavigation(with: vc)
-            authFlowNavController.present(mainFlowNavController!, animated: animated)
+            await presentOnMain(vc: await self.configMainFlowNavigation(with: vc), //mainFlowNavController!,
+                                navCon: authFlowNavController,
+                                animated: animated,
+                                preAction: {  } )
             throw NavigationErrors.mainNavigationWasPushed
         }
         
         if (vc as? ViewControllerIdentify)?.isOneOfMain == true,
-           (mainFlowNavController.topViewController as? ViewControllerIdentify)?.isOneOfMain == true {
+           await MainActor.run(resultType: Bool.self) { (mainFlowNavController.topViewController as? ViewControllerIdentify)?.isOneOfMain == true } {
             throw NavigationErrors.needToChangeMenuItem(mainFlowNavController)
         }
         return mainFlowNavController
         
     }
     
-    func configMainFlowNavigation(with rootVC: UIViewController) {
-        mainFlowNavController = CustomNavigationController(rootViewController: rootVC)
-        mainFlowNavController!.modalPresentationStyle = .overFullScreen
+    func configMainFlowNavigation(with rootVC: UIViewController) async -> CustomNavigationController {
+        return await MainActor.run(resultType: CustomNavigationController.self) {
+            self.mainFlowNavController = CustomNavigationController(rootViewController: rootVC)
+            self.mainFlowNavController!.modalPresentationStyle = .overFullScreen
+            return mainFlowNavController!
+        }
     }
     
     /// For check VC is exist
     /// - Returns: **(UIViewController?, isExist: Bool)** - if Bool true, UIViewController? always will be **not nil**
-    func isVCExist(_ vc: UIViewController, on navController: UINavigationController) -> (UIViewController?, isExist: Bool) {
+    func isVCExist(_ vc: UIViewController, on navController: UINavigationController) async -> (UIViewController?, isExist: Bool) {
         let checkForConformation: (_ id: String, _ vc: UIViewController) -> Bool =  {
             let stackController = $1 as? (any ViewControllerIdentify)
             if let stackController, stackController.compareID(to: $0) { return true }
@@ -239,7 +249,7 @@ fileprivate extension Coordinator {
         guard let vc = vc as? (any ViewControllerIdentify) else { return (nil, false) }
         
         let id = vc.viewControllerIdentificator
-        for viewC in navController.viewControllers.reversed() {
+        for viewC in await navController.viewControllers.reversed() {
             if checkForConformation(id, viewC) {
                 return (viewC, true)
             }
@@ -248,24 +258,31 @@ fileprivate extension Coordinator {
         return (nil, false)
     }
     
-    func getStartXPosition() -> CGFloat {
+    func getStartXPosition() async -> CGFloat {
         switch LanguageManager.shared.language.getDirection {
-        case .rightToLeft:  return topExistNavigationLevel.view.bounds.width * 0.75
-        case .leftToRight:  return topExistNavigationLevel.view.bounds.width * -0.75
+        case .rightToLeft:  return await MainActor.run(resultType: CGFloat.self) { topExistNavigationLevel.view.bounds.width *  0.75 }
+        case .leftToRight:  return await MainActor.run(resultType: CGFloat.self) { topExistNavigationLevel.view.bounds.width * -0.75 }
+        }
+        
+    }
+    
+    func getStartYPosition() async -> CGFloat {
+        return await MainActor.run(resultType: CGFloat.self) {
+            return topExistNavigationLevel.navigationBar.intrinsicContentSize.height + UIApplication.safeAreaInsets.top
         }
     }
     
-    func getStartYPosition() -> CGFloat {
-        return topExistNavigationLevel.navigationBar.intrinsicContentSize.height + UIApplication.safeAreaInsets.top
-    }
-    
-    func getMenuRect() -> CGRect {
+    func getMenuRect() async -> CGRect {
         // For correctly intrinsicContentSize
         let shadowHeight: CGFloat = 8
-        let xPosition = getStartXPosition()
-        let yPosition = getStartYPosition() - shadowHeight
-        let width = topExistNavigationLevel.view.bounds.width
-        let height = topExistNavigationLevel.view.bounds.height - topExistNavigationLevel.navigationBar.intrinsicContentSize.height - UIApplication.safeAreaInsets.top + shadowHeight
+        let intrinsicContentSizeHeight = await MainActor.run(resultType: CGFloat.self) { topExistNavigationLevel.navigationBar.intrinsicContentSize.height } + shadowHeight
+        let topNavBounds = await MainActor.run(resultType: CGRect.self) { topExistNavigationLevel.view.bounds }
+        let saveAreaTop = await MainActor.run(resultType: CGFloat.self) { UIApplication.safeAreaInsets.top }
+        
+        let xPosition = await getStartXPosition()
+        let yPosition = await getStartYPosition() - shadowHeight
+        let width     = topNavBounds.width
+        let height    = topNavBounds.height - intrinsicContentSizeHeight - saveAreaTop
         return CGRect(x: xPosition, y: yPosition, width: width, height: height)
     }
     
@@ -274,37 +291,118 @@ fileprivate extension Coordinator {
 
 // MARK: - Main thread helpers
 fileprivate extension Coordinator {
-    func presentOnMain(vc: UIViewController, navCon: UINavigationController, animated: Bool = true) {
-        DispatchQueue.main.async { navCon.present(vc, animated: animated) }
+    
+    func asyncOnMain(delay: CGFloat = 0, action: @escaping () -> Void) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay) { action() }
     }
     
-    func pushOnMain(vc: UIViewController, navCon: UINavigationController, animated: Bool = true) {
-        DispatchQueue.main.async { navCon.pushViewController(vc, animated: animated) }
+    func onMainActor<T: Sendable>(actionForExecute: () -> T) async -> T {
+        return await MainActor.run(resultType: T.self) {
+            return actionForExecute()
+        }
     }
     
-    func popOnMain(navCon: UINavigationController?, animated: Bool = true) {
-        DispatchQueue.main.async { navCon?.popViewController(animated: animated) }
+    /// Will present specified vc on specified navigation controller on **main thread**
+    /// - Parameters:
+    ///   - preAction: Can be used it before action we need to do some on **main thread**
+    func presentOnMain(
+        vc: UIViewController,
+        navCon: UINavigationController,
+        animated: Bool = true,
+        preAction: @escaping () -> Void = { }
+    ) async {
+        await MainActor.run {
+            preAction()
+            navCon.present(vc, animated: animated)
+        }
     }
     
-    func popTillOnMain(vc: UIViewController, navCon: UINavigationController, animated: Bool = true) {
-        DispatchQueue.main.async { navCon.popToViewController(vc, animated: animated) }
+    /// Will push specified vc on specified navigation controller on **main thread**
+    /// - Parameters:
+    ///   - preAction: Can be used it before action we need to do some on **main thread**
+    func pushOnMain(
+        vc: UIViewController,
+        navCon: UINavigationController,
+        animated: Bool = true,
+        preAction: @escaping () -> Void = { }
+    ) async {
+        await MainActor.run {
+            preAction()
+            navCon.pushViewController(vc, animated: animated)
+        }
+    }
+    
+    /// Will pop vc on specified navigation controller on **main thread**
+    /// - Parameters:
+    ///   - preAction: Can be used it before action we need to do some on **main thread**
+    func popOnMain(
+        navCon: UINavigationController?,
+        animated: Bool = true,
+        preAction: @escaping () -> Void = { }
+    ) async {
+        await MainActor.run {
+            preAction()
+            navCon?.popViewController(animated: animated)
+        }
+    }
+    
+    /// Will pop till specified vc on specified navigation controller on **main thread**
+    /// - Parameters:
+    ///   - preAction: Can be used it before action we need to do some on **main thread**
+    func popTillOnMain(
+        vc: UIViewController,
+        navCon: UINavigationController,
+        animated: Bool = true,
+        preAction: @escaping () -> Void = { }
+    ) async {
+        await MainActor.run {
+            preAction()
+            navCon.popToViewController(vc, animated: animated)
+        }
     }
     
     /// Will push new view controller and remove from stack earlier view controller
-    func changeViewControllerOnMain(nav: UINavigationController, vc: UIViewController, animated: Bool = true) {
-        DispatchQueue.main.async {
+    /// - Parameters:
+    ///   - preAction: Can be used it before action we need to do some on **main thread**
+    func changeViewControllerOnMain(
+        nav: UINavigationController,
+        vc: UIViewController, animated: Bool = true,
+        preAction: @escaping () -> Void = { }
+    ) async {
+        await MainActor.run {
+            preAction()
             nav.pushViewController(vc, animated: true)
             nav.viewControllers[nav.viewControllers.count - 2].removeFromParent()
         }
     }
     
-    func addChildOnMain(childVC: UIViewController, to vc: UIViewController?, animated: Bool = true) {
-        DispatchQueue.main.async { vc?.addChild(childVC) }
+    /// Will add specified childVC to VC on **main thread**
+    /// - Parameters:
+    ///   - preAction: Can be used it before action we need to do some on **main thread**
+    func addChildOnMain(
+        childVC: UIViewController,
+        to vc: UIViewController?,
+        animated: Bool = true,
+        preAction: @escaping () -> Void = { }
+    ) async {
+        await MainActor.run { [weak childVC] in
+            if let childVC {
+                preAction()
+                vc?.addChild(childVC)
+            }
+        }
     }
     
     
-    func checkForRemoveMainNavigationController(animated: Bool = true) {
-        DispatchQueue.main.async {
+    /// Will check is it possible to remove main navigation flow controller and remove it on main thread
+    /// - Parameters:
+    ///   - preAction: Can be used it before action we need to do some on** main thread**
+    func checkForRemoveMainNavigationController(
+        animated: Bool = true,
+        preAction: @escaping () -> Void = { }
+    ) async {
+        await MainActor.run {
+            preAction()
             guard let _ = self.mainFlowNavController else { return }
             self.mainFlowNavController?.dismiss(animated: animated)
             self.mainFlowNavController = nil

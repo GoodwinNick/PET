@@ -8,6 +8,7 @@ class MainViewModel: BaseViewModel {
 
     init(view: MainView) {
         self.view = view
+        super.init()
     }
     
     override func viewDidLoad() {

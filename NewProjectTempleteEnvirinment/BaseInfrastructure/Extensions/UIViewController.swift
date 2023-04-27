@@ -1,6 +1,17 @@
 import UIKit
 
 extension UIViewController {
+    class func instantiateFromStoryboard(_ name: String = "Main") async -> Self {
+        return await instantiateFromStoryboardHelper(name)
+    }
+    
+    fileprivate class func instantiateFromStoryboardHelper<T>(_ name: String) async -> T {
+        let storyboard = UIStoryboard(name: name, bundle: nil)
+        let identifier = String(describing: self)
+        let controller = await MainActor.run(resultType: T.self) { storyboard.instantiateViewController(withIdentifier: identifier) as! T }
+        return controller
+    }
+
     class func instantiateFromStoryboard(_ name: String = "Main") -> Self {
         return instantiateFromStoryboardHelper(name)
     }
@@ -11,7 +22,7 @@ extension UIViewController {
         let controller = storyboard.instantiateViewController(withIdentifier: identifier) as! T
         return controller
     }
-
+    
     func scrollForKeyboardChanges(_ scrollView: UIScrollView) {
         
         NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: nil) { [weak self] notification in

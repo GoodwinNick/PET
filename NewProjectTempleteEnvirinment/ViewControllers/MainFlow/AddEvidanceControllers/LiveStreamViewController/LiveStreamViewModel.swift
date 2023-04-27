@@ -18,8 +18,12 @@ class LiveStreamViewModel: BaseViewModel {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configSession()
-        configRTMP()
+        let task = Task(priority: .background) {
+            let isConfigSuccess = await configSession()
+            if !isConfigSuccess { return }
+            await configRTMP()
+        }
+        
     }
     
 }
@@ -28,7 +32,9 @@ class LiveStreamViewModel: BaseViewModel {
 // MARK: Session Configuration
 private extension LiveStreamViewModel {
     
-    func configSession() {
+    /// Session configuration
+    /// - Returns: Bool value of isSuccesful
+    func configSession() async -> Bool {
 
         if session.canSetSessionPreset(.hd1280x720) {
             session.sessionPreset = .hd1280x720
@@ -37,38 +43,25 @@ private extension LiveStreamViewModel {
         // Critical for live stream will pop if will fails
         do {
             try configVideoInput()
+            try configVideoOutput()
         } catch {
             self.showAlertWithPop(title: "Error", message: error.localizedDescription)
+            return false
         }
         
         // Not so critical for live stream will show error and continue with video only
         do {
             try configAudioInput()
-        } catch {
-            self.showAlert(title: "Error", message: error.localizedDescription)
-        }
-        
-        // Critical for live stream will pop if will fails
-        do {
-            try configVideoOutput()
-        } catch {
-            self.showAlertWithPop(title: "Error", message: error.localizedDescription)
-        }
-        
-        // Not so critical for live stream will show error and continue with video only
-        do {
             try configAudioOutput()
         } catch {
             self.showAlert(title: "Error", message: error.localizedDescription)
-        }
+        }        
         
+        DispatchQueue.global(qos: .background).async { self.session.startRunning() }
         
-        DispatchQueue.global(qos: .background).async {
-            self.session.startRunning()
-        }
+        await view?.configPreviewLayer(session: session)
         
-        view?.configPreviewLayer(session: session)
-        
+        return true
     }
    
     
@@ -78,14 +71,14 @@ private extension LiveStreamViewModel {
 
 // MARK: - RTMP Configuration
 private extension LiveStreamViewModel {
-    func configRTMP() {
+    func configRTMP() async {
         let rtmpConnection = RTMPConnection()
-        rtmpConnection.connect("rtmp://192.168.31.168:1935/live")
+        rtmpConnection.connect("rtmp://192.168.31.167:1935/live")
         
         let rtmpStream = RTMPStream(connection: rtmpConnection)
         rtmpStream.videoSettings = [.width: 720, .height: 1280, .bitrate: 800_000]
         rtmpStream.audioSettings = [.sampleRate: 44_100]
-        rtmpStream.publish("rkzfuTM-n")
+        rtmpStream.publish("Sk1gagdXh")
         
         self.rtmpConnection = rtmpConnection
         self.rtmpStream = rtmpStream
@@ -176,8 +169,12 @@ extension LiveStreamViewModel: AVCaptureVideoDataOutputSampleBufferDelegate, AVC
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         switch output {
-        case _ where output is AVCaptureAudioDataOutput: rtmpStream?.appendSampleBuffer(sampleBuffer, withType: .audio)
-        case _ where output is AVCaptureVideoDataOutput: rtmpStream?.appendSampleBuffer(sampleBuffer, withType: .video)
+        case _ where output is AVCaptureAudioDataOutput:
+            rtmpStream?.appendSampleBuffer(sampleBuffer, withType: .audio)
+            
+        case _ where output is AVCaptureVideoDataOutput:
+            rtmpStream?.appendSampleBuffer(sampleBuffer, withType: .video)
+            
         default: break
         }
        

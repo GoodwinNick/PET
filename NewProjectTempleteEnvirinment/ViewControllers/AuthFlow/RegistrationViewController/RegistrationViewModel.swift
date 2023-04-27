@@ -43,6 +43,7 @@ class RegistrationViewModel: BaseViewModel {
     
     init(view: RegistrationView) {
         self.view = view
+        super.init()
     }
 }
 

@@ -8,6 +8,7 @@ class PhotoViewerViewModel: BaseViewModel {
     init(view: PhotoViewerView, url: URL) {
         self.view = view
         self.photoURL = url
+        super.init()
     }
     
     override func viewDidLoad() {

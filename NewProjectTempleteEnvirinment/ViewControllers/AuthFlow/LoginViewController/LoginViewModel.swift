@@ -9,6 +9,7 @@ class LoginViewModel: BaseViewModel {
     
     init(view: LoginView) {
         self.view = view
+        super.init()
     }
 }
 

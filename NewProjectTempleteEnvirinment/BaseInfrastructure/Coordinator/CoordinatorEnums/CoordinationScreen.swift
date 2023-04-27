@@ -35,31 +35,33 @@ enum Screens {
 extension Screens {
     
     var viewController: UIViewController {
-        let CR = CompositionRoot.sharedInstance
-        switch self {
-            
-        // MARK: Auth flow screens
-        case .coordinator   : return CR.resolveCoordinatorViewController()
-        case .login         : return CR.resolveLoginViewController()
-        case .registration  : return CR.resolveRegistrationViewController()
-        case .forgotPassword: return CR.resolveForgotPasswordViewController()
-            
-            
-        // MARK: Any top level screens
-        case .alert      (let vc )            : return vc.withUpdatedAppearance()
-        case .takePhoto  (let vc )            : return vc
-        case .videoPlayer(let url)            : return CR.resolveVideoPlayerViewController(url: url)
-        case .photoViewer(let url)            : return CR.resolvePhotoViewerViewController(url: url)
-        case .otp(let otpCase, let completion): return CR.resolveOTPViewController(otpCase: otpCase, completion: completion)
-            
-            
-        // MARK: Main flow screens
-        case .main                : return CR.resolveMainViewController()
-        case .audioRedorder       : return CR.resolveAudioRecodingViewController()
-        case .videoCaptirer       : return CR.resolveVideoCapturerViewController()
-        case .liveStream          : return CR.resolveLiveStreamViewController()
-        case .evidenceSection     : return CR.resolveEvidenceSectionViewController()
-            
+       get async {
+            let CR = CompositionRoot.sharedInstance
+            switch self {
+                
+                // MARK: Auth flow screens
+            case .coordinator   : return CR.resolveCoordinatorViewController()
+            case .login         : return await CR.resolveLoginViewController()
+            case .registration  : return await CR.resolveRegistrationViewController()
+            case .forgotPassword: return await CR.resolveForgotPasswordViewController()
+                
+                
+                // MARK: Any top level screens
+            case .alert      (let vc )            : return await vc.withUpdatedAppearance()
+            case .takePhoto  (let vc )            : return vc
+            case .videoPlayer(let url)            : return await CR.resolveVideoPlayerViewController(url: url)
+            case .photoViewer(let url)            : return await CR.resolvePhotoViewerViewController(url: url)
+            case .otp(let otpCase, let completion): return await CR.resolveOTPViewController(otpCase: otpCase, completion: completion)
+                
+                
+                // MARK: Main flow screens
+            case .main                : return await CR.resolveMainViewController()
+            case .audioRedorder       : return await CR.resolveAudioRecodingViewController()
+            case .videoCaptirer       : return await CR.resolveVideoCapturerViewController()
+            case .liveStream          : return await CR.resolveLiveStreamViewController()
+            case .evidenceSection     : return await CR.resolveEvidenceSectionViewController()
+                
+            }
         }
     }
 }

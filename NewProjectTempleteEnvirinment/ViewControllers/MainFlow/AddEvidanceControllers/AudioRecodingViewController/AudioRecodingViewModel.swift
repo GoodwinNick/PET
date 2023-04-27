@@ -26,6 +26,7 @@ class AudioRecodingViewModel: BaseViewModel {
     
     init(view: AudioRecodingView) {
         self.view = view
+        super.init()
     }
     
    

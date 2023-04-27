@@ -5,6 +5,7 @@ class CoordinatorViewModel: BaseViewModel {
     
     init(view: CoordinatorView) {
         self.view = view
+        super.init()
     }
 }
 

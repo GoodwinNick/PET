@@ -12,7 +12,7 @@ extension UINavigationController {
 
 
 extension UINavigationController {
-    convenience init(screen: Screens) {
-        self.init(rootViewController: screen.viewController)
+    convenience init(screen: Screens) async {
+        self.init(rootViewController: await screen.viewController)
     }
 }
