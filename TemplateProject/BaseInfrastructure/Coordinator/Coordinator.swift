@@ -186,7 +186,7 @@ fileprivate extension Coordinator {
                 completion: { [weak vc] _ in
                     UIView.animate(withDuration: 0.25) { [weak vc] in
                         vc?.view.frame.origin.x = 0
-                        (vc as? MenuViewController)?.startShowViewAnimation()
+                        vc?.startShowViewAnimation()
                     }
                 }
             )
@@ -276,13 +276,12 @@ fileprivate extension Coordinator {
         // For correctly intrinsicContentSize
         let shadowHeight: CGFloat = 8
         let intrinsicContentSizeHeight = await MainActor.run(resultType: CGFloat.self) { topExistNavigationLevel.navigationBar.intrinsicContentSize.height } + shadowHeight
-        let topNavBounds = await MainActor.run(resultType: CGRect.self) { topExistNavigationLevel.view.bounds }
-        let saveAreaTop = await MainActor.run(resultType: CGFloat.self) { UIApplication.safeAreaInsets.top }
-        
+        let topNavBounds = await MainActor.run(resultType: CGRect.self) { topExistNavigationLevel.topViewController?.view.bounds ?? .zero }
+
         let xPosition = await getStartXPosition()
         let yPosition = await getStartYPosition() - shadowHeight
         let width     = topNavBounds.width
-        let height    = topNavBounds.height - intrinsicContentSizeHeight - saveAreaTop
+        let height    = topNavBounds.height - intrinsicContentSizeHeight// - saveAreaTop + saveAreaBottom
         return CGRect(x: xPosition, y: yPosition, width: width, height: height)
     }
     

@@ -13,25 +13,25 @@ class MainViewModel: BaseViewModel {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchTask()
+        Task(priority: .background) {
+            await fetchTask()
+        }
     }
 }
 
 
 // MARK: API
  extension MainViewModel {
-    func fetchTask() {
-        Task(priority: .background) {
-            self.view?.showHUD()
-            do {
-                async let zones: [DangerZone] = fetchDangerZones()
-
-                self.view?.draw(zones: try await zones)
-                self.view?.hideHUD()
-            } catch {
-                self.view?.showErrorHUD(error: error)
-            }
-        }
+     func fetchTask() async {
+         self.view?.showHUD()
+         do {
+             async let zones: [DangerZone] = fetchDangerZones()
+             
+             await self.view?.draw(zones: try await zones)
+             self.view?.hideHUD()
+         } catch {
+             self.view?.showErrorHUD(error: error)
+         }
     }
     
      func fetchDangerZones() async throws -> [DangerZone] {

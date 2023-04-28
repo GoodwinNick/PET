@@ -100,8 +100,8 @@ extension MenuViewController {
                 self?.view.setBGColor(.transparentMenuView(alpha: 0.01))
             },
             completion: { [weak self] _ in
-                self?.removeFromParent()
                 self?.view.removeFromSuperview()
+                self?.removeFromParent()
             }
         )
         

@@ -42,15 +42,18 @@ extension MainViewController {
 // MARK: MainView
 extension MainViewController: MainView {
     func draw(zones: [DangerZone]) {
-        self.mapView.drawZones(zones)
-        let cameraPosition = GMSCameraPosition.camera(
-            withLatitude : zones.first?.points.first?.latitude ?? 0.0,
-            longitude    : zones.first?.points.first?.longitude ?? 0.0,
-            zoom         : 14
-        )
+        let latitude  = zones.first?.points.first?.latitude  ?? 0.0
+        let longitude = zones.first?.points.first?.longitude ?? 0.0
+        
+        let cameraPosition = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 14)
         
         let cameraUpdate = GMSCameraUpdate.setCamera(cameraPosition)
-        self.mapView.animate(with: cameraUpdate)
+        
+        DispatchQueue.main.async {
+            self.mapView.animate(with: cameraUpdate)
+        }
+        
+         self.mapView.drawZones(zones) 
     }
 }
 

@@ -4,6 +4,47 @@ import CoreLocation
 import GoogleMaps
 
 class MapPolygone: GMSPolygon {
+    
+    var type: ZoneType
+
+    override init() {
+        self.type = .unknown
+        super.init()
+    }
+    
+    convenience init(path: GMSPath?) {
+        self.init()
+        self.path = path
+        self.type = .unknown
+    }
+    
+    convenience init(path: GMSPath, zoneType: ZoneType) {
+        self.init(path: path)
+        self.type = zoneType
+    }
+    
+    override func setOnMain(_ map: GMSMapView) async {
+        await MainActor.run { [self, map] in
+            self.strokeColor = self.type.strokeColor
+            self.fillColor   = self.type.fillColor
+            self.strokeWidth = self.type.strokeWidth
+            self.map = map
+        }
+
+    }
+}
+
+
+extension GMSPolygon {
+    @objc func setOnMain(_ map: GMSMapView) async {
+        await MainActor.run { [weak self, weak map] in
+            self?.map = map
+        }
+    }
+}
+
+extension MapPolygone {
+    
     public enum ZoneType {
         case danger
         case unknown
@@ -26,42 +67,6 @@ class MapPolygone: GMSPolygon {
             case .unknown: return 0.0
             }
         }
-
-    }
-    var type: ZoneType
-
-    override init() {
-        self.type = .unknown
-        super.init()
     }
     
-    convenience init(path: GMSPath?) {
-        self.init()
-        self.path = path
-        self.type = .unknown
-    }
-    
-    convenience init(path: GMSPath, zoneType: ZoneType) {
-        self.init(path: path)
-        self.type = zoneType
-    }
-    
-    override func setOnMain(_ map: GMSMapView) {
-        DispatchQueue.main.async { [self, map] in
-            self.strokeColor = self.type.strokeColor
-            self.fillColor   = self.type.fillColor
-            self.strokeWidth = self.type.strokeWidth
-            self.map = map
-        }
-
-    }
-}
-
-
-extension GMSPolygon {
-    @objc func setOnMain(_ map: GMSMapView) {
-        DispatchQueue.main.async { [weak self, weak map] in
-            self?.map = map
-        }
-    }
 }

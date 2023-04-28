@@ -14,7 +14,8 @@ class EvidenceSectionViewModel: BaseViewModel {
     
     @objc dynamic var selectedIndex = 0 {
         didSet {
-            configDataSource()
+            Task(priority: .userInitiated) { await configDataSource() }
+            
         }
     }
     
@@ -46,7 +47,9 @@ extension EvidenceSectionViewModel {
     
     override func viewWillAppear() {
         super.viewWillAppear()
-        configDataSource()
+        Task(priority: .background) {
+            await configDataSource()
+        }
     }
     
 }
@@ -56,7 +59,7 @@ extension EvidenceSectionViewModel {
     func clearCache() {
         Task(priority: .background) {
             try await CacheManager.shared.clearCache()
-            configDataSource()
+            await configDataSource()
         }
     }
     
@@ -80,23 +83,20 @@ extension EvidenceSectionViewModel {
 // MARK: - Initials
 extension EvidenceSectionViewModel {
     
-    func configDataSource() {
-        
-        Task(priority: .background) {
-            do {
-                view?.showHUD()
-                let cacheManager = CacheManager.shared
-                let getCreationDate = cacheManager.getCreationDate
-                async let files = cacheManager.getFilesList(for: sections[selectedIndex])
-                    .sorted { getCreationDate($0) > getCreationDate($1) }
+    func configDataSource() async {
+        do {
+            view?.showHUD()
+            let cacheManager = CacheManager.shared
+            let getCreationDate = cacheManager.getCreationDate
+            async let files = cacheManager.getFilesList(for: sections[selectedIndex])
                 
-                await dataSource.config(try await files, by: >)
-                view?.hideHUD()
-            } catch {
-                await dataSource.config([], by: >)
-                view?.showErrorHUD(error: error)
-            }
+            await dataSource.config(try await files, by: >)
+            view?.hideHUD()
+        } catch {
+            await dataSource.config([], by: >)
+            view?.showErrorHUD(error: error)
         }
+        
     }
     
 }
@@ -134,7 +134,7 @@ private extension EvidenceSectionViewModel {
             let cacheManager = CacheManager.shared
             
             try await cacheManager.saveFile(data: imageData, fileName: filename, type: .photo)
-            configDataSource()
+            await configDataSource()
         } catch {
             print(error)
         }
