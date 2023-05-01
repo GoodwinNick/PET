@@ -18,14 +18,19 @@ class LiveStreamViewModel: BaseViewModel {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let task = Task(priority: .background) {
-            let isConfigSuccess = await configSession()
-            if !isConfigSuccess { return }
-            await configRTMP()
-        }
-        
+        Task(priority: .background) { await configuration() }
     }
     
+    
+    fileprivate func configuration() async {
+        let isConfigSuccess = await self.configSession()
+        if !isConfigSuccess { return }
+        let action = CoordinatorAction.showAlertTextField(title: "RTMP",
+                                                          message: "Please enter RTMP server endpoint",
+                                                          confirmAction: {  await self.configRTMP(server: $0) },
+                                                          cancel: { self.coordinator.move(as: .pop(flow: .anyTopLevel)) })
+        self.coordinator.move(as: action)
+    }
 }
 
 
@@ -55,9 +60,9 @@ private extension LiveStreamViewModel {
             try configAudioOutput()
         } catch {
             self.showAlert(title: "Error", message: error.localizedDescription)
-        }        
+        }
         
-        DispatchQueue.global(qos: .background).async { self.session.startRunning() }
+        self.session.startRunning()
         
         await view?.configPreviewLayer(session: session)
         
@@ -71,9 +76,9 @@ private extension LiveStreamViewModel {
 
 // MARK: - RTMP Configuration
 private extension LiveStreamViewModel {
-    func configRTMP() async {
+    func configRTMP(server endpoint: String) async {
         let rtmpConnection = RTMPConnection()
-        rtmpConnection.connect("rtmp://192.168.31.167:1935/live")
+        rtmpConnection.connect(endpoint)
         
         let rtmpStream = RTMPStream(connection: rtmpConnection)
         rtmpStream.videoSettings = [.width: 720, .height: 1280, .bitrate: 800_000]

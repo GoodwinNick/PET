@@ -95,7 +95,7 @@ extension OTPViewController: OTPView {
 extension OTPViewController: AEOTPTextFieldDelegate {
     func didUserFinishEnter(the code: String) {
         viewModel.code = code
-        view.endEditing(true)
+        dismissKeyboard()
     }
     
     

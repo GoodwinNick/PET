@@ -3,7 +3,7 @@ import Foundation
 protocol ViewControllerIdentify {
     var viewControllerIdentificator: String { get }
     var isOneOfMain: Bool { get }
-    
+        
     func compareID(to id: String) -> Bool
 }
 

@@ -3,6 +3,10 @@ import UIKit
 
 class CustomNavigationController: UINavigationController {
 
+    static let shadowHeight: CGFloat = 8
+    
+    typealias Color = ColorManager.ColorCase
+    
     init() {
         super.init(nibName: nil, bundle: nil)
     }
@@ -41,23 +45,27 @@ class CustomNavigationController: UINavigationController {
         let navigationBarAppearance: UINavigationBarAppearance = UINavigationBarAppearance()
         navigationBarAppearance.configureWithOpaqueBackground()
         
-        navigationBarAppearance.backgroundColor = ColorManager.ColorCase.navigationBackgroung.color
-        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor : ColorManager.ColorCase.navigationTitle.color]
+        navigationBarAppearance.backgroundColor     = Color.navigationBackgroung.color
+        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor : Color.navigationTitle.color]
         
         self.navigationBar.scrollEdgeAppearance = navigationBarAppearance
-        self.navigationBar.standardAppearance = navigationBarAppearance
-        self.navigationBar.compactAppearance = navigationBarAppearance
+        self.navigationBar.standardAppearance   = navigationBarAppearance
+        self.navigationBar.compactAppearance    = navigationBarAppearance
         
         
-        UINavigationBar.appearance().barTintColor = ColorManager.ColorCase.navigationTitle.color
-        UINavigationBar.appearance().tintColor = ColorManager.ColorCase.navigationTitle.color
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : ColorManager.ColorCase.navigationTitle.color]
-        UINavigationBar.appearance().backgroundColor = ColorManager.ColorCase.navigationBackgroung.color
+        UINavigationBar.appearance().barTintColor        = Color.navigationTitle.color
+        UINavigationBar.appearance().tintColor           = Color.navigationTitle.color
+        UINavigationBar.appearance().backgroundColor     = Color.navigationBackgroung.color
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : Color.navigationTitle.color]
         
-        self.navigationBar.shadow(offset: .init(width: 0, height: 8), radius: 4, color: ColorManager.ColorCase.shadow.color)
-        self.navigationBar.backgroundColor = ColorManager.ColorCase.navigationBackgroung.color
-        self.navigationBar.tintColor = ColorManager.ColorCase.navigationTitle.color
-        self.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : ColorManager.ColorCase.navigationTitle.color]
+        self.navigationBar.shadow(
+            offset: .init(width: 0, height: CustomNavigationController.shadowHeight),
+            radius: 4,
+            color: Color.shadow.color
+        )
+        self.navigationBar.backgroundColor     = Color.navigationBackgroung.color
+        self.navigationBar.tintColor           = Color.navigationTitle.color
+        self.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : Color.navigationTitle.color]
 
         self.addBottomBorder()
     }

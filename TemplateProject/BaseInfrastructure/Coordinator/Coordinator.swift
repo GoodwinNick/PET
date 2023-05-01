@@ -49,8 +49,10 @@ extension Coordinator {
             case .showMenu(let fromMenuItem): await self.showMenuAction(fromItem: fromMenuItem)
                 
             case .showAlert(let title, let message, let actionTitle, let action):
-                await self.showAlert(title: title, message: message, actionTitle: actionTitle, action: action)
-                
+                await self.showAlert(title, message, actionTitle, action)
+             
+            case .showAlertTextField(let title, let message, let confirmAction, let cancel):
+                await self.showAlertTextField(title, message, confirmAction, cancel)
             }
         }
     }
@@ -63,6 +65,21 @@ extension Coordinator {
 // MARK: - Start main actions fileprivate
 fileprivate extension Coordinator {
     
+    func showAlertTextField(_ title: String, _ message: String, _ confirmAction: @escaping (String) async -> Void, _ cancelAction: @escaping () async -> Void) async {
+        let alertController: UIAlertController = await UIAlertController(title: title, message: message, preferredStyle: .alert)
+        await MainActor.run {
+            alertController.addTextField { $0.text = "rtmp://192.168.31.167:1935/live" }
+        }
+        let confirmAction = await UIAlertAction(title: "Confirm", style: .default) {
+            await confirmAction(await alertController.textFields?.first?.text ?? "")
+        }
+        let cancelAction = await UIAlertAction(title: "Cancel", style: .cancel) { await cancelAction() }
+        
+        await alertController.addAction(confirmAction)
+        await alertController.addAction(cancelAction)
+        await self.present(alertController)
+        
+    }
     
     // MARK: push
     func push(_ vc: UIViewController, on flow: Screens.FlowDestination, animated: Bool = true) async {
@@ -85,7 +102,7 @@ fileprivate extension Coordinator {
     
     // MARK: present
     func present(_ vc: UIViewController, animated: Bool = true) async {
-            await self.presentOnMain(vc: vc, navCon:topExistNavigationLevel, animated: animated)
+            await self.presentOnMain(vc: vc, navCon: topExistNavigationLevel, animated: animated)
         
     }
     
@@ -149,7 +166,7 @@ fileprivate extension Coordinator {
     }
     
     // MARK: showAlert
-    func showAlert(title: String, message: String, actionTitle: String, action: @escaping () -> Void) async {
+    func showAlert(_ title: String, _ message: String, _ actionTitle: String, _ action: @escaping () -> Void) async {
         await MainActor.run {
             let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
             alertVC.overrideUserInterfaceStyle = UDShared.instance.isWhiteMode ? .light : .dark
@@ -215,15 +232,18 @@ fileprivate extension Coordinator {
         }
         
         guard let mainFlowNavController else {
-            await presentOnMain(vc: await self.configMainFlowNavigation(with: vc), //mainFlowNavController!,
+            await presentOnMain(vc: await self.configMainFlowNavigation(with: vc),
                                 navCon: authFlowNavController,
-                                animated: animated,
-                                preAction: {  } )
+                                animated: animated)
             throw NavigationErrors.mainNavigationWasPushed
         }
         
-        if (vc as? ViewControllerIdentify)?.isOneOfMain == true,
-           await MainActor.run(resultType: Bool.self) { (mainFlowNavController.topViewController as? ViewControllerIdentify)?.isOneOfMain == true } {
+        let isTopControllerMain: Bool = await MainActor.run {
+            (mainFlowNavController.topViewController as? ViewControllerIdentify)?.isOneOfMain == true
+        }
+        let isVCMain = (vc as? ViewControllerIdentify)?.isOneOfMain == true
+        
+        if isVCMain && isTopControllerMain {
             throw NavigationErrors.needToChangeMenuItem(mainFlowNavController)
         }
         return mainFlowNavController
@@ -231,7 +251,7 @@ fileprivate extension Coordinator {
     }
     
     func configMainFlowNavigation(with rootVC: UIViewController) async -> CustomNavigationController {
-        return await MainActor.run(resultType: CustomNavigationController.self) {
+        return await MainActor.run {
             self.mainFlowNavController = CustomNavigationController(rootViewController: rootVC)
             self.mainFlowNavController!.modalPresentationStyle = .overFullScreen
             return mainFlowNavController!
@@ -258,31 +278,35 @@ fileprivate extension Coordinator {
         return (nil, false)
     }
     
+    /// Start X position for menuViewController
     func getStartXPosition() async -> CGFloat {
         switch LanguageManager.shared.language.getDirection {
-        case .rightToLeft:  return await MainActor.run(resultType: CGFloat.self) { topExistNavigationLevel.view.bounds.width *  0.75 }
-        case .leftToRight:  return await MainActor.run(resultType: CGFloat.self) { topExistNavigationLevel.view.bounds.width * -0.75 }
+        case .rightToLeft:  return await MainActor.run { topExistNavigationLevel.view.bounds.width *  0.75 }
+        case .leftToRight:  return await MainActor.run { topExistNavigationLevel.view.bounds.width * -0.75 }
         }
         
     }
     
+    /// Start Y position for menuViewController
     func getStartYPosition() async -> CGFloat {
-        return await MainActor.run(resultType: CGFloat.self) {
+        return await MainActor.run {
             return topExistNavigationLevel.navigationBar.intrinsicContentSize.height + UIApplication.safeAreaInsets.top
         }
     }
     
+    /// Rect for menu view controller
     func getMenuRect() async -> CGRect {
         // For correctly intrinsicContentSize
-        let shadowHeight: CGFloat = 8
-        let intrinsicContentSizeHeight = await MainActor.run(resultType: CGFloat.self) { topExistNavigationLevel.navigationBar.intrinsicContentSize.height } + shadowHeight
-        let topNavBounds = await MainActor.run(resultType: CGRect.self) { topExistNavigationLevel.topViewController?.view.bounds ?? .zero }
+        let shadowHeight                    : CGFloat = CustomNavigationController.shadowHeight
+        async let intrinsicContentSizeHeight: CGFloat = MainActor.run { topExistNavigationLevel.navigationBar.intrinsicContentSize.height } + shadowHeight
+        async let topNavBounds              : CGRect  = MainActor.run { topExistNavigationLevel.topViewController?.view.bounds ?? .zero }
 
-        let xPosition = await getStartXPosition()
-        let yPosition = await getStartYPosition() - shadowHeight
-        let width     = topNavBounds.width
-        let height    = topNavBounds.height - intrinsicContentSizeHeight// - saveAreaTop + saveAreaBottom
-        return CGRect(x: xPosition, y: yPosition, width: width, height: height)
+        async let xPosition = getStartXPosition()
+        async let yPosition = getStartYPosition() - shadowHeight
+        
+        let width  = await topNavBounds.width
+        let height = await topNavBounds.height - intrinsicContentSizeHeight
+        return CGRect(x: await xPosition, y: await yPosition, width: width, height: height)
     }
     
 }
@@ -296,7 +320,7 @@ fileprivate extension Coordinator {
     }
     
     func onMainActor<T: Sendable>(actionForExecute: () -> T) async -> T {
-        return await MainActor.run(resultType: T.self) {
+        return await MainActor.run {
             return actionForExecute()
         }
     }

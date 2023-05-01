@@ -231,7 +231,7 @@ extension RegistrationViewController : UITextFieldDelegate {
         case passTextField             : passConformationTextField.becomeFirstResponder()
         case passConformationTextField : passConformationTextField.resignFirstResponder()
             
-        default: view.endEditing(true)
+        default: dismissKeyboard()
         }
         
         return true

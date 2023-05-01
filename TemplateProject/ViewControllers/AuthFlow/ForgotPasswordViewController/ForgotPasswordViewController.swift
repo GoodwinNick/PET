@@ -67,7 +67,7 @@ extension ForgotPasswordViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
         case emailOrNicknameTextField: emailOrNicknameTextField.resignFirstResponder()
-        default: view.endEditing(true)
+        default: dismissKeyboard()
         }
         return true
     }

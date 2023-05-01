@@ -5,20 +5,22 @@ import SVProgressHUD
 
 class VideoRecorder: NSObject {
     
-    private      var finalUrl: URL?
+    private      var finalUrl    : URL?
     private      var cameraDevice: AVCaptureDevice
-    private      var videoInput: AVCaptureDeviceInput
-    private      var session: AVCaptureSession
-    private      var movieOutput: AVCaptureMovieFileOutput
-    private(set) var isRecording = false
-    private      var isFrontCamera = false
-    private      var isFlashOn = false
-    private      var isSavingInProgress = false
+    private      var videoInput  : AVCaptureDeviceInput
+    private      var session     : AVCaptureSession
+    private      var movieOutput : AVCaptureMovieFileOutput
     private      var previewLayer: AVCaptureVideoPreviewLayer
-    private      var tempUrls: [URL] = []
+    private      var tempUrls    : [URL] = []
+   
+    private(set) var isRecording        = false
+    private      var isFrontCamera      = false
+    private      var isFlashOn          = false
+    private      var isSavingInProgress = false
     
-    private      var lastTempIndex: Int = 0
+    private      var lastTempIndex      : Int = 0
     private      var lastMergedVideoFile: Int = 0
+    private      var videoCounter       : Int = 0
     
     
     init(previewView: UIView) throws {
@@ -96,12 +98,13 @@ extension VideoRecorder {
     public func startRecording(_ url: URL) async throws {
         self.finalUrl = url
         self.tempUrls = []
+        self.videoCounter += 1
         lastMergedVideoFile += 1
         lastTempIndex += 1
         let firstTempUrl = try await CacheManager.shared
             .getFileURLWith(
                 .temp(.videoRecords),
-                url: "Video\(lastTempIndex)"
+                url: "Video_\(videoCounter)_\(lastTempIndex)"
             )
         
         self.movieOutput.startRecording(to: firstTempUrl, recordingDelegate: self)
@@ -206,7 +209,7 @@ private extension VideoRecorder {
         let nextTempUrl = try await CacheManager.shared
             .getFileURLWith(
                 .temp(.videoRecords),
-                url: "Video\(lastTempIndex)"
+                url: "Video_\(videoCounter)_\(lastTempIndex)"
             )
         
         self.movieOutput.startRecording(to: nextTempUrl, recordingDelegate: self)

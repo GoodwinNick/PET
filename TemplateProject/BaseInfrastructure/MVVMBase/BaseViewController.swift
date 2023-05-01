@@ -97,7 +97,6 @@ class BaseViewController<T>: UIViewController where T: BaseViewModel {
     
     // MARK: Bar buttons configuration
     @objc open dynamic func configBarMenuItem() {
-        print(".;; configBarMenuItem")
         if self is MenuViewController { return }
         if !self.isOneOfMain { return }
         if coordinator.mainFlowNavController != nil {
@@ -271,7 +270,6 @@ extension BaseViewController {
     // MARK: UI helpers
     private func clearBarItems() {
         if self is MenuViewController { return }
-        print(".;; clearBarItems")
         leftMenuButton = nil
         apearenceModeButton = nil
         languageButton = nil
@@ -282,11 +280,7 @@ extension BaseViewController {
         self.navigationItem.rightBarButtonItems = []
         self.navigationItem.rightBarButtonItem = nil
 
-        if #available(iOS 16.0, *) {
-            self.navigationItem.centerItemGroups = []
-        } else {
-            // Fallback on earlier versions
-        }
+        if #available(iOS 16.0, *) { self.navigationItem.centerItemGroups = [] }
     }
 
     func reconfigNavigationBar() {
@@ -327,9 +321,10 @@ extension BaseViewController: ViewControllerIdentify {
     
     var menuItem: MenuItem {
         switch self {
-        case _ where self is MainViewController: return .main
+        case _ where self is MainViewController           : return .main
         case _ where self is EvidenceSectionViewController: return .evidence
-        default: return .nonMenuCase
+        default:
+            return .nonMenuCase
         }
     }
 }

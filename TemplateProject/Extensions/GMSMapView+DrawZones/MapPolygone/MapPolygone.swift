@@ -23,22 +23,26 @@ class MapPolygone: GMSPolygon {
         self.type = zoneType
     }
     
-    override func setOnMain(_ map: GMSMapView) async {
-        await MainActor.run { [self, map] in
-            self.strokeColor = self.type.strokeColor
-            self.fillColor   = self.type.fillColor
-            self.strokeWidth = self.type.strokeWidth
+    override func setOnMain(_ map: GMSMapView) {
+        self.strokeColor = self.type.strokeColor
+        self.fillColor   = self.type.fillColor
+        self.strokeWidth = self.type.strokeWidth
+        
+        DispatchQueue.main.async { [self, map] in
             self.map = map
         }
-
     }
 }
 
 
 extension GMSPolygon {
-    @objc func setOnMain(_ map: GMSMapView) async {
-        await MainActor.run { [weak self, weak map] in
-            self?.map = map
+    @objc func setOnMain(_ map: GMSMapView) {
+        self.strokeColor = .black
+        self.fillColor   = .black.withAlphaComponent(0.1)
+        self.strokeWidth = 1
+        
+        DispatchQueue.main.async { [self, map] in
+            self.map = map
         }
     }
 }

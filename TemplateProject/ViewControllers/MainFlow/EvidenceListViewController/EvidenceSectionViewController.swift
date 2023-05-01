@@ -38,29 +38,27 @@ extension EvidenceSectionViewController {
     override func configStrings() {
         super.configStrings()
         let segments: [LocalStrings] = [.audioSection, .videoSection, .photoSection]
-
-        segmentControll  .setSegmentsAttributedTitles(segments                      , .medi(size: 16, .labelText   ))
-        clearCacheButton .setButtonAttributedTitle   (LocalStrings.clearCacheButton , .medi(size: 16, .bgButtonText))
-        audioButton      .setButtonAttributedTitle   (LocalStrings.audioButton      , .medi(size: 16, .bgButtonText))
-        videoButton      .setButtonAttributedTitle   (LocalStrings.videoButton      , .medi(size: 16, .bgButtonText))
-        photoButton      .setButtonAttributedTitle   (LocalStrings.photoButton      , .medi(size: 16, .bgButtonText))
-        liveStreamButton .setButtonAttributedTitle   (LocalStrings.liveStreamButton , .medi(size: 16, .bgButtonText))
-        evidenceListLabel.setLabelAttributedTitle    (LocalStrings.evidenceListLabel, .medi(size: 23, .labelText   ))
-        addEvidenceLabel .setLabelAttributedTitle    (LocalStrings.addEvidenceLabel , .medi(size: 23, .labelText   ))
+        
+        segmentControll  .setSegmentsAttributedTitles(segments                      , .medi(size: 16, .labelText))
+        evidenceListLabel.setLabelAttributedTitle    (LocalStrings.evidenceListLabel, .medi(size: 23, .labelText))
+        addEvidenceLabel .setLabelAttributedTitle    (LocalStrings.addEvidenceLabel , .medi(size: 23, .labelText))
+        
+        [
+            clearCacheButton: LocalStrings.clearCacheButton,
+            audioButton     : LocalStrings.audioButton,
+            videoButton     : LocalStrings.videoButton,
+            photoButton     : LocalStrings.photoButton,
+            liveStreamButton: LocalStrings.liveStreamButton
+        ].forEach { $0.key?.setButtonAttributedTitle($0.value, .medi(size: 16, .bgButtonText)) }
     }
     
     override func configColors() {
         super.configColors()
         self.view.setBGColor(.background)
-        
         segmentControll .changeAppearance()
-        clearCacheButton.config(bgColor: .buttonBackground, borderColor: .buttonBorder, borderWidth: 2, cornerRadius: 8)
-        audioButton     .config(bgColor: .buttonBackground, borderColor: .buttonBorder, borderWidth: 2, cornerRadius: 8)
-        videoButton     .config(bgColor: .buttonBackground, borderColor: .buttonBorder, borderWidth: 2, cornerRadius: 8)
-        photoButton     .config(bgColor: .buttonBackground, borderColor: .buttonBorder, borderWidth: 2, cornerRadius: 8)
-        liveStreamButton.config(bgColor: .buttonBackground, borderColor: .buttonBorder, borderWidth: 2, cornerRadius: 8)
-        
         tableView.visibleCells.forEach { $0.changeAppearance() }
+        [clearCacheButton, audioButton, videoButton, photoButton, liveStreamButton]
+            .forEach { $0.config(bgColor: .buttonBackground, borderColor: .buttonBorder, borderWidth: 2, cornerRadius: 8) }
     }
     
     
@@ -81,27 +79,17 @@ extension EvidenceSectionViewController {
 // MARK: - Actions
 extension EvidenceSectionViewController {
     
-    @IBAction func audioButtonTapped(_ sender: UIButton) {
-        viewModel.addAudio()
-    }
+    @IBAction func audioButtonTapped     (_ sender: UIButton) { viewModel.addAudio()    }
     
-    @IBAction func videoButtonTapped(_ sender: UIButton) {
-        viewModel.addVideo()
-    }
+    @IBAction func videoButtonTapped     (_ sender: UIButton) { viewModel.addVideo()    }
     
-    @IBAction func photoButtonTapped(_ sender: UIButton) {
-        viewModel.addPhoto()
-    }
+    @IBAction func photoButtonTapped     (_ sender: UIButton) { viewModel.addPhoto()    }
     
-    @IBAction func liveStreamButtonTapped(_ sender: UIButton) {
-        viewModel.startStream()
-    }
+    @IBAction func liveStreamButtonTapped(_ sender: UIButton) { viewModel.startStream() }
     
-    @IBAction func clearCacheButtonTapped(_ sender: UIButton) {
-        viewModel.clearCache()
-    }
+    @IBAction func clearCacheButtonTapped(_ sender: UIButton) { viewModel.clearCache()  }
     
-    @IBAction func segmentControllChanged(_ sender: UISegmentedControl) {    }
+    @IBAction func segmentControllChanged(_ sender: UISegmentedControl) {  }
    
 }
 

@@ -10,4 +10,5 @@ enum CoordinatorAction {
     case showMenu     (fromMenuItem : MenuItem               )
     
     case showAlert(title: String, message: String, actionTitle: String, action: () -> Void)
+    case showAlertTextField(title: String, message: String, confirmAction: (String) async -> Void, cancel: () async -> Void)
 }

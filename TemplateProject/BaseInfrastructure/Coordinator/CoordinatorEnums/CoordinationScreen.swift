@@ -40,7 +40,7 @@ extension Screens {
             switch self {
                 
                 // MARK: Auth flow screens
-            case .coordinator   : return await MainActor.run(resultType: CoordinatorViewController.self) { return CR.resolveCoordinatorViewController() }
+            case .coordinator   : return await MainActor.run { return CR.resolveCoordinatorViewController() }
             case .login         : return await CR.resolveLoginViewController()
             case .registration  : return await CR.resolveRegistrationViewController()
             case .forgotPassword: return await CR.resolveForgotPasswordViewController()

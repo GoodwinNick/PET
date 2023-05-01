@@ -32,7 +32,7 @@ public extension ImagePickerManager {
             preferredStyle: .actionSheet,
             actions: actions
         )
-        await self.delegate?.showAlert(alert)
+        self.delegate?.showAlert(alert)
     }
     
 }
@@ -46,7 +46,7 @@ private extension ImagePickerManager {
         
         if cameraAuthorizationStatus == .authorized {
             await self.imagePicker.changeSourceType(.camera)
-            await self.delegate?.presentImagePicker(imagePicker)
+            self.delegate?.presentImagePicker(imagePicker)
         } else {
             await requestCameraPermission()
         }
@@ -58,7 +58,7 @@ private extension ImagePickerManager {
         
         if photoLibraryAuthorizationStatus == .authorized {
             await self.imagePicker.changeSourceType(.photoLibrary)
-            await self.delegate?.presentImagePicker(imagePicker)
+            self.delegate?.presentImagePicker(imagePicker)
         } else {
             await requestPhotoLibraryPermission()
         }
@@ -72,7 +72,7 @@ private extension ImagePickerManager {
         }
         
         await self.imagePicker.changeSourceType(.camera)
-        await self.delegate?.presentImagePicker(self.imagePicker)
+        self.delegate?.presentImagePicker(self.imagePicker)
         
     }
     
@@ -80,7 +80,7 @@ private extension ImagePickerManager {
     func requestPhotoLibraryPermission() async {
         if await PHPhotoLibrary.requestAuthorization(for: .readWrite) == .authorized {
             await self.imagePicker.changeSourceType(.photoLibrary)
-            await self.delegate?.presentImagePicker(self.imagePicker)
+            self.delegate?.presentImagePicker(self.imagePicker)
         } else {
             await self.showAlertUnableAccess()
         }
@@ -95,7 +95,7 @@ private extension ImagePickerManager {
         )
         await alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         
-        await self.delegate?.showAlert(alert)
+        self.delegate?.showAlert(alert)
     }
     
     

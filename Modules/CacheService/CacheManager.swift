@@ -95,9 +95,13 @@ public extension CacheManager {
     /// Clear all cache
     func clearCache() async throws {
         let urls = try await getURLs(mainDirectoryUrl)
-        for url in urls {
-            try fileManager.removeItem(at: url)
+        
+        await withThrowingTaskGroup(of: Void.self) {
+            for url in urls {
+                $0.addTask { try self.fileManager.removeItem(at: url) }
+            }
         }
+       
         let newUrls = try await getURLs(mainDirectoryUrl)
         if urls == newUrls {
             throw CacheError.clearCache
@@ -107,9 +111,13 @@ public extension CacheManager {
     /// Clear content of specified folder
     func clearFolder(of section: SectionPath) async throws {
         let urls = try await getURLs(mainDirectoryUrl.appendingPathComponent(section.pathValue))
-        for url in urls {
-            try fileManager.removeItem(at: url)
+        
+        await withThrowingTaskGroup(of: Void.self) {
+            for url in urls {
+                $0.addTask { try self.fileManager.removeItem(at: url) }
+            }
         }
+        
         let newUrls = try await getURLs(mainDirectoryUrl.appendingPathComponent(section.pathValue))
         if urls == newUrls {
             throw CacheError.clearContents

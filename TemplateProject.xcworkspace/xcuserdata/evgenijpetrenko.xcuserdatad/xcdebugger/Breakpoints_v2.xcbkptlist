@@ -16,67 +16,39 @@
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         BreakpointExtensionID = "Xcode.Breakpoint.SymbolicBreakpoint">
          <BreakpointContent
-            uuid = "DBF4AD86-620E-481A-8010-CC1216656DEA"
+            uuid = "12127E39-0E3A-4D4E-BC98-3F3DA1636831"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TemplateProject/Extensions/GMSMapView+DrawZones/MapPolygone/MapPolygone.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "setOnMain(_:)"
-            landmarkType = "7">
+            symbolName = "UITableViewAlertForLayoutOutsideViewHierarchy"
+            moduleName = "">
+            <Locations>
+               <Location
+                  uuid = "12127E39-0E3A-4D4E-BC98-3F3DA1636831 - 620169ab4c7c265a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UITableViewAlertForLayoutOutsideViewHierarchy"
+                  moduleName = "UIKitCore"
+                  usesParentBreakpointCondition = "Yes"
+                  offsetFromSymbolStart = "0">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
-            uuid = "763C4FBA-F68C-42D7-A03D-22681B5590AE"
+            uuid = "93DB076A-797D-4C04-828B-C9F17D3A5E8B"
             shouldBeEnabled = "Yes"
+            condition = "NSInternalInconsistencyException"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TemplateProject/Extensions/GMSMapView+DrawZones/MapPolygone/MapPolygone.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "setOnMain(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "763C4FBA-F68C-42D7-A03D-22681B5590AE - e7ea2246d1cc766a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Swift.MainActor @Sendable () -&gt; () in TemplateProject.MapPolygone.setOnMain(__C.GMSMapView) async -&gt; ()"
-                  moduleName = "TemplateProject"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/evgenijpetrenko/Desktop/Projects/NewProjectTempleteEnvirinment/TemplateProject/Extensions/GMSMapView+DrawZones/MapPolygone/MapPolygone.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "53"
-                  endingLineNumber = "53"
-                  offsetFromSymbolStart = "248">
-               </Location>
-               <Location
-                  uuid = "763C4FBA-F68C-42D7-A03D-22681B5590AE - e7ea2246d1cc766a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Swift.MainActor @Sendable () -&gt; () in TemplateProject.MapPolygone.setOnMain(__C.GMSMapView) async -&gt; ()"
-                  moduleName = "TemplateProject"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/evgenijpetrenko/Desktop/Projects/NewProjectTempleteEnvirinment/TemplateProject/Extensions/GMSMapView+DrawZones/MapPolygone/MapPolygone.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "53"
-                  endingLineNumber = "53"
-                  offsetFromSymbolStart = "172">
-               </Location>
-            </Locations>
+            breakpointStackSelectionBehavior = "1"
+            scope = "1"
+            stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

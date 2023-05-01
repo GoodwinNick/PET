@@ -51,16 +51,26 @@ enum Notifications {
 
 extension NotificationCenter {
     func addOserver(
-        notifName: TemplateProject.Notifications,
-        object obj: Any? = nil,
-        queue: OperationQueue? = .main,
-        using block: @escaping @Sendable (Notification) -> Void
+        notifName: TemplateProject.Notifications, object obj: Any? = nil,
+        queue: OperationQueue? = .main          , using block: @escaping @Sendable (Notification) -> Void
     ) {
         NotificationCenter.default.addObserver(
             forName: notifName.notificationName,
             object: obj,
             queue: queue,
             using: block
+        )
+    }
+    
+    func addOserver(
+        notifName: TemplateProject.Notifications, object obj: Any? = nil,
+        queue: OperationQueue? = .main          , using block: @escaping @Sendable () -> Void
+    ) {
+        NotificationCenter.default.addObserver(
+            forName: notifName.notificationName,
+            object: obj,
+            queue: queue,
+            using: { _ in block() }
         )
     }
     

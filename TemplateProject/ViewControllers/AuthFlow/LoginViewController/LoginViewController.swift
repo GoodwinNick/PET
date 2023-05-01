@@ -96,7 +96,7 @@ extension LoginViewController: UITextFieldDelegate {
         case passwordTextFeild: passwordTextFeild.resignFirstResponder()
             
         default:
-            view.endEditing(true)
+            dismissKeyboard()
         }
         return true
     }

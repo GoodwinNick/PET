@@ -103,7 +103,7 @@ extension CompositionRoot {
    
     func resolveEvidenceSectionViewController() async -> EvidenceSectionViewController {
         let vc = await EvidenceSectionViewController.instantiateFromStoryboard("EvidenceSectionViewController")
-        let viewModel = await MainActor.run(resultType: EvidenceSectionViewModel.self) { EvidenceSectionViewModel(view: vc) }
+        let viewModel: EvidenceSectionViewModel = await MainActor.run { EvidenceSectionViewModel(view: vc) }
         await vc.set(viewModel: viewModel)
         return vc
     }

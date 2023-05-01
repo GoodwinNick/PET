@@ -20,7 +20,7 @@ public extension UIAlertController {
 
 
 public extension UIImagePickerController {
-    @MainActor func changeSourceType(_ newType: SourceType) async {
-        self.sourceType = newType
+    func changeSourceType(_ newType: SourceType) async {
+        await MainActor.run { self.sourceType = newType }
     }
 }

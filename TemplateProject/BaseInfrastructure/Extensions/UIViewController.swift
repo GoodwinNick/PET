@@ -8,8 +8,7 @@ extension UIViewController {
     fileprivate class func instantiateFromStoryboardHelper<T>(_ name: String) async -> T {
         let storyboard = UIStoryboard(name: name, bundle: nil)
         let identifier = String(describing: self)
-        let controller = await MainActor.run(resultType: T.self) { storyboard.instantiateViewController(withIdentifier: identifier) as! T }
-        return controller
+        return await MainActor.run { storyboard.instantiateViewController(withIdentifier: identifier) as! T }
     }
 
     class func instantiateFromStoryboard(_ name: String = "Main") -> Self {

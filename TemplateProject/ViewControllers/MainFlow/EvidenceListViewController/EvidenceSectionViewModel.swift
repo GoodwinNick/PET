@@ -105,7 +105,6 @@ extension EvidenceSectionViewModel {
 extension EvidenceSectionViewModel: ImagePickerManagerProtocol {
         
     func showAlert(_ alert: UIAlertController) {
-        
         coordinator.move(as: .present(screen: .alert(alert)))
     }
     

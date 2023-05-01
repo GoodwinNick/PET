@@ -45,15 +45,14 @@ extension MainViewController: MainView {
         let latitude  = zones.first?.points.first?.latitude  ?? 0.0
         let longitude = zones.first?.points.first?.longitude ?? 0.0
         
-        let cameraPosition = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 14)
+        let cameraPosition = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 12)
         
         let cameraUpdate = GMSCameraUpdate.setCamera(cameraPosition)
         
         DispatchQueue.main.async {
             self.mapView.animate(with: cameraUpdate)
         }
-        
-         self.mapView.drawZones(zones) 
+        Task(priority: .background) { await self.mapView.drawZones(zones) }
     }
 }
 
