@@ -139,17 +139,17 @@ extension RegistrationViewController {
 
 // MARK: - Observation
 extension RegistrationViewController {
-    override func bindWithObserver() {
-        super.bindWithObserver()
-        observer.from(usernameTextField        , \.text).to { self.viewModel.username         = $0 ?? "" } 
-        observer.from(nameTextField            , \.text).to { self.viewModel.name             = $0 ?? "" } 
-        observer.from(surnameTextField         , \.text).to { self.viewModel.surname          = $0 ?? "" } 
-        observer.from(genderTextField          , \.text).to { self.viewModel.gender           = $0 ?? "" } 
-        observer.from(birthTextField           , \.text).to { self.viewModel.birth            = $0 ?? "" } 
-        observer.from(emailTextField           , \.text).to { self.viewModel.email            = $0 ?? "" } 
-        observer.from(phoneTextField           , \.text).to { self.viewModel.phone            = $0 ?? "" } 
-        observer.from(passTextField            , \.text).to { self.viewModel.pass             = $0 ?? "" } 
-        observer.from(passConformationTextField, \.text).to { self.viewModel.passConformation = $0 ?? "" } 
+    override func bindWithObserver() async {
+        await super.bindWithObserver()
+        await observer.from(usernameTextField        , \.text).to { self.viewModel.username         = $0 ?? "" } 
+        await observer.from(nameTextField            , \.text).to { self.viewModel.name             = $0 ?? "" } 
+        await observer.from(surnameTextField         , \.text).to { self.viewModel.surname          = $0 ?? "" } 
+        await observer.from(genderTextField          , \.text).to { self.viewModel.gender           = $0 ?? "" } 
+        await observer.from(birthTextField           , \.text).to { self.viewModel.birth            = $0 ?? "" } 
+        await observer.from(emailTextField           , \.text).to { self.viewModel.email            = $0 ?? "" } 
+        await observer.from(phoneTextField           , \.text).to { self.viewModel.phone            = $0 ?? "" } 
+        await observer.from(passTextField            , \.text).to { self.viewModel.pass             = $0 ?? "" } 
+        await observer.from(passConformationTextField, \.text).to { self.viewModel.passConformation = $0 ?? "" } 
     }
 }
 

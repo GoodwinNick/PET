@@ -14,39 +14,41 @@ class Observer {
             self.obj = obj
         }
         
-        func to<V>(_ root: V, _ destinationPath: ReferenceWritableKeyPath<V, W>, andThen: (() -> Void)? = nil) {
-            _to(root, destinationPath, andThen: andThen)
+        func to<V>(_ root: V, _ destinationPath: ReferenceWritableKeyPath<V, W>, andThen: (() -> Void)? = nil) async {
+            await _to(root, destinationPath, andThen: andThen)
         }
         
-        func to<V>(_ root: V, _ destinationPath: ReferenceWritableKeyPath<V, W>, andThen: (() -> Void)? = nil) where U == W {
+        func to<V>(_ root: V, _ destinationPath: ReferenceWritableKeyPath<V, W>, andThen: (() -> Void)? = nil) async where U == W {
             if convertFunction == nil {
                 convertFunction = { $0 }
             }
             
-            _to(root, destinationPath, andThen: andThen)
+            await _to(root, destinationPath, andThen: andThen)
         }
         
-        func to(_ function: @escaping (U) -> Void) {
-            let binding = obj.observe(path, options: [.initial]) { (obj: T, _: NSKeyValueObservedChange<U>) in
-                guard self.convertFunction == nil else { preconditionFailure("Cannot use to with a mapping function") }
-                function(obj[keyPath: self.path])
-            }
-            
-            observer.observations.append(binding)
-        }
-        
-        private func _to<V>(_ root: V, _ destinationPath: ReferenceWritableKeyPath<V, W>, andThen: (() -> Void)? = nil) {
-            let binding = obj.observe(path, options: [.initial]) { (obj: T, _: NSKeyValueObservedChange<U>) in
-                if let convertFunction = self.convertFunction {
-                    DispatchQueue.main.async {
-                        root[keyPath: destinationPath] = convertFunction(obj[keyPath: self.path])
-                    }
+        func to(_ function: @escaping (U) -> Void) async {
+            async let result: NSKeyValueObservation = withCheckedContinuation { continuation in
+                let binding = obj.observe(path, options: [.initial]) { (obj: T, _: NSKeyValueObservedChange<U>) in
+                    guard self.convertFunction == nil else { preconditionFailure("Cannot use to with a mapping function") }
+                    DispatchQueue.main.async { function(obj[keyPath: self.path]) }
                 }
-                
-                andThen?()
+                continuation.resume(returning: binding)
             }
             
-            observer.observations.append(binding)
+            observer.observations.append(await result)
+        }
+        
+        private func _to<V>(_ root: V, _ destinationPath: ReferenceWritableKeyPath<V, W>, andThen: (() -> Void)? = nil) async {
+            let result: NSKeyValueObservation = await withCheckedContinuation { continuation in
+                let binding = obj.observe(path, options: [.initial]) { (obj: T, _: NSKeyValueObservedChange<U>) in
+                    andThen?()
+                    guard let convertFunction = self.convertFunction else { return }
+                    DispatchQueue.main.async { root[keyPath: destinationPath] = convertFunction(obj[keyPath: self.path]) }
+                }
+                continuation.resume(returning: binding)
+            }
+
+            observer.observations.append(result)
         }
         
         func map<X>(_ function: @escaping ((U) -> X)) -> ObservationUnit<T, U, X> {

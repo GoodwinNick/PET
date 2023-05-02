@@ -181,6 +181,7 @@
 		21A5722929BFBB6500E792CB /* NotificationService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21A5722129BFBB6500E792CB /* NotificationService.framework */; };
 		21A5722A29BFBB6500E792CB /* NotificationService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 21A5722129BFBB6500E792CB /* NotificationService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		21A5722F29BFBB8200E792CB /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A5722E29BFBB8200E792CB /* NotificationManager.swift */; };
+		21E268AA2A00FA64008B896D /* CustomVideoPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E268A92A00FA64008B896D /* CustomVideoPlayerController.swift */; };
 		21F89B5129B39091005600D9 /* APIService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F89B4929B39091005600D9 /* APIService.framework */; };
 		21F89B5229B39091005600D9 /* APIService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 21F89B4929B39091005600D9 /* APIService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		21F89B5629B390C5005600D9 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219290C529B38A3700489A4A /* APIError.swift */; };
@@ -455,6 +456,7 @@
 		219290D829B38D1600489A4A /* APIErrorCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIErrorCallback.swift; sourceTree = "<group>"; };
 		21A5722129BFBB6500E792CB /* NotificationService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NotificationService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		21A5722E29BFBB8200E792CB /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		21E268A92A00FA64008B896D /* CustomVideoPlayerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomVideoPlayerController.swift; sourceTree = "<group>"; };
 		21F89B4929B39091005600D9 /* APIService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = APIService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		21F89B5E29B3A493005600D9 /* APIMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMethod.swift; sourceTree = "<group>"; };
 		2DB4175B29AF9ED400999284 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
@@ -995,6 +997,7 @@
 		217F514A29EE887D00A7E11A /* GlobalFlow */ = {
 			isa = PBXGroup;
 			children = (
+				21E268A82A00FA4F008B896D /* CustomVideoPlayerController */,
 				217827F129F6847900DC0590 /* VideoPlayerViewController */,
 				2146A70B29F15CCF00F2843E /* OTPViewController */,
 			);
@@ -1287,6 +1290,14 @@
 				2124AB2529B61EDA00DF6E12 /* APIServiceModule */,
 			);
 			path = Modules;
+			sourceTree = "<group>";
+		};
+		21E268A82A00FA4F008B896D /* CustomVideoPlayerController */ = {
+			isa = PBXGroup;
+			children = (
+				21E268A92A00FA64008B896D /* CustomVideoPlayerController.swift */,
+			);
+			path = CustomVideoPlayerController;
 			sourceTree = "<group>";
 		};
 		21F89B4A29B39091005600D9 /* APIService */ = {
@@ -1868,6 +1879,7 @@
 				211729AD29B0DEFE008321B1 /* User.swift in Sources */,
 				218C5CBC29B8882200E587DF /* MapMarker.swift in Sources */,
 				2178280F29F7E6D000DC0590 /* MenuItem.swift in Sources */,
+				21E268AA2A00FA64008B896D /* CustomVideoPlayerController.swift in Sources */,
 				215EE95B29C872150039BDA0 /* PhotoViewerViewModel.swift in Sources */,
 				217827FC29F6935200DC0590 /* AppearanceModeManager.swift in Sources */,
 				212298C129AE3F9B00E8F376 /* CustomNavigationController.swift in Sources */,

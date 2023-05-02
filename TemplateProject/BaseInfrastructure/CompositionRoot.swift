@@ -117,4 +117,9 @@ extension CompositionRoot {
         return vc
     }
     
+    func resolveCustomVideoPlayerController(url: URL) async -> CustomVideoPlayerController {
+        let vc = await CustomVideoPlayerController(url: url)
+        return vc
+    }
+    
 }

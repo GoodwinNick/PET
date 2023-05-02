@@ -49,7 +49,7 @@ extension Screens {
                 // MARK: Any top level screens
             case .alert      (let vc )            : return await vc.withUpdatedAppearance()
             case .takePhoto  (let vc )            : return vc
-            case .videoPlayer(let url)            : return await CR.resolveVideoPlayerViewController(url: url)
+            case .videoPlayer(let url)            : return await CR.resolveCustomVideoPlayerController(url: url)
             case .photoViewer(let url)            : return await CR.resolvePhotoViewerViewController(url: url)
             case .otp(let otpCase, let completion): return await CR.resolveOTPViewController(otpCase: otpCase, completion: completion)
                 

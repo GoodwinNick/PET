@@ -23,14 +23,14 @@ class MainViewModel: BaseViewModel {
 // MARK: API
  extension MainViewModel {
      func fetchTask() async {
-         self.view?.showHUD()
+         await self.view?.showHUD()
          do {
              async let zones: [DangerZone] = fetchDangerZones()
              
              await self.view?.draw(zones: try await zones)
-             self.view?.hideHUD()
+             await self.view?.hideHUD()
          } catch {
-             self.view?.showErrorHUD(error: error)
+             await self.view?.showErrorHUD(error: error)
          }
     }
     

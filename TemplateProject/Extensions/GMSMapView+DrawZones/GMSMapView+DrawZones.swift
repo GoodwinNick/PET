@@ -12,11 +12,12 @@ extension GMSMapView {
         }
     }
     
-    fileprivate func addPoints(points: [CLLocationCoordinate2D]) {
+    fileprivate func addPoints(points: [CLLocationCoordinate2D]) async {
         let pathZone = MutablePath()
         pathZone.setPoints(points)
         let polygonZone = MapPolygone(path: pathZone, zoneType: .danger)
         polygonZone.setOnMain(self)
+
     }
 }
 

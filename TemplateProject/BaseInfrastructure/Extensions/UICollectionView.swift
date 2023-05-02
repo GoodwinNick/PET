@@ -1,8 +1,8 @@
 import UIKit
 
 extension UICollectionView: CollectionUsableView {
-    func reloadDataOnMain() {
-        DispatchQueue.main.async {
+    func reloadDataOnMain() async {
+        await MainActor.run {
             self.reloadData()
         }
     }

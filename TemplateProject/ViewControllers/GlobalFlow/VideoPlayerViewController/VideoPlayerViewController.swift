@@ -24,6 +24,27 @@ extension VideoPlayerViewController {
         playerLayer.videoGravity = .resizeAspectFill
         self.playerView.layer.addSublayer(playerLayer)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // add player layer to view layer
+        let playerLayer = AVPlayerLayer(player: player)
+        playerLayer.frame = self.playerView.frame
+        playerLayer.videoGravity = .resizeAspectFill
+        self.playerView.layer.addSublayer(playerLayer)
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        player?.play()
+    }
+    
+    override func configUI() {
+        super.configUI()
+        self.view.setBGColor(.background)
+        self.playerView.setBGColor(.background)
+    }
 }
 
 // MARK: - VideoPlayerView

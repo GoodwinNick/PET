@@ -41,7 +41,7 @@ extension MainViewController {
 
 // MARK: MainView
 extension MainViewController: MainView {
-    func draw(zones: [DangerZone]) {
+    func draw(zones: [DangerZone]) async {
         let latitude  = zones.first?.points.first?.latitude  ?? 0.0
         let longitude = zones.first?.points.first?.longitude ?? 0.0
         
@@ -49,7 +49,7 @@ extension MainViewController: MainView {
         
         let cameraUpdate = GMSCameraUpdate.setCamera(cameraPosition)
         
-        DispatchQueue.main.async {
+        await MainActor.run {
             self.mapView.animate(with: cameraUpdate)
         }
         Task(priority: .background) { await self.mapView.drawZones(zones) }

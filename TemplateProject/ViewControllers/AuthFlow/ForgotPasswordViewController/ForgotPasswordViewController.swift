@@ -26,9 +26,9 @@ extension ForgotPasswordViewController {
 
 // MARK: - Observation
 extension ForgotPasswordViewController {
-    override func bindWithObserver() {
-        super.bindWithObserver()
-        observer.from(emailOrNicknameTextField, \.text) .to { self.viewModel.emailOrNickname = $0 ?? "" }
+    override func bindWithObserver() async {
+        await super.bindWithObserver()
+        await observer.from(emailOrNicknameTextField, \.text) .to { self.viewModel.emailOrNickname = $0 ?? "" }
     }
 }
 

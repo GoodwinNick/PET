@@ -2,8 +2,8 @@
 import UIKit
 
 extension UITableView: CollectionUsableView {
-    func reloadDataOnMain() {
-        DispatchQueue.main.async {
+    func reloadDataOnMain() async {
+        await MainActor.run {
             self.reloadData()
         }
     }

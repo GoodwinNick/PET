@@ -69,9 +69,9 @@ extension EvidenceSectionViewController {
 // MARK: - Observation
 extension EvidenceSectionViewController {
     
-    override func bindWithObserver() {
-        super.bindWithObserver()
-        observer.from(segmentControll, \.selectedSegmentIndex).to(viewModel, \.selectedIndex)
+    override func bindWithObserver() async {
+        await super.bindWithObserver()
+        await observer.from(segmentControll, \.selectedSegmentIndex).to(viewModel, \.selectedIndex)
     }
     
 }

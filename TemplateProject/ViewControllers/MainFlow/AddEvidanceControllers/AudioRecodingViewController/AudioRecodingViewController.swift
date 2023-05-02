@@ -15,8 +15,8 @@ class AudioRecodingViewController: BaseViewController<AudioRecodingViewModel> {
         super.viewDidLoad()
     }
     
-    override func bindWithObserver() {
-        super.bindWithObserver()
+    override func bindWithObserver() async {
+        await super.bindWithObserver()
     }
 }
 
@@ -49,14 +49,12 @@ extension AudioRecodingViewController {
         self.timeLabel.setLabelAttributedTitle(string, font)
     }
     
-    private func waveViewConfiguration() {
-        DispatchQueue.main.async { [weak self] in
-            guard let self else { return }
+    private func waveViewConfiguration() async {
+        waveView.configuration = await MainActor.run(resultType: Waveform.Configuration.self) { [self] in
             let stripeConfig : Waveform.Style.StripeConfig = .init(color: .red, width: 4, spacing: 6)
             let style        : Waveform.Style              = .striped(stripeConfig)
             let configuration: Waveform.Configuration      = waveView.configuration.with(style: style, verticalScalingFactor: 2)
-            
-            waveView.configuration = configuration
+            return configuration
         }
     }
 }
@@ -64,18 +62,17 @@ extension AudioRecodingViewController {
 // MARK: - AudioRecodingView
 extension AudioRecodingViewController: AudioRecodingView {
     
-    func updateButton(isRecorded: Bool) {
-        DispatchQueue.main.async {
-            if isRecorded {
-                self.recordButton.setBackgroundImage(UIImage(systemName: "stop.circle"), for: .normal)
-                self.recordButton.setTintColor(.gray)
-            } else {
-                self.recordButton.setBackgroundImage(UIImage(systemName: "record.circle"), for: .normal)
-                self.recordButton.setTintColor(.red)
-            }
+    @MainActor func updateButton(isRecorded: Bool) {
+        if isRecorded {
+            self.recordButton.setBackgroundImage(UIImage(systemName: "stop.circle"), for: .normal)
+            self.recordButton.setTintColor(.gray)
+        } else {
+            self.recordButton.setBackgroundImage(UIImage(systemName: "record.circle"), for: .normal)
+            self.recordButton.setTintColor(.red)
         }
     }
-    func loadRecordingUI() {
+    
+    @MainActor func loadRecordingUI() {
         waveView.cornerRadius()
         updateButton(isRecorded: false)
         recordButton.addTarget(self, action: #selector(recordTapped), for: .touchUpInside)
@@ -93,6 +90,6 @@ extension AudioRecodingViewController: AudioRecodingView {
     }
     
     func configWaveView() {
-       waveViewConfiguration()
+        Task { await waveViewConfiguration() }
     }
 }

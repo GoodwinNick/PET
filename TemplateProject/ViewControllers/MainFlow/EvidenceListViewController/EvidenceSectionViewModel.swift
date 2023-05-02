@@ -85,16 +85,16 @@ extension EvidenceSectionViewModel {
     
     func configDataSource() async {
         do {
-            view?.showHUD()
+            await view?.showHUD()
             let cacheManager = CacheManager.shared
             let getCreationDate = cacheManager.getCreationDate
             async let files = cacheManager.getFilesList(for: sections[selectedIndex])
                 
             await dataSource.config(try await files, by: >)
-            view?.hideHUD()
+            await view?.hideHUD()
         } catch {
             await dataSource.config([], by: >)
-            view?.showErrorHUD(error: error)
+            await view?.showErrorHUD(error: error)
         }
         
     }
@@ -125,8 +125,7 @@ extension EvidenceSectionViewModel: ImagePickerManagerProtocol {
 // MARK: - Helpers and data processors
 private extension EvidenceSectionViewModel {
     func saveImage(imageData: Data?) async {
-        view?.showHUD()
-        defer { view?.hideHUD() }
+        await view?.showHUD()
         
         do {
             let filename = await dateFormatter.convert(from: .fromDate(Date()), .fileFrom) ?? "Default File Name"
@@ -137,6 +136,7 @@ private extension EvidenceSectionViewModel {
         } catch {
             print(error)
         }
+        await view?.hideHUD()
         
     }
 }

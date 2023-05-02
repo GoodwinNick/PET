@@ -30,10 +30,10 @@ extension LoginViewController {
 
 // MARK: - Observation
 extension LoginViewController {
-    override func bindWithObserver() {
-        super.bindWithObserver()
-        observer.from(loginTextFeild   , \.text).to { self.viewModel.loginName = $0 ?? "" }
-        observer.from(passwordTextFeild, \.text).to { self.viewModel.password  = $0 ?? "" }
+    override func bindWithObserver() async {
+        await super.bindWithObserver()
+        await observer.from(loginTextFeild   , \.text).to { self.viewModel.loginName = $0 ?? "" }
+        await observer.from(passwordTextFeild, \.text).to { self.viewModel.password  = $0 ?? "" }
         
     }
 }

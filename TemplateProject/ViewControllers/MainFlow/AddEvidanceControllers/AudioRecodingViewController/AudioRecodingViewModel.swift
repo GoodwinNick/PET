@@ -38,14 +38,18 @@ extension AudioRecodingViewModel {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configAudioUtils()
+        Task {
+           await configAudioUtils()
+        }
         view?.configWaveView()
     }
     
     override func viewWillDisappear() {
         super.viewWillDisappear()
         if audioRecorder != nil {
-            finishRecording(success: true)
+            Task(priority: .userInitiated) {
+                await finishRecording(success: true)
+            }
         }
     }
     
@@ -54,10 +58,12 @@ extension AudioRecodingViewModel {
 // MARK: - Actions
 extension AudioRecodingViewModel {
     func recordButtonAction() {
-        if audioRecorder == nil {
-            startRecording()
-        } else {
-            finishRecording(success: true)
+        Task(priority: .userInitiated) {
+            if audioRecorder == nil {
+                await startRecording()
+            } else {
+                await finishRecording(success: true)
+            }
         }
     }
 }
@@ -65,25 +71,37 @@ extension AudioRecodingViewModel {
 // MARK: - Timer
 extension AudioRecodingViewModel {
     
-    func startRecordingTimer() {
+    func startRecordingTimer() async {
         if recordingTimer != nil {
             recordingTimer?.invalidate()
             recordingTimer = nil
         }
         
+        Task {
+            await resetWave()
+        }
+        
         DispatchQueue.main.async {
+            self.recordingTimer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { _ in
+                Task { await self.recordingUpdate() }
+            }
+        }
+        
+    }
+    
+    func resetWave() async {
+        await MainActor.run {
             self.view?.getWaveView().reset()
-            self.recordingTimer = Timer
-                .scheduledTimer(withTimeInterval: 0.01, repeats: true, block: self.recordingUpdate(timer:))
         }
     }
     
-    func recordingUpdate(timer: Timer) {
+    func recordingUpdate() async {
         self.audioRecorder.updateMeters()
         let power = audioRecorder.averagePower(forChannel: 0)
         let linear = 1 - pow(10, power / 20)
-        DispatchQueue.main.async { [weak self] in
-            guard let self, let view = self.view, let audioRecorder = self.audioRecorder else { return }
+        
+        guard let view = self.view, let audioRecorder = self.audioRecorder else { return }
+        await MainActor.run {
             view.updateTimeLabel(audioRecorder.currentTime)
             view.getWaveView().add(samples: [linear, linear, linear])
         }
@@ -95,59 +113,63 @@ extension AudioRecodingViewModel {
 // MARK: - Audio manipulators
 extension AudioRecodingViewModel {
     /// Will configurate session, ask for permission and call UI updates if allowed
-    func configAudioUtils() {
+    func configAudioUtils() async {
         recordingSession = AVAudioSession.sharedInstance()
         do {
             try recordingSession.setCategory(.playAndRecord, mode: .default)
             try recordingSession.setActive(true)
             
-            recordingSession.requestRecordPermission() { [weak self] allowed in
-                DispatchQueue.main.async {
-                    guard let self else { return }
-                    allowed ? self.view?.loadRecordingUI() : self.view?.showErrorHUD(error: AudioError.audioCatchingNotAllowed)
-                }
+            let isAllowed = await withCheckedContinuation { continuation in
+                self.recordingSession.requestRecordPermission() { continuation.resume(returning: $0) }
             }
+
+            if isAllowed {
+                await self.view?.loadRecordingUI()
+            } else {
+                await self.view?.showErrorHUD(error: AudioError.audioCatchingNotAllowed)
+            }
+            
         } catch {
-            self.view?.showErrorHUD(error: error)
+            await self.view?.showErrorHUD(error: error)
         }
     }
     
     /// Start recording
-    func startRecording() {
-        Task {
-            do {
-                startRecordingTime = Date()
-                let filename = await converFromDate(date: startRecordingTime, format: .fileFrom)
-                
-                try await checkFileAvailability()
-                
-                let audioFilename = try await cacheManager.getFileURLWith(.audioRecords, url: filename)
-                
-                let settings = configAudioSettings()
-                
-                try initAudioRecorder(filename: audioFilename, settings: settings)
-                audioRecorder.record()
-                startRecordingTimer()
-                
-                self.view?.updateButton(isRecorded: true)
-            } catch {
-                self.view?.showErrorHUD(error: error)
-                finishRecording(success: false)
-            }
+    func startRecording() async {
+        
+        do {
+            startRecordingTime = Date()
+            let filename = await converFromDate(date: startRecordingTime, format: .fileFrom)
+            
+            try await checkFileAvailability()
+            
+            let audioFilename = try await cacheManager.getFileURLWith(.audioRecords, url: filename)
+            
+            let settings = configAudioSettings()
+            
+            try initAudioRecorder(filename: audioFilename, settings: settings)
+            audioRecorder.record()
+            await startRecordingTimer()
+            
+            await self.view?.updateButton(isRecorded: true)
+        } catch {
+            await self.view?.showErrorHUD(error: error)
+            await finishRecording(success: false)
         }
+        
         
     }
     
     // Stop recording
-    func finishRecording(success: Bool) {
-        audioRecorder?.stop()
-        self.audioRecorder = nil
+    func finishRecording(success: Bool) async {
         recordingTimer?.invalidate()
         recordingTimer = nil
+        audioRecorder?.stop()
+        self.audioRecorder = nil
         stopRecordingTime = Date()
-        self.view?.updateButton(isRecorded: false)
+        await self.view?.updateButton(isRecorded: false)
         
-        Task {
+        Task(priority: .background) {
             let originName   = await converFromDate(date: startRecordingTime, format: .fileFrom)
             let toDateString = await converFromDate(date: stopRecordingTime , format: .fileTo  )
             let newName      = originName + " -> " + toDateString
@@ -202,7 +224,9 @@ private extension AudioRecodingViewModel {
 extension AudioRecodingViewModel: AVAudioRecorderDelegate {
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         if !flag {
-            finishRecording(success: false)
+            Task {
+               await finishRecording(success: false)
+            }
         }
     }
     

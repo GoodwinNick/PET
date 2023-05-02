@@ -189,18 +189,14 @@ fileprivate extension Coordinator {
             }
         )
         
-        
         await self.addChildOnMain(childVC: vc!, to: topNavController.topViewController)
-            
-        DispatchQueue.main.async { [weak vc] in
+    
+        
+        await MainActor.run { [weak vc] in
             UIView.animate(
                 withDuration: 0.25,
-                animations: { [weak vc] in
-                    if let vc {
-                        topNavController.topViewController?.view.addSubview(vc.view)
-                    }
-                },
-                completion: { [weak vc] _ in
+                animations: { if let vc { topNavController.topViewController?.view.addSubview(vc.view) } },
+                completion: { _ in
                     UIView.animate(withDuration: 0.25) { [weak vc] in
                         vc?.view.frame.origin.x = 0
                         vc?.startShowViewAnimation()
@@ -209,7 +205,6 @@ fileprivate extension Coordinator {
             )
             self.isMenuOpened = true
         }
-        
         
     }
     

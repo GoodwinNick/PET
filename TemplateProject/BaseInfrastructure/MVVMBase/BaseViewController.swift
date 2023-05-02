@@ -28,7 +28,7 @@ class BaseViewController<T>: UIViewController where T: BaseViewModel {
     
     // MARK: - Observations
     
-    @objc open dynamic func bindWithObserver() {}
+    @objc open dynamic func bindWithObserver() async {}
     
     
     func configObservers() {
@@ -222,7 +222,9 @@ class BaseViewController<T>: UIViewController where T: BaseViewModel {
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        bindWithObserver()
+        Task {
+            await bindWithObserver()
+        }
         viewModel.viewWillAppear()
                 
         reconfigNavigationBar()

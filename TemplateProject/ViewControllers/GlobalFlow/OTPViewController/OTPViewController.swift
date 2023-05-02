@@ -35,9 +35,9 @@ extension OTPViewController {
 // MARK: - Observartions
 extension OTPViewController {
     
-    override func bindWithObserver() {
-        super.bindWithObserver()
-        observer.from(otpCodeTextField, \.text).to { print($0 ?? "") }
+    override func bindWithObserver() async {
+        await super.bindWithObserver()
+        await observer.from(otpCodeTextField, \.text).to { print($0 ?? "") }
     }
     
 }

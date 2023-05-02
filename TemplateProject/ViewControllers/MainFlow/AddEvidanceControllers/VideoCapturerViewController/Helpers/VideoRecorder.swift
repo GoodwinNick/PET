@@ -40,8 +40,7 @@ class VideoRecorder: NSObject {
         previewLayerConfiguration(previewView)
         
         try sessionConfiguration()
-        
-        DispatchQueue.global(qos: .background).async { [self] in
+        Task(priority: .background) { [self] in
             self.session.startRunning()
         }
     }
