@@ -86,13 +86,13 @@ extension MenuViewController {
 
 // MARK: - Helpers
 extension MenuViewController {
-    func startShowViewAnimation() {
+    @MainActor func startShowViewAnimation() {
         UIView.transition(with: self.view, duration: 1) {
             self.view.setBGColor(.transparentMenuView(alpha: 0.25))
         }
     }
     
-    func hidingAnimation() {
+    @MainActor func hidingAnimation() {
         UIView.animate(
             withDuration: 0.25,
             animations: { [weak self] in
@@ -107,7 +107,7 @@ extension MenuViewController {
         
     }
     
-    func getStartXPosition() -> CGFloat {
+    @MainActor func getStartXPosition() -> CGFloat {
         switch LanguageManager.shared.language.getDirection {
         case .rightToLeft:  return view.bounds.width *  0.75
         case .leftToRight:  return view.bounds.width * -0.75

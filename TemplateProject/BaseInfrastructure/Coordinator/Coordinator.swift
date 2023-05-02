@@ -191,21 +191,22 @@ fileprivate extension Coordinator {
         
         await self.addChildOnMain(childVC: vc!, to: topNavController.topViewController)
     
+        await animateShowMenu(vc: vc)
         
-        await MainActor.run { [weak vc] in
-            UIView.animate(
-                withDuration: 0.25,
-                animations: { if let vc { topNavController.topViewController?.view.addSubview(vc.view) } },
-                completion: { _ in
-                    UIView.animate(withDuration: 0.25) { [weak vc] in
-                        vc?.view.frame.origin.x = 0
-                        vc?.startShowViewAnimation()
-                    }
+    }
+    
+    @MainActor func animateShowMenu(vc: MenuViewController?) {
+        UIView.animate(
+            withDuration: 0.25,
+            animations: { if let vc { self.topExistNavigationLevel.topViewController?.view.addSubview(vc.view) } },
+            completion: { _ in
+                UIView.animate(withDuration: 0.25) { [weak vc] in
+                    vc?.view.frame.origin.x = 0
+                    vc?.startShowViewAnimation()
                 }
-            )
-            self.isMenuOpened = true
-        }
-        
+            }
+        )
+        self.isMenuOpened = true
     }
     
 }
@@ -245,12 +246,10 @@ fileprivate extension Coordinator {
         
     }
     
-    func configMainFlowNavigation(with rootVC: UIViewController) async -> CustomNavigationController {
-        return await MainActor.run {
-            self.mainFlowNavController = CustomNavigationController(rootViewController: rootVC)
-            self.mainFlowNavController!.modalPresentationStyle = .overFullScreen
-            return mainFlowNavController!
-        }
+    @MainActor func configMainFlowNavigation(with rootVC: UIViewController) async -> CustomNavigationController {
+        self.mainFlowNavController = CustomNavigationController(rootViewController: rootVC)
+        self.mainFlowNavController!.modalPresentationStyle = .overFullScreen
+        return mainFlowNavController!
     }
     
     /// For check VC is exist
@@ -274,10 +273,10 @@ fileprivate extension Coordinator {
     }
     
     /// Start X position for menuViewController
-    func getStartXPosition() async -> CGFloat {
+    @MainActor func getStartXPosition() async -> CGFloat {
         switch LanguageManager.shared.language.getDirection {
-        case .rightToLeft:  return await MainActor.run { topExistNavigationLevel.view.bounds.width *  0.75 }
-        case .leftToRight:  return await MainActor.run { topExistNavigationLevel.view.bounds.width * -0.75 }
+        case .rightToLeft:  return topExistNavigationLevel.view.bounds.width *  0.75
+        case .leftToRight:  return topExistNavigationLevel.view.bounds.width * -0.75
         }
         
     }
@@ -314,116 +313,98 @@ fileprivate extension Coordinator {
         DispatchQueue.main.asyncAfter(deadline: .now() + delay) { action() }
     }
     
-    func onMainActor<T: Sendable>(actionForExecute: () -> T) async -> T {
-        return await MainActor.run {
-            return actionForExecute()
-        }
+    @MainActor func onMainActor<T: Sendable>(actionForExecute: () -> T) async -> T {
+        return actionForExecute()
     }
     
     /// Will present specified vc on specified navigation controller on **main thread**
     /// - Parameters:
     ///   - preAction: Can be used it before action we need to do some on **main thread**
-    func presentOnMain(
+    @MainActor func presentOnMain(
         vc: UIViewController,
         navCon: UINavigationController,
         animated: Bool = true,
         preAction: @escaping () -> Void = { }
     ) async {
-        await MainActor.run {
-            preAction()
-            navCon.present(vc, animated: animated)
-        }
+        preAction()
+        navCon.present(vc, animated: animated)
     }
     
     /// Will push specified vc on specified navigation controller on **main thread**
     /// - Parameters:
     ///   - preAction: Can be used it before action we need to do some on **main thread**
-    func pushOnMain(
+    @MainActor func pushOnMain(
         vc: UIViewController,
         navCon: UINavigationController,
         animated: Bool = true,
         preAction: @escaping () -> Void = { }
     ) async {
-        await MainActor.run {
-            preAction()
-            navCon.pushViewController(vc, animated: animated)
-        }
+        preAction()
+        navCon.pushViewController(vc, animated: animated)
     }
     
     /// Will pop vc on specified navigation controller on **main thread**
     /// - Parameters:
     ///   - preAction: Can be used it before action we need to do some on **main thread**
-    func popOnMain(
+    @MainActor func popOnMain(
         navCon: UINavigationController?,
         animated: Bool = true,
         preAction: @escaping () -> Void = { }
     ) async {
-        await MainActor.run {
-            preAction()
-            navCon?.popViewController(animated: animated)
-        }
+        preAction()
+        navCon?.popViewController(animated: animated)
     }
     
     /// Will pop till specified vc on specified navigation controller on **main thread**
     /// - Parameters:
     ///   - preAction: Can be used it before action we need to do some on **main thread**
-    func popTillOnMain(
+    @MainActor func popTillOnMain(
         vc: UIViewController,
         navCon: UINavigationController,
         animated: Bool = true,
         preAction: @escaping () -> Void = { }
     ) async {
-        await MainActor.run {
-            preAction()
-            navCon.popToViewController(vc, animated: animated)
-        }
+        preAction()
+        navCon.popToViewController(vc, animated: animated)
     }
     
     /// Will push new view controller and remove from stack earlier view controller
     /// - Parameters:
     ///   - preAction: Can be used it before action we need to do some on **main thread**
-    func changeViewControllerOnMain(
+    @MainActor func changeViewControllerOnMain(
         nav: UINavigationController,
         vc: UIViewController, animated: Bool = true,
         preAction: @escaping () -> Void = { }
     ) async {
-        await MainActor.run {
-            preAction()
-            nav.pushViewController(vc, animated: true)
-            nav.viewControllers[nav.viewControllers.count - 2].removeFromParent()
-        }
+        preAction()
+        nav.pushViewController(vc, animated: true)
+        nav.viewControllers[nav.viewControllers.count - 2].removeFromParent()
     }
     
     /// Will add specified childVC to VC on **main thread**
     /// - Parameters:
     ///   - preAction: Can be used it before action we need to do some on **main thread**
-    func addChildOnMain(
+    @MainActor func addChildOnMain(
         childVC: UIViewController,
         to vc: UIViewController?,
         animated: Bool = true,
         preAction: @escaping () -> Void = { }
     ) async {
-        await MainActor.run { [weak childVC] in
-            if let childVC {
-                preAction()
-                vc?.addChild(childVC)
-            }
-        }
+        preAction()
+        vc?.addChild(childVC)
     }
     
     
     /// Will check is it possible to remove main navigation flow controller and remove it on main thread
     /// - Parameters:
     ///   - preAction: Can be used it before action we need to do some on** main thread**
-    func checkForRemoveMainNavigationController(
+    @MainActor func checkForRemoveMainNavigationController(
         animated: Bool = true,
         preAction: @escaping () -> Void = { }
     ) async {
-        await MainActor.run {
-            preAction()
-            guard let _ = self.mainFlowNavController else { return }
-            self.mainFlowNavController?.dismiss(animated: animated)
-            self.mainFlowNavController = nil
-        }
+        preAction()
+        guard let _ = self.mainFlowNavController else { return }
+        self.mainFlowNavController?.dismiss(animated: animated)
+        self.mainFlowNavController = nil
     }
 }

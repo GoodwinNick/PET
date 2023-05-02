@@ -8,6 +8,7 @@ class EvidenceSectionViewModel: BaseViewModel {
     // MARK: - Properties and outlets
     weak var view: EvidenceSectionView?
     let dataSource = DataSource<EvidenceFileCellModel>()
+    
     let imageManager: ImagePickerManager = ImagePickerManager()
     
     let sections: [SectionPath] = [.audioRecords, .videoRecords, .photo]

@@ -4,7 +4,10 @@ actor DateFormatterManager {
     fileprivate init() { }
     static let shared = DateFormatterManager()
     
-    var dateFormatter = DateFormatter()
+    var dateFormatter = {
+        let formatter = DateFormatter()
+        return formatter
+    }()
     
     enum ConvertDirection {
         case fromDate(Date)

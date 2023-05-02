@@ -37,7 +37,9 @@ class VideoRecorder: NSObject {
         
         super.init()
         
-        previewLayerConfiguration(previewView)
+        Task(priority: .high) {
+           await previewLayerConfiguration(previewView)
+        }
         
         try sessionConfiguration()
         Task(priority: .background) { [self] in
@@ -50,7 +52,7 @@ class VideoRecorder: NSObject {
 
 // MARK: Main initers
 extension VideoRecorder {
-    private func previewLayerConfiguration(_ previewView: UIView) {
+    @MainActor private func previewLayerConfiguration(_ previewView: UIView) {
         previewLayer.frame = previewView.layer.bounds
         previewLayer.videoGravity = .resizeAspectFill
         previewView.layer.insertSublayer(previewLayer, at: 0)

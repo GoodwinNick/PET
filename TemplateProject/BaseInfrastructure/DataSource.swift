@@ -2,7 +2,7 @@
 import UIKit
 
 protocol CollectionUsableView: AnyObject {
-    func reloadDataOnMain() async
+    @MainActor func reloadDataOnMain() async
 }
 
 class DataSource<T> {
@@ -33,11 +33,8 @@ extension DataSource where T == CustomTableViewCellModel {
             let model = CustomTableViewCellModel(user: user, car: car)
             finalModels.append(model)
         }
-        
         set(items: finalModels)
-        Task {
-           await showingView?.reloadDataOnMain()
-        }
+        await showingView?.reloadDataOnMain()
     }
 }
 
@@ -49,8 +46,7 @@ extension DataSource where T == EvidenceFileCellModel {
             cells.append(EvidenceFileCellModel(fileURL: file))
         }
         set(items: cells.sorted(by: compare))
-        Task {
-            await showingView?.reloadDataOnMain()
-        }
+        await showingView?.reloadDataOnMain()
+        
     }
 }

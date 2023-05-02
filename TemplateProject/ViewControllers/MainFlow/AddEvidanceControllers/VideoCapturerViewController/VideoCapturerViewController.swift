@@ -4,28 +4,26 @@ import AVFoundation
 import CacheService
 
 class VideoCapturerViewController: BaseViewController<VideoCapturerViewModel> {
-    @IBOutlet fileprivate weak var previewView: UIView!
+    @IBOutlet fileprivate weak var previewView: UIView! { didSet { previewView.addGestureRecognizer(tapGesture) } }
     @IBOutlet fileprivate weak var startCaptureButton: UIButton!
     @IBOutlet fileprivate weak var cameraButton: UIButton!
     @IBOutlet fileprivate weak var flashButton: UIButton!
     
+    lazy var tapGesture: UITapGestureRecognizer = {
+        return UITapGestureRecognizer(target: self, action: #selector(viewTapped(_:)))
+    }()
     
 }
-
 
 // MARK: - Standard functions
 extension VideoCapturerViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped(_:)))
-        previewView.addGestureRecognizer(tapGesture)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.view.layoutIfNeeded()
-       
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -51,49 +49,45 @@ extension VideoCapturerViewController {
 // MARK: - Actions
 extension VideoCapturerViewController {
     @objc func viewTapped(_ gestureRecognizer: UITapGestureRecognizer) {
-        let point = gestureRecognizer.location(in: previewView)
-        let focusScaledPointX = (point.x / previewView.frame.size.width)
-        let focusScaledPointY = (point.y / previewView.frame.size.height)
-        let finalPoint = CGPoint(x: focusScaledPointX, y: focusScaledPointY)
-        print("Tapped at point: \(finalPoint)")
-        viewModel.didTapViewForFocus(focusPoint: finalPoint)
-        
+        let focusPoint = calculateFocusPoint(for: gestureRecognizer)
+        Task(priority: .userInitiated) {
+            await viewModel.didTapViewForFocus(focusPoint: focusPoint)
+        }
     }
     
     @IBAction func didTapSwitchFlash(_ sender: UIButton) {
-        viewModel.didTapToggleFlash()
+        Task(priority: .userInitiated) {
+            await viewModel.didTapToggleFlash()
+        }
     }
     
     
     @IBAction func didTapSwitchCamera(_ sender: UIButton) {
-        viewModel.didTapToggleCamera()
+        Task(priority: .userInitiated) {
+            await viewModel.didTapToggleCamera()
+        }
     }
     
     @IBAction func didTapStart(_ sender: UIButton) {
-        viewModel.didTapStart()
-        
+        Task(priority: .userInitiated) {
+            await viewModel.didTapStart()
+        }
     }
 }
 
 // MARK: - VideoCapturerView
 extension VideoCapturerViewController: VideoCapturerView {
-    func updateStartCaptureButton(isRecording: Bool) {
-        if isRecording {
-            startCaptureButton.setBackgroundImage(UIImage(systemName: "square.fill"), for: .normal)
-        } else {
-            startCaptureButton.setBackgroundImage(UIImage(systemName: "circle.fill"), for: .normal)
-        }
+    @MainActor func updateStartCaptureButton(isRecording: Bool) {
+        let imageName: String = isRecording ? "square.fill" : "circle.fill"
+        startCaptureButton.setBackgroundImage(UIImage(systemName: imageName), for: .normal)
     }
     
-    func updateFlashButton(isFlashOn: Bool) {
-        if isFlashOn {
-            flashButton.setBackgroundImage(UIImage(named: "Flash On Icon"), for: .normal)
-        } else {
-            flashButton.setBackgroundImage(UIImage(named: "Flash Off Icon"), for: .normal)
-        }
+    @MainActor func updateFlashButton(isFlashOn: Bool) {
+        let imageName: String = isFlashOn ? "Flash On Icon" : "Flash Off Icon"
+        flashButton.setBackgroundImage(UIImage(named: imageName), for: .normal)
     }
 
-    func getPreviewView() -> UIView {
+    @MainActor func getPreviewView() -> UIView {
         return previewView
     }
 }
@@ -102,6 +96,13 @@ extension VideoCapturerViewController: VideoCapturerView {
 // MARK: - Helpers
 extension VideoCapturerViewController {
     
+    private func calculateFocusPoint(for gestureRecognizer: UIGestureRecognizer) -> CGPoint {
+        let point = gestureRecognizer.location(in: previewView)
+        return CGPoint(
+            x: point.x / previewView.frame.size.width,
+            y: point.y / previewView.frame.size.height
+        )
+    }
      
     
 }

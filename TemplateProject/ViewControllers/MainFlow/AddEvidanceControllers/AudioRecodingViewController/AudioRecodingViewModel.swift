@@ -38,10 +38,8 @@ extension AudioRecodingViewModel {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Task {
-           await configAudioUtils()
-        }
-        view?.configWaveView()
+        Task { await configAudioUtils()     }
+        Task { await view?.configWaveView() }
     }
     
     override func viewWillDisappear() {

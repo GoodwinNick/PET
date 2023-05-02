@@ -1,14 +1,14 @@
 import UIKit
 
 extension UIViewController {
-    class func instantiateFromStoryboard(_ name: String = "Main") async -> Self {
+    @MainActor class func instantiateFromStoryboard(_ name: String = "Main") async -> Self {
         return await instantiateFromStoryboardHelper(name)
     }
     
-    fileprivate class func instantiateFromStoryboardHelper<T>(_ name: String) async -> T {
+    @MainActor fileprivate class func instantiateFromStoryboardHelper<T>(_ name: String) async -> T {
         let storyboard = UIStoryboard(name: name, bundle: nil)
         let identifier = String(describing: self)
-        return await MainActor.run { storyboard.instantiateViewController(withIdentifier: identifier) as! T }
+        return  storyboard.instantiateViewController(withIdentifier: identifier) as! T
     }
 
     class func instantiateFromStoryboard(_ name: String = "Main") -> Self {

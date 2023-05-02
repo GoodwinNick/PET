@@ -110,12 +110,11 @@ class ColorManager {
 
 
 extension UIAlertController {
-    public func withUpdatedAppearance() async -> UIAlertController {
-        return await MainActor.run {
-            self.overrideUserInterfaceStyle = UDShared.instance.isWhiteMode ? .light : .dark
-            return self
-        }
+    @MainActor public func withUpdatedAppearance() async -> UIAlertController {
+        self.overrideUserInterfaceStyle = UDShared.instance.isWhiteMode ? .light : .dark
+        return self
     }
+    
 }
 
 extension UIView {

@@ -2,7 +2,7 @@
 import UIKit
 
 protocol VideoCapturerView: BaseViewConnector {
-    func getPreviewView() -> UIView
-    func updateStartCaptureButton(isRecording: Bool)
-    func updateFlashButton(isFlashOn: Bool)
+    @MainActor func getPreviewView() -> UIView
+    @MainActor func updateStartCaptureButton(isRecording: Bool)
+    @MainActor func updateFlashButton(isFlashOn: Bool)
 }

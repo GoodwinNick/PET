@@ -49,13 +49,11 @@ extension AudioRecodingViewController {
         self.timeLabel.setLabelAttributedTitle(string, font)
     }
     
-    private func waveViewConfiguration() async {
-        waveView.configuration = await MainActor.run(resultType: Waveform.Configuration.self) { [self] in
-            let stripeConfig : Waveform.Style.StripeConfig = .init(color: .red, width: 4, spacing: 6)
-            let style        : Waveform.Style              = .striped(stripeConfig)
-            let configuration: Waveform.Configuration      = waveView.configuration.with(style: style, verticalScalingFactor: 2)
-            return configuration
-        }
+    @MainActor private func waveViewConfiguration() {
+        let stripeConfig : Waveform.Style.StripeConfig = .init(color: .red, width: 4, spacing: 6)
+        let style        : Waveform.Style              = .striped(stripeConfig)
+        let configuration: Waveform.Configuration      = waveView.configuration.with(style: style, verticalScalingFactor: 2)
+        waveView.configuration = configuration
     }
 }
 
@@ -79,17 +77,17 @@ extension AudioRecodingViewController: AudioRecodingView {
         view.addSubview(recordButton)
     }
     
-    func getWaveView() -> WaveformLiveView {
+    @MainActor func getWaveView() -> WaveformLiveView {
         return waveView
     }
     
-    func updateTimeLabel(_ time: TimeInterval) {
+    @MainActor func updateTimeLabel(_ time: TimeInterval) {
         let string = GeneralFlowStrings.CustomString.custom(time.stringFromTimeInterval())
         let font = String.FontStringType.medi(size: 16, .labelText)
         self.timeLabel.setLabelAttributedTitle(string, font)
     }
     
-    func configWaveView() {
-        Task { await waveViewConfiguration() }
+    @MainActor func configWaveView() {
+        waveViewConfiguration()
     }
 }

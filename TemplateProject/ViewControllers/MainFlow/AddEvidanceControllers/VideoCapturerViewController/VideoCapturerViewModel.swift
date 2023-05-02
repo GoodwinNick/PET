@@ -18,18 +18,7 @@ class VideoCapturerViewModel: BaseViewModel {
         self.view = view
         super.init()
     }
-    
-    func initViewRecorder() {
-        do {
-            guard let view = view?.getPreviewView() else {
-                coordinator.move(as: .pop(flow: .anyTopLevel))
-                return
-            }
-            self.videoRecorder = try VideoRecorder(previewView: view)
-        } catch {
-            self.showErrorAndPop(error: error)
-        }
-    }
+   
 }
 
 
@@ -41,7 +30,9 @@ extension VideoCapturerViewModel {
     
     override func viewWillAppear() {
         super.viewWillAppear()
-        initViewRecorder()
+        Task(priority: .high) {
+            await initViewRecorder()
+        }
     }
     
 }
@@ -49,41 +40,37 @@ extension VideoCapturerViewModel {
 // MARK: - Actions
 extension VideoCapturerViewModel {
     
-    func didTapViewForFocus(focusPoint: CGPoint) {
+    func didTapViewForFocus(focusPoint: CGPoint) async {
         try? videoRecorder?.setFocus(at: focusPoint)
     }
     
-    func didTapToggleCamera() {
-        Task {
-            do {
-                try await videoRecorder?.toggleCamera()
-            } catch {
-                print(error.localizedDescription)
-            }
+    func didTapToggleCamera() async {
+        do {
+            try await videoRecorder?.toggleCamera()
+        } catch {
+            print(error.localizedDescription)
         }
     }
     
-    func didTapStart() {
-        Task {
-            do {
-                if videoRecorder?.isRecording == true {
-                    await videoRecorder?.stopRecording()
-                } else {
-                    startRecordingTime = Date()
-                    let fileName = await convertFromDate(format: .fileFrom)
-                    let url = try await getUrl(for: fileName)
-                    try await videoRecorder?.startRecording(url)
-                }
-            } catch {
-                print(error)
+    func didTapStart() async {
+        do {
+            if videoRecorder?.isRecording == true {
+                await videoRecorder?.stopRecording()
+            } else {
+                startRecordingTime = Date()
+                let fileName = await convertFromDate(format: .fileFrom)
+                let url = try await getUrl(for: fileName)
+                try await videoRecorder?.startRecording(url)
             }
-            view?.updateStartCaptureButton(isRecording: videoRecorder?.isRecording ?? false)
+        } catch {
+            print(error)
         }
+        await view?.updateStartCaptureButton(isRecording: videoRecorder?.isRecording ?? false)
     }
     
-    func didTapToggleFlash() {
+    func didTapToggleFlash() async {
         if let isFlashOn = try? videoRecorder?.toggleFlash() {
-            view?.updateFlashButton(isFlashOn: isFlashOn)
+            await view?.updateFlashButton(isFlashOn: isFlashOn)
         }
 
     }
@@ -91,6 +78,19 @@ extension VideoCapturerViewModel {
 
 // MARK: - Helpers
 private extension VideoCapturerViewModel {
+    
+    func initViewRecorder() async {
+        do {
+            guard let view = await view?.getPreviewView() else {
+                coordinator.move(as: .pop(flow: .anyTopLevel))
+                return
+            }
+            self.videoRecorder = try VideoRecorder(previewView: view)
+        } catch {
+            self.showErrorAndPop(error: error)
+        }
+    }
+    
     func getUrl(for name: String) async throws -> URL {
         return try await CacheManager.shared
             .getFileURLWith(

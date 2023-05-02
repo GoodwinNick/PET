@@ -16,13 +16,37 @@ class LiveStreamViewModel: BaseViewModel {
         super.init()
     }
     
+   
+    
+    
+    
+    
+}
+
+
+// MARK: - Standard overriding
+extension LiveStreamViewModel {
     override func viewDidLoad() {
         super.viewDidLoad()
-        Task(priority: .background) { await configuration() }
+        Task(priority: .background) {
+            await configuration()
+        }
     }
     
-    
-    fileprivate func configuration() async {
+    override func viewWillDisappear() {
+        super.viewWillDisappear()
+        // TODO: Show alert for stop translation, if translation not stopped, we need to save view controller for not lose it
+        session.stopRunning()
+        rtmpStream?.stopRecording()
+        rtmpConnection?.close()
+        rtmpStream = nil
+        rtmpConnection = nil
+    }
+}
+
+// MARK: - Configurators
+fileprivate extension LiveStreamViewModel {
+    func configuration() async {
         let isConfigSuccess = await self.configSession()
         if !isConfigSuccess { return }
         let action = CoordinatorAction.showAlertTextField(title: "RTMP",
@@ -32,7 +56,6 @@ class LiveStreamViewModel: BaseViewModel {
         self.coordinator.move(as: action)
     }
 }
-
 
 // MARK: Session Configuration
 private extension LiveStreamViewModel {
