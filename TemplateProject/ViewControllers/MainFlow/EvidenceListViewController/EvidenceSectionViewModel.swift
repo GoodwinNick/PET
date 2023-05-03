@@ -88,7 +88,7 @@ extension EvidenceSectionViewModel {
         do {
             await view?.showHUD()
             let cacheManager = CacheManager.shared
-            let getCreationDate = cacheManager.getCreationDate
+
             async let files = cacheManager.getFilesList(for: sections[selectedIndex])
                 
             await dataSource.config(try await files, by: >)

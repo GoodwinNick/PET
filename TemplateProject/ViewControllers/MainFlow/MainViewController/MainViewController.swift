@@ -3,7 +3,6 @@ import GoogleMaps
 import LocationService
 import GoogleMapsCore
 import GoogleMapsBase
-import GooglePlaces
 
 class MainViewController: BaseViewController<MainViewModel> {
     @IBOutlet fileprivate weak var mapView: GMSMapView! { didSet { mapViewSettings() } }

@@ -14,16 +14,16 @@ public final class CryptService {
             return nil
         }
         
-        var attributes: CFDictionary {
-            return [
-                kSecAttrKeyType         : kSecAttrKeyTypeRSA,
-                kSecAttrKeyClass        : kSecAttrKeyClassPublic,
-                kSecAttrKeySizeInBits   : 4096,
-                kSecReturnPersistentRef : kCFBooleanTrue ?? true
-            ] as CFDictionary
-        }
+        var attributes: [CFString : Any] = [:]
+        attributes[kSecAttrKeyType        ] = kSecAttrKeyTypeRSA
+        attributes[kSecAttrKeyClass       ] = kSecAttrKeyClassPublic
+        attributes[kSecAttrKeySizeInBits  ] = 4096
+        attributes[kSecReturnPersistentRef] = kCFBooleanTrue ?? true
+        
         var error: Unmanaged<CFError>? = nil
-        guard let secKey = SecKeyCreateWithData(data as CFData, attributes, &error) else {
+        guard let secKey = SecKeyCreateWithData(data as CFData,
+                                                attributes as CFDictionary,
+                                                &error) else {
             print(error.debugDescription)
             return nil
         }

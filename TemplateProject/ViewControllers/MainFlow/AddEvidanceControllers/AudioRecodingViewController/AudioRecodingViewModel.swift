@@ -69,20 +69,16 @@ extension AudioRecodingViewModel {
 // MARK: - Timer
 extension AudioRecodingViewModel {
     
-    func startRecordingTimer() async {
+    @MainActor func startRecordingTimer() async {
         if recordingTimer != nil {
             recordingTimer?.invalidate()
             recordingTimer = nil
         }
         
-        Task {
-            await resetWave()
-        }
+        Task(priority: .utility) { await resetWave() }
         
-        DispatchQueue.main.async {
-            self.recordingTimer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { _ in
-                Task { await self.recordingUpdate() }
-            }
+        self.recordingTimer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { _ in
+            Task(priority: .medium) { await self.recordingUpdate() }
         }
         
     }
@@ -93,16 +89,15 @@ extension AudioRecodingViewModel {
         }
     }
     
-    func recordingUpdate() async {
+    @MainActor func recordingUpdate() async {
         self.audioRecorder.updateMeters()
         let power = audioRecorder.averagePower(forChannel: 0)
         let linear = 1 - pow(10, power / 20)
         
         guard let view = self.view, let audioRecorder = self.audioRecorder else { return }
-        await MainActor.run {
-            view.updateTimeLabel(audioRecorder.currentTime)
-            view.getWaveView().add(samples: [linear, linear, linear])
-        }
+        view.updateTimeLabel(audioRecorder.currentTime)
+        view.getWaveView().add(samples: [linear, linear, linear])
+        
     }
     
 }
@@ -134,7 +129,6 @@ extension AudioRecodingViewModel {
     
     /// Start recording
     func startRecording() async {
-        
         do {
             startRecordingTime = Date()
             let filename = await converFromDate(date: startRecordingTime, format: .fileFrom)
@@ -154,8 +148,6 @@ extension AudioRecodingViewModel {
             await self.view?.showErrorHUD(error: error)
             await finishRecording(success: false)
         }
-        
-        
     }
     
     // Stop recording

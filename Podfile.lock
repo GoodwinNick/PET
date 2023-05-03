@@ -1,32 +1,24 @@
 PODS:
-  - AzureCore (1.0.0-beta.15)
   - GoogleMaps (7.4.0):
     - GoogleMaps/Maps (= 7.4.0)
   - GoogleMaps/Base (7.4.0)
   - GoogleMaps/Maps (7.4.0):
     - GoogleMaps/Base
-  - GooglePlaces (7.4.0)
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
-  - AzureCore (= 1.0.0-beta.15)
   - GoogleMaps
-  - GooglePlaces
   - SVProgressHUD
 
 SPEC REPOS:
   trunk:
-    - AzureCore
     - GoogleMaps
-    - GooglePlaces
     - SVProgressHUD
 
 SPEC CHECKSUMS:
-  AzureCore: ebbf7cf4dfe72afc7584088c38d1c99f5a35d647
   GoogleMaps: 032f676450ba0779bd8ce16840690915f84e57ac
-  GooglePlaces: 544e908d94860bf6f8fc1865b80d2c7eb6b5f937
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 68bbbc24500c378537c6bb63652a8989a39e0b86
+PODFILE CHECKSUM: bc9512cfc1d18914e826889c413e9fd6ea6d3e71
 
 COCOAPODS: 1.12.0
